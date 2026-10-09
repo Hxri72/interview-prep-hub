@@ -1,0 +1,393 @@
+# Glossary. Link to an entry from any topic with: [word](glossary:id)
+# Keep definitions to one or two simple sentences.
+
+- id: variable
+  term: Variable
+  definition: A named box that stores a value, like `let age = 27`. You can read the value later using the name.
+- id: function
+  term: Function
+  definition: A reusable block of code with a name. You "call" it to run the code inside.
+- id: scope
+  term: Scope
+  definition: The area of the code where a variable can be seen and used.
+- id: closure
+  term: Closure
+  definition: A function that remembers the variables from the place where it was created, even after that outer function has finished.
+- id: callback
+  term: Callback
+  definition: A function you give to another function, so it can call it later (for example, when a timer ends or data arrives).
+- id: promise
+  term: Promise
+  definition: An object that stands for a value that will arrive later. It ends as "fulfilled" (success) or "rejected" (error).
+- id: async
+  term: Asynchronous (async)
+  definition: Work that starts now but finishes later, so the program can do other things while it waits.
+- id: thread
+  term: Thread
+  definition: One line of work a computer runs, step by step. "Single-threaded" means only one line of work runs JavaScript at a time.
+- id: event-loop
+  term: Event loop
+  definition: The part of JavaScript that keeps checking "is the main work done? then run the next waiting callback".
+- id: call-stack
+  term: Call stack
+  definition: The list of functions that are running right now. The newest function is on top; when it finishes, it is removed.
+- id: callback-queue
+  term: Callback queue (task queue)
+  definition: A waiting line of callbacks that are ready to run once the call stack is empty.
+- id: microtask
+  term: Microtask
+  definition: A high-priority waiting job, such as a promise's `.then` callback. All microtasks run before the next normal task.
+- id: io
+  term: I/O (input/output)
+  definition: Talking to things outside the program, like reading a file, calling a database or sending a network request.
+- id: libuv
+  term: libuv
+  definition: A C library inside Node.js that handles the event loop, timers, files and networking for Node.
+- id: api
+  term: API
+  definition: A set of rules that lets one program talk to another, like a menu of requests you can make to a server.
+- id: component
+  term: Component
+  definition: A reusable piece of UI in React, like a Button or a CandidateCard. It is a function that returns what to show.
+- id: props
+  term: Props
+  definition: Data a parent component gives to a child component. The child can read it but should not change it.
+- id: state
+  term: State
+  definition: Data a component remembers and can change, like the text typed in a search box. Changing it re-draws the component.
+- id: render
+  term: Render / re-render
+  definition: React running your component function to work out what to show on screen. A re-render is doing it again because something changed.
+- id: hook
+  term: Hook
+  definition: A special React function whose name starts with `use`, like `useState` or `useEffect`. Hooks give components extra powers.
+- id: side-effect
+  term: Side effect
+  definition: Anything a function does besides returning a value, such as calling an API, starting a timer or changing the page title.
+- id: dependency-array
+  term: Dependency array
+  definition: The list at the end of `useEffect(fn, [a, b])`. React re-runs the effect only when one of these values changes.
+- id: cleanup
+  term: Cleanup function
+  definition: The function you return from `useEffect`. React runs it before the effect runs again and when the component is removed.
+- id: memory-leak
+  term: Memory leak
+  definition: Memory that your program keeps holding even though it no longer needs it, so memory use keeps growing.
+- id: middleware
+  term: Middleware
+  definition: A function that runs in the middle of a request, before the final handler, for example to check login or log the request.
+- id: dom
+  term: DOM
+  definition: The browser's tree of all the elements on a page. JavaScript can read and change it.
+- id: garbage-collection
+  term: Garbage collection
+  definition: JavaScript automatically freeing memory that nothing can reach any more.
+- id: heap
+  term: Heap
+  definition: The big area of memory where JavaScript keeps objects, arrays and strings. The garbage collector cleans it.
+- id: multi-tenant
+  term: Multi-tenant
+  definition: One app and database shared by many customer companies (tenants). Each company must only ever see its own data.
+- id: runtime
+  term: Runtime
+  definition: The place where your code runs, with the tools it needs. Node.js is a runtime for JavaScript outside the browser.
+- id: v8
+  term: V8
+  definition: Google's JavaScript engine, used in Chrome and Node.js. It turns JavaScript into fast machine code and cleans up unused memory.
+- id: thread-pool
+  term: Thread pool
+  definition: A small team of background threads that do slow jobs, so the main thread stays free. In Node, libuv's pool has 4 threads by default.
+- id: non-blocking
+  term: Non-blocking
+  definition: Code that starts a slow job and moves on right away, instead of waiting. The result comes later through a callback or a promise.
+- id: cpu-bound
+  term: CPU-heavy (CPU-bound) work
+  definition: Work that keeps the processor busy calculating, like big loops or image resizing, instead of waiting for files or the network.
+- id: module
+  term: Module
+  definition: One file of code that can share parts of itself (functions, values) with other files using export, and use parts of other files using import or require.
+- id: package
+  term: Package
+  definition: Ready-made code that someone else wrote and published, like Express or Mongoose. You download it with npm into the node_modules folder.
+- id: semver
+  term: Semantic versioning (semver)
+  definition: A rule for version numbers, MAJOR.MINOR.PATCH. Major means breaking changes, minor means new features that don't break anything, and patch means bug fixes only.
+- id: environment-variable
+  term: Environment variable
+  definition: A setting given to a program from outside its code, like PORT or DATABASE_URL. In Node you read it with process.env.NAME.
+- id: file-system
+  term: File system
+  definition: The part of the computer that stores files and folders. Node's fs module lets your code read and write them.
+- id: buffer
+  term: Buffer
+  definition: A piece of raw binary data (bytes) in Node.js, used for files, images and network data. You can turn it into text with .toString('utf8').
+- id: port
+  term: Port
+  definition: A number (like 3000 or 443) that tells the computer which program should receive incoming network traffic. A server listens on a port.
+- id: event
+  term: Event
+  definition: A named signal that something happened, like "order placed" or "file finished". Code can listen for it and react.
+- id: listener
+  term: Listener
+  definition: A function that waits for an event and runs every time that event happens.
+- id: encoding
+  term: Encoding
+  definition: The rule for turning text into bytes and back again. utf8 is the most common one.
+- id: chunk
+  term: Chunk
+  definition: One small piece of a bigger piece of data, like one part of a file that a stream reads at a time.
+- id: webhook
+  term: Webhook
+  definition: An HTTP request that another service (like Stripe) sends to your server when something happens, such as a payment succeeding.
+- id: stream
+  term: Stream
+  definition: A way to read or write data piece by piece over time, instead of loading all of it into memory at once.
+- id: backpressure
+  term: Backpressure
+  definition: A "slow down" signal from a stream that can't keep up, so the faster stream pauses and memory doesn't fill up.
+- id: process
+  term: Process
+  definition: A running program with its own memory. Your Node app is one process; a child process is another program it starts.
+- id: database
+  term: Database
+  definition: An organised place where an app stores its data so it can save, find and change it later. MongoDB and PostgreSQL are databases.
+- id: index
+  term: Index
+  definition: A sorted list the database keeps for one or more fields, like the index at the back of a book, so it can find matching documents fast without reading everything.
+- id: aggregation-pipeline
+  term: Aggregation pipeline
+  definition: A list of steps (stages) in MongoDB that data flows through one by one — filter, group, sort, join — to build reports and summaries.
+- id: transaction
+  term: Transaction
+  definition: A group of database changes that succeed or fail together as one unit. If one step fails, all the earlier steps are undone.
+- id: race-condition
+  term: Race condition
+  definition: A bug where two things happen at the same time and the result depends on which finishes first, like two requests overwriting each other's update.
+- id: replica-set
+  term: Replica set
+  definition: A group of MongoDB servers holding copies of the same data. One primary takes writes; if it fails, another server takes over automatically.
+- id: sharding
+  term: Sharding
+  definition: Splitting one very large collection across several servers (shards) by a shard key, so each server holds and handles only part of the data.
+- id: embedding
+  term: Embedding
+  definition: A list of numbers made by an AI model that represents the meaning of text. Texts with similar meaning get similar numbers.
+- id: rag
+  term: RAG (Retrieval-Augmented Generation)
+  definition: Searching your own data for the most relevant pieces first, then giving them to an AI model with the question, so it answers from real information.
+- id: vector-database
+  term: Vector database
+  definition: A database (or feature) that stores embeddings and quickly finds the ones closest in meaning to a search query.
+- id: document
+  term: Document (MongoDB)
+  definition: One record in MongoDB, stored as a JSON-like object with fields and values. It is like one row in a SQL table.
+- id: collection
+  term: Collection
+  definition: A group of documents in MongoDB, like a table in SQL. For example, all candidates live in the "candidates" collection.
+- id: schema
+  term: Schema
+  definition: A description of what your data should look like — the fields, their types and their rules. Mongoose uses schemas to check data before saving it.
+- id: odm
+  term: ODM (Object Data Modeling)
+  definition: A library that maps database documents to objects in your code and adds schemas and validation. Mongoose is the ODM for MongoDB.
+- id: objectid
+  term: ObjectId
+  definition: MongoDB's default 12-byte id for a document. It is unique and includes the time it was created.
+- id: regex
+  term: Regular expression (regex)
+  definition: A pattern for matching text, like ^A for "starts with A". Used for searching and checking text formats.
+- id: query
+  term: Query
+  definition: "A question you ask the database, like \"find all candidates in Kochi\". In MongoDB it's written as a filter object, e.g. { city: 'Kochi' }."
+- id: pipeline
+  term: Pipeline
+  definition: A list of steps where the output of one step becomes the input of the next, like a factory line. MongoDB's aggregation is a pipeline of stages.
+- id: join
+  term: Join
+  definition: Combining data from two tables or collections using a shared value, like matching each application's jobId with the job's _id.
+- id: xss
+  term: XSS (cross-site scripting)
+  definition: "An attack where someone gets their own JavaScript to run on your page, for example through text shown with innerHTML. It can steal data and act as the user."
+- id: cookie
+  term: Cookie
+  definition: "A small piece of data (about 4 KB) the browser saves for a site and sends to the server with every request. An httpOnly cookie can't be read by JavaScript."
+- id: status-code
+  term: HTTP status code
+  definition: "A 3-digit number in every HTTP response that says how it went: 2xx = success, 4xx = the request was wrong (like 404 not found), 5xx = the server failed."
+- id: compiler
+  term: Compiler
+  definition: "A program that turns code into a faster, lower-level form the computer can run. V8 compiles busy JavaScript into machine code while the program runs."
+- id: prototype
+  term: Prototype
+  definition: "The hidden \"parent\" object every JavaScript object is linked to. If a property is missing on an object, JavaScript looks for it on the prototype."
+- id: macrotask
+  term: Macrotask (task)
+  definition: "A queued callback like setTimeout, setInterval or a click event. The event loop runs one task at a time, after all waiting microtasks are done."
+- id: tree-shaking
+  term: Tree shaking
+  definition: "When a bundler (like Vite) removes code you exported but never imported, so the final JavaScript file is smaller."
+- id: token
+  term: Token (AI)
+  definition: "A small piece of text an AI model reads and writes, about 4 English characters on average. Cost, speed and limits are measured in tokens."
+- id: authentication
+  term: Authentication (authn)
+  definition: "Checking WHO someone is, for example with a password or a token. Failing it gives 401."
+- id: authorization
+  term: Authorisation (authz)
+  definition: "Checking WHAT a known user is allowed to do, for example by role or permission. Failing it gives 403."
+- id: hash
+  term: Hash
+  definition: "A fixed-size scrambled string made from some input by a one-way function. You can't turn it back into the input, but the same input gives the same hash."
+- id: salt
+  term: Salt
+  definition: "A random value added to a password before hashing, so the same password gives a different hash for every user."
+- id: session
+  term: Session
+  definition: "Login state the server remembers (in memory, Redis or a database). The browser only holds a random session ID, usually in a cookie."
+- id: jwt
+  term: JWT (JSON Web Token)
+  definition: "A signed token with three parts (header.payload.signature). It carries facts like the user id and expiry. Anyone can read it, but nobody can change it without breaking the signature."
+- id: csrf
+  term: CSRF (cross-site request forgery)
+  definition: "An attack where another website makes your browser send a request to an app you're logged into, and your cookies go along automatically. SameSite cookies and CSRF tokens stop it."
+- id: signature
+  term: Signature (digital)
+  definition: "A value calculated from some data and a secret key. If the data changes, the signature no longer matches, so the change is detected."
+- id: base64
+  term: Base64 / base64url
+  definition: "A way to write any bytes as plain letters and numbers so they can travel as text. It is encoding, not encryption; anyone can decode it."
+- id: refresh-token
+  term: Refresh token
+  definition: "A long-lived token used only to get a new short-lived access token. It is stored on the server so it can be revoked."
+- id: queue
+  term: Queue
+  definition: "A waiting line for messages or jobs. One part of the system adds work to it, and another part takes the work out and does it later, in order."
+- id: reconciliation
+  term: Reconciliation
+  definition: "How React compares the new tree of elements with the previous one to find the smallest set of real DOM changes."
+- id: memoization
+  term: Memoization
+  definition: "Saving the result of a calculation so the next time the same inputs come in, you reuse the saved result instead of calculating again."
+- id: reducer
+  term: Reducer
+  definition: "A pure function (state, action) => newState. It reads the current state and an action, and returns the new state without changing the old one."
+- id: union-type
+  term: Union type
+  definition: "A type that can be one of several types, written with |. For example string | number, or 'applied' | 'rejected'."
+- id: type-guard
+  term: Type guard
+  definition: "A check (like typeof, instanceof, or a function returning \"x is Type\") that tells TypeScript the exact type of a value inside an if block."
+- id: generic
+  term: Generic (type parameter)
+  definition: "A blank for a type, usually written T, that is filled in later. It lets one function or type work with many types and stay type-safe."
+- id: utility-type
+  term: Utility type
+  definition: "A built-in TypeScript tool like Partial, Pick or Omit that makes a new type from an existing one."
+- id: enum
+  term: Enum
+  definition: "A TypeScript feature that names a fixed set of values, like Status.Applied. Unlike a union type, it creates a real object in the JavaScript output."
+- id: viewport
+  term: Viewport
+  definition: "The visible area of the browser window where the page is shown. On a phone it is small; on a laptop it is big."
+- id: breakpoint
+  term: Breakpoint
+  definition: "A screen width where the design changes, for example \"from 768px wide, show two columns\"."
+- id: flexbox
+  term: Flexbox
+  definition: "A CSS layout tool that lines up children in one direction, a row or a column, and controls their spacing and alignment."
+- id: css-grid
+  term: CSS Grid
+  definition: "A CSS layout tool for rows and columns at the same time, like a table or a dashboard."
+- id: html
+  term: HTML
+  definition: "The language that gives a web page its structure — headings, paragraphs, buttons, links. It says what each part is, not how it looks."
+- id: css
+  term: CSS
+  definition: "The language that controls how a web page looks — colours, sizes, spacing and layout."
+- id: selector
+  term: CSS selector
+  definition: "The part of a CSS rule that picks which elements to style, like p, .card or #save."
+- id: screen-reader
+  term: Screen reader
+  definition: "Software that reads the screen aloud (or as braille) for people who are blind or have low vision, like VoiceOver or NVDA."
+- id: accessibility
+  term: Accessibility (a11y)
+  definition: "Making a website usable by everyone, including people who use screen readers, only a keyboard, or zoom."
+- id: seo
+  term: SEO (Search Engine Optimisation)
+  definition: "Making a web page easy for search engines like Google to find, understand and rank."
+- id: framework
+  term: Framework
+  definition: "A ready-made structure for building apps. Unlike a library (code you call), a framework calls your code and decides where files go and how things run. Next.js is a framework; React is a library."
+- id: spa
+  term: SPA (single-page app)
+  definition: "A website that loads one HTML page once, then JavaScript draws and changes the screen in the browser without full page reloads. A React + Vite app is an SPA."
+- id: llm
+  term: LLM (Large Language Model)
+  definition: "A deep learning model trained on huge amounts of text, so it can read and write language. It writes by predicting the next token, one at a time."
+- id: context-window
+  term: Context window
+  definition: "The maximum amount of text, in tokens, a model can see in one call — instructions, history, documents and its own answer together."
+- id: temperature
+  term: Temperature
+  definition: "A model setting for how predictable or varied the answer is. Low = almost always the most likely word; high = more variety."
+- id: hallucination
+  term: Hallucination
+  definition: "When an AI model confidently says something false, like a made-up fact, citation or function."
+- id: inference
+  term: Inference
+  definition: "Using a trained model to get an answer. The model's weights don't change. Every LLM API call is inference."
+- id: fine-tuning
+  term: Fine-tuning
+  definition: "Training an existing model a bit more on your own examples, to change its style, format or behaviour on a narrow task."
+- id: commit
+  term: Commit
+  definition: "A saved snapshot of your project in Git, with a message, author, time and a link to the previous snapshot. Its ID is a hash of all that."
+- id: branch
+  term: Branch
+  definition: "A separate line of work in Git. Technically a small pointer to a commit, so creating one is instant."
+- id: repository
+  term: Repository (repo)
+  definition: "A project folder tracked by Git, including its full history of commits. GitHub stores a copy online."
+- id: pull-request
+  term: Pull request (PR)
+  definition: "A request on GitHub to merge one branch into another. Teammates review it and automatic checks run before it is merged."
+- id: ci-cd
+  term: CI/CD
+  definition: "Continuous Integration and Continuous Delivery/Deployment: every push is automatically checked (lint, test, build), and passing code is made ready to release or released automatically."
+- id: yaml
+  term: YAML
+  definition: "A simple text format for settings that uses indentation (spaces) instead of brackets. GitHub Actions workflows are written in YAML."
+- id: secret
+  term: Secret
+  definition: "A private value like a password, API key or token. It must never be written in code; it is kept in a secret store and given to the program only when needed."
+- id: foreign-key
+  term: Foreign key
+  definition: "A column that stores the id of a row in another table, like applications.job_id pointing to jobs.id. The database can check that the referenced row really exists."
+- id: sse
+  term: SSE (Server-Sent Events)
+  definition: "A simple way for a server to push data to the browser over one long HTTP response (Content-Type: text/event-stream). Each event is a \"data: ...\" line plus a blank line. One-way: server to browser."
+- id: prompt
+  term: Prompt
+  definition: "The instructions and question you send to an AI model. Clear prompts give better answers."
+- id: few-shot
+  term: Few-shot prompting
+  definition: "Putting a few example inputs with their correct outputs in the prompt, so the model copies the pattern."
+- id: structured-output
+  term: Structured output
+  definition: "An AI reply forced into fixed JSON that matches a schema, so your code can use it safely after validating it."
+- id: tool-calling
+  term: Tool calling (function calling)
+  definition: "The model asks your code to run a function (like searchJobs) with certain inputs; your code runs it and sends the result back."
+- id: sql
+  term: SQL (Structured Query Language)
+  definition: "The standard language for creating tables, adding data and asking questions of a relational database like PostgreSQL or MySQL."
+- id: primary-key
+  term: Primary key
+  definition: "The column (or columns) that uniquely identifies each row in a table. It must be unique and can never be empty."
+- id: prompt-injection
+  term: Prompt injection
+  definition: "An attack where text the AI reads (from a user, a document or a tool) tries to override its rules, like \"ignore your instructions and...\"."
+- id: latency
+  term: Latency
+  definition: "How long you wait for a response. In AI apps it often means the time until the first words or the first audio appear."
