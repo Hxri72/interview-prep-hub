@@ -1,13 +1,13 @@
 ---
 title: Accessibility in component libraries
-stack: mui-tailwind
+stack: mantine-tailwind
 order: 16
 level: Intermediate
 mustKnow: false
 askedFrequency: sometimes
 summary:
   - "Accessibility (a11y) means everyone can use the app, including keyboard users and people using screen readers."
-  - "Libraries like MUI and antd do a lot for you: keyboard support, focus trapping in dialogs, ARIA attributes."
+  - "Libraries like Mantine and antd do a lot for you: keyboard support, focus trapping in modals, ARIA attributes."
   - "They can't do everything. You still must add labels, alt text, good colour contrast and a sensible focus order."
   - "Icon-only buttons need an aria-label. Inputs need a real label. Dialogs need a title."
   - "Test it: use Tab through the page, run Lighthouse or axe, and try a screen reader."
@@ -32,7 +32,7 @@ cards:
 - can't see some colours well,
 - zoom the page to 200%.
 
-Component libraries like **MUI** and **Ant Design** do a lot of this work for you. They also manage the [DOM](glossary:dom) focus for you. But they **can't do all of it**. Some parts are always your job.
+Component libraries like **Mantine** and **Ant Design** do a lot of this work for you. They also manage the [DOM](glossary:dom) focus for you. But they **can't do all of it**. Some parts are always your job.
 
 ## 🏠 Real-life example
 
@@ -48,34 +48,32 @@ The builder added the ramp, the lift and handrails. That's great. But if a teach
 
 ## 🧑‍💻 Code example
 
-Setup: a Vite React app with `npm install @mui/material @emotion/react @emotion/styled @mui/icons-material`. Paste into `src/App.jsx`.
+Setup: a Vite React app with `npm install @mantine/core @mantine/hooks @tabler/icons-react`. Paste into `src/App.jsx`. (Tabler icons are the icon set the Mantine docs use.)
 
 ```jsx
-import { useState } from 'react';                                     // React state hook
-import { Button, Dialog, DialogActions, DialogContent, DialogTitle, IconButton, TextField } from '@mui/material'; // MUI components
-import DeleteIcon from '@mui/icons-material/Delete';                  // a trash-can icon
+import '@mantine/core/styles.css';                                    // Mantine's CSS (needed once)
+import { MantineProvider, ActionIcon, Button, Group, Modal, TextInput } from '@mantine/core'; // Mantine components
+import { useDisclosure } from '@mantine/hooks';                       // a hook for open/close state
+import { IconTrash } from '@tabler/icons-react';                      // a trash-can icon
 
 export default function App() {                                       // the main component
-  const [open, setOpen] = useState(false);                            // open = is the dialog showing? starts false
+  const [opened, { open, close }] = useDisclosure(false);             // opened = is the modal showing? starts false
   return (                                                            // what the page shows
-    <main style={{ padding: 24 }}>                                    {/* <main> = the main landmark for screen readers; 24px padding */}
-      <TextField label="Candidate email" id="email" />                {/* label is linked to the input, so screen readers read "Candidate email" */}
-      <IconButton aria-label="Delete candidate" onClick={() => setOpen(true)}> {/* icon-only button: aria-label gives it a spoken name */}
-        <DeleteIcon />                                                {/* the picture only; MUI hides it from screen readers */}
-      </IconButton>                                                   {/* end of the icon button */}
-      <Dialog                                                         // MUI dialog: traps focus inside while open
-        open={open}                                                   // show or hide
-        onClose={() => setOpen(false)}                                // Esc key or backdrop click closes it
-        aria-labelledby="delete-title"                                // the dialog's name comes from the title below
-      >                                                               {/* end of the opening Dialog tag */}
-        <DialogTitle id="delete-title">Delete this candidate?</DialogTitle> {/* read aloud when the dialog opens */}
-        <DialogContent>This cannot be undone.</DialogContent>         {/* the message */}
-        <DialogActions>                                               {/* the button row */}
-          <Button onClick={() => setOpen(false)}>Cancel</Button>      {/* a real button with visible text */}
-          <Button color="error" onClick={() => setOpen(false)}>Delete</Button> {/* red button; the text says what it does */}
-        </DialogActions>                                              {/* end of the button row */}
-      </Dialog>                                                       {/* end of the dialog */}
-    </main>                                                           // end of main
+    <MantineProvider>                                                 {/* gives Mantine components their theme */}
+      <main style={{ padding: 24 }}>                                  {/* <main> = the main landmark for screen readers; 24px padding */}
+        <TextInput label="Candidate email" />                         {/* label is linked to the input, so screen readers read "Candidate email" */}
+        <ActionIcon aria-label="Delete candidate" color="red" onClick={open}> {/* icon-only button: aria-label gives it a spoken name */}
+          <IconTrash aria-hidden />                                   {/* the picture only; aria-hidden hides it from screen readers */}
+        </ActionIcon>                                                 {/* end of the icon button */}
+        <Modal opened={opened} onClose={close} title="Delete this candidate?"> {/* Mantine modal: traps focus; the title becomes its name */}
+          <p>This cannot be undone.</p>                               {/* the message */}
+          <Group justify="flex-end">                                  {/* a row of buttons pushed to the right */}
+            <Button variant="default" onClick={close}>Cancel</Button> {/* a real button with visible text */}
+            <Button color="red" onClick={close}>Delete</Button>       {/* red button; the text says what it does */}
+          </Group>                                                    {/* end of the button row */}
+        </Modal>                                                      {/* end of the modal */}
+      </main>                                                         {/* end of main */}
+    </MantineProvider>                                                // end of the provider
   );                                                                  // end of what App returns
 }                                                                     // end of App
 ```
@@ -84,11 +82,13 @@ export default function App() {                                       // the mai
 
 ```text
 Tab → focus moves to the email field, then to the trash button (a focus ring shows).
-Enter on the trash button → the dialog opens and focus moves inside it.
-Tab keeps cycling between Cancel and Delete — it can't escape to the page behind.
-Esc → the dialog closes and focus goes back to the trash button.
+Enter on the trash button → the modal opens and focus moves inside it.
+Tab keeps cycling between the close (×) button, Cancel and Delete — it can't escape to the page behind.
+Esc → the modal closes and focus goes back to the trash button.
 A screen reader announces: "Delete candidate, button", then "Delete this candidate?, dialog".
 ```
+
+Mantine's `Modal` has these on by default: `trapFocus`, `returnFocus`, `closeOnEscape` and `closeOnClickOutside`. Giving it a `title` also links the title as the modal's name (`aria-labelledby`). So you don't need to add any ARIA to the modal yourself.
 
 ## 🔍 Deeper version
 
@@ -137,7 +137,7 @@ A screen reader announces: "Delete candidate, button", then "Delete this candida
 
 ## 🗣️ How to answer in an interview
 
-> "Component libraries like MUI give a lot of accessibility for free: correct roles, keyboard support, and focus management. For example, a Dialog traps focus while it's open and returns it to the trigger when it closes.
+> "Component libraries like Mantine give a lot of accessibility for free: correct roles, keyboard support, and focus management. For example, Mantine's Modal traps focus while it's open and returns it to the trigger when it closes.
 >
 > But some things are always my job: a label for every input, an aria-label for icon-only buttons, alt text, enough colour contrast — 4.5 to 1 for normal text — and real button and link elements instead of clickable divs.
 >
@@ -166,7 +166,7 @@ Use a live region (`aria-live="polite"` or `role="status"`). Screen readers read
 ### 1. What will a screen reader say for this button?
 
 ```jsx
-<IconButton onClick={remove}><DeleteIcon /></IconButton> {/* no aria-label */}
+<ActionIcon onClick={remove}><IconTrash /></ActionIcon> {/* no aria-label */}
 ```
 
 :::answer

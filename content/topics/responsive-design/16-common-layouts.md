@@ -122,7 +122,7 @@ Save as `index.html` and open in Chrome. Try 375px and 1280px in device mode (F1
 
 **Navbar.** On phones, a hamburger button toggles the menu. Make the button a real `<button>` with `aria-label` and `aria-expanded`, and a tap area of at least 44×44px. Close the menu when a link is chosen or Escape is pressed.
 
-**Sidebar → drawer.** On laptops, the sidebar is a column. On phones, it becomes a **drawer** that slides over the content, with a dark overlay behind it. In MUI that's `<Drawer variant={isMobile ? 'temporary' : 'permanent'}>`. Trap keyboard focus inside the open drawer, and close it on overlay click or Escape.
+**Sidebar → drawer.** On laptops, the sidebar is a column. On phones, it becomes a **drawer** that slides over the content, with a dark overlay behind it. In Mantine, `AppShell` does this with `navbar={{ breakpoint: 'sm', collapsed: { mobile: !opened } }}` and a `<Burger hiddenFrom="sm" />` button. Trap keyboard focus inside the open drawer, and close it on overlay click or Escape.
 
 **Data tables.** Two options:
 
@@ -137,7 +137,7 @@ With scrolling, keep the first column sticky (`position: sticky; left: 0`) so pe
 
 **Forms.** One column on phones. On laptops, put **related short fields** side by side (first name + last name), but keep long fields full width. Use the right `type` (`email`, `tel`) so phones show the right keyboard.
 
-**Dialogs.** On phones, make dialogs full screen. In MUI: `<Dialog fullScreen={isMobile}>`. Keep the action buttons visible above the keyboard.
+**Dialogs.** On phones, make dialogs full screen. In Mantine: `<Modal fullScreen={isMobile}>`. Keep the action buttons visible above the keyboard.
 
 **Use CSS first.** Show/hide and reflow with CSS where possible. Swap whole components with JavaScript (`useMediaQuery`) only when the markup must be different.
 
@@ -156,7 +156,7 @@ Using known patterns makes apps easier to use and faster to build. Interviewers 
 
 ## 🗣️ How to answer in an interview
 
-> "I follow a few standard patterns. The navbar shows all links in a row on laptops and a hamburger button on phones, which is a real button with aria-expanded. The dashboard sidebar is a permanent column on desktop and a drawer on mobile, which in MUI is just switching the Drawer variant. Card lists go from one per row to three or four, using grid auto-fit or breakpoints. For big data tables I either let them scroll sideways with a sticky first column, or show each row as a card with label and value pairs. Forms are one column on phones, and dialogs go full screen. I do as much as possible in CSS, and swap components with useMediaQuery only when the markup really needs to change."
+> "I follow a few standard patterns. The navbar shows all links in a row on laptops and a hamburger button on phones, which is a real button with aria-expanded. The dashboard sidebar is a permanent column on desktop and a drawer on mobile, which in Mantine's AppShell is one `collapsed: { mobile }` setting. Card lists go from one per row to three or four, using grid auto-fit or breakpoints. For big data tables I either let them scroll sideways with a sticky first column, or show each row as a card with label and value pairs. Forms are one column on phones, and dialogs go full screen. I do as much as possible in CSS, and swap components with useMediaQuery only when the markup really needs to change."
 
 [FILL IN: a real recruiter or candidate screen you made responsive, e.g. a candidate table that becomes cards on phones.]
 
@@ -168,7 +168,7 @@ Scroll when users compare many columns across rows. Cards when each row is read 
 
 ### How do you make a drawer accessible?
 
-Open it with a real button. Move focus into the drawer when it opens, trap focus inside, close on Escape and overlay click, and return focus to the button after closing. MUI's Drawer does most of this.
+Open it with a real button. Move focus into the drawer when it opens, trap focus inside, close on Escape and overlay click, and return focus to the button after closing. Mantine's `Drawer` and `Modal` do most of this (`trapFocus` is on by default).
 
 ### Why use full-screen dialogs on phones?
 

@@ -154,7 +154,7 @@ Notice that `experience` arrives as the **number** `3`, not the text `"3"`. Zod 
 >
 > React 19 also has form Actions with useActionState. I'd use those for small, simple forms."
 
-[FILL IN: which form library you used at SkillKeepr — for example the UI library's own form hook — and one form you built.]
+At SkillKeepr, forms use `@mantine/form` (Mantine's form hook). [FILL IN: one form you built with it.]
 
 ## 🔁 Follow-up questions
 

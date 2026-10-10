@@ -105,7 +105,7 @@ Open DevTools → Elements → **Computed** tab. You'll see a coloured diagram o
 *, *::before, *::after { box-sizing: border-box; } /* every element and pseudo-element uses border-box */
 ```
 
-Tailwind's base styles (Preflight) and MUI's `CssBaseline` both include this.
+Tailwind's base styles (Preflight) and Mantine's base stylesheet (`@mantine/core/styles.css`) both include this.
 
 **Shorthand values.** `padding: 10px 20px` = 10px top and bottom, 20px left and right. `margin: 0 auto` = 0 top and bottom, and `auto` left and right, which **centres a block** that has a width.
 
@@ -130,7 +130,7 @@ The box model explains **how big things really are** and **where the spaces come
 
 > "Every element is a box with four layers: the content, then padding inside the border, the border, and then margin outside. Padding is space inside the box, margin is space between boxes, and the background covers content and padding but not margin.
 >
-> By default, box-sizing is content-box, so width only covers the content and padding and border make the box bigger. With box-sizing border-box, the width includes padding and border, which is much easier to reason about. So I set border-box on everything at the start of a project — Tailwind and MUI's baseline do this too. One gotcha is margin collapsing: vertical margins between blocks merge into the larger one, but not inside flex or grid containers."
+> By default, box-sizing is content-box, so width only covers the content and padding and border make the box bigger. With box-sizing border-box, the width includes padding and border, which is much easier to reason about. So I set border-box on everything at the start of a project — Tailwind and Mantine's base styles do this too. One gotcha is margin collapsing: vertical margins between blocks merge into the larger one, but not inside flex or grid containers."
 
 ## 🔁 Follow-up questions
 

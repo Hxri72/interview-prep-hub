@@ -96,7 +96,7 @@ Save this as `index.html`. Open it in Chrome. Press F12, then click the phone ic
 
 | Style | Base CSS is for | Media queries use | Used by |
 |---|---|---|---|
-| Mobile-first | phones | `min-width` (grow up) | Tailwind, MUI, most modern sites |
+| Mobile-first | phones | `min-width` (grow up) | Tailwind, Mantine, most modern sites |
 | Desktop-first | laptops | `max-width` (shrink down) | many older sites |
 
 Mobile-first is easier. Phones get the simplest CSS. Bigger screens only *add* things.
@@ -127,7 +127,7 @@ Mobile-first is easier. Phones get the simplest CSS. Bigger screens only *add* t
 
 One HTML page must look good on a 360px phone and a 1440px laptop.
 
-Media queries let the **same page** change its layout at certain widths. You don't need a separate mobile site. Frameworks use the same idea: Tailwind's `md:` and MUI's `md` key are media queries underneath.
+Media queries let the **same page** change its layout at certain widths. You don't need a separate mobile site. Frameworks use the same idea: Tailwind's `md:` and Mantine's `md` key are media queries underneath.
 
 ## ⚠️ Common mistakes
 
@@ -138,13 +138,13 @@ Media queries let the **same page** change its layout at certain widths. You don
 
 ## 🗣️ How to answer in an interview
 
-> "A media query applies CSS only when a condition is true, usually the screen width. `min-width: 768px` means 768 and wider, and `max-width: 767px` means 767 and narrower. I work mobile-first: the base CSS is for phones, and I add `min-width` rules from small to big, so bigger screens only add changes. That's also how Tailwind's `md:` prefix and MUI's breakpoints work. I choose breakpoints where my layout starts to look bad, not for a specific device. Modern browsers also support range syntax like `width >= 768px`, which avoids the 767/768 overlap. For reusable components I'd consider container queries, because they react to the parent's size instead of the screen."
+> "A media query applies CSS only when a condition is true, usually the screen width. `min-width: 768px` means 768 and wider, and `max-width: 767px` means 767 and narrower. I work mobile-first: the base CSS is for phones, and I add `min-width` rules from small to big, so bigger screens only add changes. That's also how Tailwind's `md:` prefix and Mantine's breakpoints work. I choose breakpoints where my layout starts to look bad, not for a specific device. Modern browsers also support range syntax like `width >= 768px`, which avoids the 767/768 overlap. For reusable components I'd consider container queries, because they react to the parent's size instead of the screen."
 
 ## 🔁 Follow-up questions
 
 ### Why is mobile-first better than desktop-first?
 
-Phones get the simplest CSS and download less override code. Bigger screens add features step by step. It also matches Tailwind and MUI, so the whole team thinks the same way.
+Phones get the simplest CSS and download less override code. Bigger screens add features step by step. It also matches Tailwind and Mantine, so the whole team thinks the same way.
 
 ### Can two media queries be true at the same time?
 

@@ -101,7 +101,7 @@ Press Tab: the focus moves Home → Jobs → Apply. Press Enter on Apply: it "cl
 
 **Other useful semantic tags:** `<time datetime="2026-10-09">`, `<figure>` + `<figcaption>`, `<address>`, `<mark>`, `<ul>`/`<ol>` for real lists, `<table>` for real tabular data (not for layout).
 
-**In React.** JSX is still HTML in the end. Components should render `<nav>`, `<button>` and `<label>`, not plain divs. Component libraries like MUI already do this inside their components.
+**In React.** JSX is still HTML in the end. Components should render `<nav>`, `<button>` and `<label>`, not plain divs. Component libraries like Mantine already do this inside their components.
 
 ## 🎯 Why do we use it?
 

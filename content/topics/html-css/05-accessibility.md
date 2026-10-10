@@ -113,7 +113,7 @@ But ARIA only changes what screen readers **hear**. It doesn't add keyboard beha
 
 **Testing.** Tab through the page. Run Lighthouse or axe DevTools. Try a real screen reader (VoiceOver on Mac, NVDA on Windows). Automatic tools find only part of the problems.
 
-**Component libraries** like MUI give you many accessible parts (dialogs with focus traps, menus with arrow keys). You still need to add labels and alt text yourself. See [accessibility in UI libraries](topic:mui-tailwind/accessibility-ui-libraries).
+**Component libraries** like Mantine give you many accessible parts (dialogs with focus traps, menus with arrow keys). You still need to add labels and alt text yourself. See [accessibility in UI libraries](topic:mantine-tailwind/accessibility-ui-libraries).
 
 ## 🎯 Why do we use it?
 

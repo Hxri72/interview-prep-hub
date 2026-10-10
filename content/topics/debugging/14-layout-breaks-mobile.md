@@ -122,7 +122,7 @@ img { max-width: 100%; height: auto; }        /* ✅ never wider than its box; k
 - Give every image `max-width: 100%`.
 - Wrap tables in a scrolling box, or show rows as cards on phones.
 - Check **360, 375, 768 and 1280 px** before every merge. Open it on a real phone sometimes.
-- If you use **both Tailwind and Material UI**, make their breakpoints match. Tailwind `md` = 768px, MUI `md` = 900px by default.
+- If you use **both Tailwind and Mantine**, make their breakpoints match. Tailwind `md` = 768px, Mantine `md` = 992px by default (Mantine `sm` = 768px).
 
 ## 🗣️ How to answer in an interview
 
@@ -140,7 +140,7 @@ img { max-width: 100%; height: auto; }        /* ✅ never wider than its box; k
 >
 > To prevent it, we check fixed widths in reviews and test the main breakpoints before merging."
 
-[FILL IN: a real mobile layout bug you fixed with MUI or Tailwind, if you have one. Only add it if it's true.]
+[FILL IN: a real mobile layout bug you fixed with Mantine or Tailwind, if you have one. Only add it if it's true.]
 
 ## 🔁 Follow-up questions
 
@@ -154,7 +154,7 @@ Grid with `repeat(auto-fit, minmax(260px, 1fr))`. It fits as many columns as pos
 
 ### How do you handle a big data table on a phone?
 
-Two common ways: put it in a box with `overflow-x: auto`, or show each row as a card on small screens. In MUI, `useMediaQuery(theme.breakpoints.down('md'))` can switch between the two.
+Two common ways: put it in a box with `overflow-x: auto`, or show each row as a card on small screens. In Mantine, ``useMediaQuery(`(min-width: ${theme.breakpoints.md})`)`` can switch between the two.
 
 ### What do you check besides width?
 

@@ -109,7 +109,7 @@ Sources: the resume, the PDF notes, `source-notes/INTERVIEW_GUIDE.md` (an intern
   - background work on SQS, Step Functions, EventBridge crons and AWS Batch
   - MongoDB with one database per tenant
 - Tenant flow: the tenant comes from the subdomain, travels as a header, and is locked inside the JWT. Auth uses HttpOnly JWT cookies.
-- Frontend per the guide: Redux + redux-saga, React Router v5, Webpack, **Mantine 7**. Hari says "MUI is the main UI library": [FILL IN: confirm MUI vs Mantine]. Ant Design and Tailwind are from his early career. He doesn't remember using the Context API, so don't claim it.
+- Frontend: Redux + redux-saga, React Router v5, Webpack, **Mantine 7**. Hari confirmed on 2026-10-10 that the UI library is **Mantine**, not Material UI. Forms use @mantine/form, and services validate with **Joi**. Ant Design and Tailwind are from his early career. He doesn't remember using the Context API and is learning it now, so never claim he used it at work.
 
 **Hari's own work:**
 - **Stripe:** only the **auto-renewal** part: the renewal cron and the webhook trigger. He tested it with **Stripe Test Clocks**. Other developers built the purchase flow.
@@ -153,7 +153,7 @@ Practice problems live in `content/problems/`: Problem → Examples → Think fi
 
 ## Slugs already linked from written topics (use these exact file slugs when writing those stacks)
 
-architecture: microservices, monolith, state-machines, serverless-lambda, event-driven, multi-tenant, gap-analysis-adrs · rest-auth: webhooks, webhook-signatures, idempotency-keys, websockets · ai: voice-ai, structured-outputs, tool-calling · devops: github-actions · testing: jest-basics · debugging: duplicate-webhook-events · system-design: queues-background-jobs · react: what-causes-a-re-render · dsa: two-sum, move-zeros · redux-context: how-to-choose · mui-tailwind: mui-and-tailwind-together · responsive-design: what-is-responsive-design.
+architecture: microservices, monolith, state-machines, serverless-lambda, event-driven, multi-tenant, gap-analysis-adrs · rest-auth: webhooks, webhook-signatures, idempotency-keys, websockets · ai: voice-ai, structured-outputs, tool-calling · devops: github-actions · testing: jest-basics · debugging: duplicate-webhook-events · system-design: queues-background-jobs · react: what-causes-a-re-render · dsa: two-sum, move-zeros · redux-context: how-to-choose · mantine-tailwind: mui-and-tailwind-together · responsive-design: what-is-responsive-design.
 Check with `npm run build` — it warns about every link to a topic that doesn't exist yet.
 
 ## [FILL IN] checklist

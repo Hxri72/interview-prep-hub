@@ -1,6 +1,6 @@
 ---
 title: Ant Design overview (also on my resume)
-stack: mui-tailwind
+stack: mantine-tailwind
 order: 15
 level: Basic
 mustKnow: false
@@ -10,7 +10,7 @@ summary:
   - "Its strongest parts are Table (sorting, filters, pagination), Form (validation rules), and feedback like message and Modal."
   - "Since v5, you theme it with design tokens in ConfigProvider, e.g. token.colorPrimary for the main colour."
   - "Algorithms change the whole look in one line: theme.darkAlgorithm, theme.compactAlgorithm."
-  - "Compared with MUI: antd feels like an admin dashboard; MUI follows Material Design. Both are big, accessible libraries."
+  - "Compared with Mantine: antd feels like an admin-dashboard kit with very rich Table and Form; Mantine is lighter, styled with plain CSS and very hook-friendly."
 cards:
   - q: What is Ant Design best known for?
     a: Data-heavy business screens. Its Table and Form components are very powerful out of the box.
@@ -20,8 +20,8 @@ cards:
     a: "Each Form.Item has a name and rules, like rules={[{ required: true, message: 'Enter an email' }]}. The form checks them on submit."
   - q: How do you turn on dark mode in antd?
     a: "Pass algorithm: theme.darkAlgorithm in ConfigProvider's theme prop."
-  - q: Ant Design vs MUI in one line?
-    a: antd is built for admin dashboards with rich tables and forms; MUI follows Google's Material Design and is very customisable. Pick one per app.
+  - q: Ant Design vs Mantine in one line?
+    a: antd is built for admin dashboards with very rich tables and forms; Mantine is a lighter general-purpose library with plain CSS and many hooks. Pick one per app.
 ---
 
 ## 💡 What is it?
@@ -113,9 +113,11 @@ Below: a table of two candidates. Clicking a column title sorts it.
 - **Component tokens** change one component only: `components: { Button: { controlHeight: 40 } }` (40px tall buttons).
 - **Algorithms** change everything at once: `theme.darkAlgorithm`, `theme.compactAlgorithm`. You can combine them in an array.
 
-**Responsive grid.** antd's `Col` uses **24 columns** with breakpoints `xs` (<576px), `sm` (≥576px), `md` (≥768px), `lg` (≥992px), `xl` (≥1200px), `xxl` (≥1600px). These differ from MUI's and Tailwind's, so don't mix grids across libraries.
+**Responsive grid.** antd's `Col` uses **24 columns** with breakpoints `xs` (<576px), `sm` (≥576px), `md` (≥768px), `lg` (≥992px), `xl` (≥1200px), `xxl` (≥1600px). These differ from Mantine's (`xs` 576px, `sm` 768px, `md` 992px, `lg` 1200px, `xl` 1408px) and Tailwind's, so don't mix grids across libraries.
 
-**Styling.** antd v5 uses CSS-in-JS (its own engine), like MUI uses Emotion. If you add Tailwind too, you face the same "who wins" question as with [MUI and Tailwind](topic:mui-tailwind/mui-and-tailwind-together).
+**Styling.** antd v5 and later use CSS-in-JS (its own engine). Mantine 7+ instead ships a plain CSS file. If you add Tailwind to either one, you face the same "who wins" question as with [Mantine and Tailwind](topic:mantine-tailwind/mantine-and-tailwind-together).
+
+**Going deeper.** The Form and Table APIs (rules, `Form.useForm`, `rowKey`, server pagination) have their own topic: [Ant Design Form and Table](topic:mantine-tailwind/antd-form-table).
 
 **Imports.** Named imports like `import { Button } from 'antd'` are tree-shaken by modern bundlers. Tree shaking means unused components are dropped from your bundle. Old projects used `babel-plugin-import` for this; v5 doesn't need it.
 
@@ -132,7 +134,7 @@ Below: a table of two candidates. Clicking a column title sorts it.
 
 ## ⚠️ Common mistakes
 
-- **Mixing antd with another big library** (like MUI) in the same screens. You get two design languages and a bigger bundle.
+- **Mixing antd with another big library** (like Mantine) in the same screens. You get two design languages and a bigger bundle.
 - **Forgetting `key` on table rows** (or `rowKey`). React shows warnings, and selection can break.
 - **Following v4 Less tutorials** in a v5+ project.
 - **Overriding antd styles with high-specificity CSS** instead of using tokens. Upgrades then break your overrides.
@@ -143,7 +145,7 @@ Below: a table of two candidates. Clicking a column title sorts it.
 >
 > Since version 5 it's themed with design tokens through ConfigProvider. I set seed tokens like colorPrimary and borderRadius, and antd works out the hover and active shades. Algorithms like darkAlgorithm switch the whole look in one line.
 >
-> I used Ant Design early in my career, along with Tailwind. Compared with MUI, antd feels more like an admin-dashboard kit, while MUI follows Material Design. I'd pick one per app rather than mixing them."
+> I used Ant Design early in my career, along with Tailwind. At SkillKeepr we use Mantine. Compared with Mantine, antd feels more like an admin-dashboard kit with very powerful tables and forms, while Mantine is lighter and comes with many useful hooks. I'd pick one per app rather than mixing them."
 
 [FILL IN: which early project used Ant Design, and what you built with it.]
 
@@ -157,9 +159,9 @@ Use a function rule with `getFieldValue`: return a rule whose `validator` compar
 
 Set `pagination` to controlled mode: pass `current`, `pageSize` and `total`, and use `onChange` to fetch the next page from the server.
 
-### antd vs MUI: which would you choose?
+### antd vs Mantine: which would you choose?
 
-For a data-heavy admin tool, antd's Table and Form are very fast to build with. For a product that needs a custom brand look or follows Material Design, MUI is often easier to customise. Team experience matters too.
+For a data-heavy admin tool, antd's Table and Form are very fast to build with. For a product with a custom brand look and lots of custom UI, Mantine is often easier: it's lighter, styled with plain CSS, and its hooks package helps a lot. Team experience matters too.
 
 ### Can you use antd with server-side rendering?
 
@@ -186,5 +188,5 @@ In `ConfigProvider`, set `theme={{ token: { colorPrimary: '#16a34a' } }}`. Every
 ### 3. How many columns does antd's grid have?
 
 :::answer
-**24.** For example, `<Col span={12}>` is half the width. (MUI's Grid has 12 columns.)
+**24.** For example, `<Col span={12}>` is half the width. (Mantine's `Grid` has 12 columns by default.)
 :::

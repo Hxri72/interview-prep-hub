@@ -9,7 +9,7 @@ summary:
   - In a big app, global CSS class names clash. We need a way to keep styles organised and local.
   - "BEM is a naming rule: block__element--modifier, like card__title--large."
   - CSS Modules rename classes at build time so they are unique to one file (scoped automatically).
-  - "CSS-in-JS (styled-components, Emotion, MUI's sx) writes styles in JavaScript next to the component."
+  - "CSS-in-JS (styled-components, Emotion, sx props) writes styles in JavaScript next to the component."
   - "Modern CSS adds native nesting and @layer, so you control which group of styles wins."
 cards:
   - q: What does BEM stand for?
@@ -106,10 +106,10 @@ Rules: keep selectors flat (one class each), and never style by tag inside a blo
 **2. CSS Modules.** The file `Card.module.css` contains `.title { … }`. In React: `import styles from './Card.module.css'` and `<h2 className={styles.title}>`. The build tool (Vite, webpack) renames it to something like `_title_x8f2`, so it's **local by default**. Vite supports this with no setup.
 
 **3. CSS-in-JS.**
-- **Runtime** libraries (styled-components, Emotion — which MUI uses) build styles in the browser. You get dynamic styles from props, and styles live next to the component. The cost is JavaScript work at runtime, and extra setup with React Server Components.
-- **Zero-runtime** libraries (vanilla-extract, Linaria, Panda CSS, MUI's Pigment CSS) extract real CSS files at build time.
+- **Runtime** libraries (styled-components, Emotion — which Material UI and Mantine 6 used) build styles in the browser. You get dynamic styles from props, and styles live next to the component. The cost is JavaScript work at runtime, and extra setup with React Server Components.
+- **Zero-runtime** approaches (vanilla-extract, Linaria, Panda CSS, plain CSS modules) produce real CSS files at build time. Mantine 7+ moved from Emotion to CSS modules for this reason.
 
-**4. Utility-first (Tailwind).** There are no class names to invent. You compose small classes like `p-4 font-bold`. See [component library vs utility CSS](topic:mui-tailwind/component-library-vs-utility).
+**4. Utility-first (Tailwind).** There are no class names to invent. You compose small classes like `p-4 font-bold`. See [component library vs utility CSS](topic:mantine-tailwind/component-library-vs-utility).
 
 **Comparison:**
 
@@ -122,7 +122,7 @@ Rules: keep selectors flat (one class each), and never style by tag inside a blo
 
 **5. Native CSS features that help:**
 - **Nesting:** `.card { & .title { } &:hover { } }` works in browsers without Sass.
-- **`@layer`:** declares an order of layers. Specificity only matters **inside** one layer, and unlayered styles beat all layers. Tailwind v4 uses layers (`theme`, `base`, `components`, `utilities`). It's also how you make MUI and Tailwind work together. See [MUI and Tailwind together](topic:mui-tailwind/mui-and-tailwind-together).
+- **`@layer`:** declares an order of layers. Specificity only matters **inside** one layer, and unlayered styles beat all layers. Tailwind v4 uses layers (`theme`, `base`, `components`, `utilities`). It's also how you make Mantine and Tailwind work together. See [Mantine and Tailwind together](topic:mantine-tailwind/mantine-and-tailwind-together).
 - **`@scope`:** limits styles to a part of the page. It's newer, so check support.
 - **Custom properties** for design tokens. See [CSS variables](topic:html-css/css-variables).
 

@@ -146,9 +146,9 @@ At 1280px: container = 1200px wide and centred (1248px would be bigger, so min p
 
 Not for layout changes like "one column → three columns". `clamp()` changes **sizes** smoothly. Changing the **structure** still needs media queries, container queries or Grid `auto-fit`.
 
-### Do Tailwind or MUI support this?
+### Do Tailwind or Mantine support this?
 
-Yes. In Tailwind you can write arbitrary values like `text-[clamp(1.5rem,4vw,3rem)]`. In MUI you can put the same string in `sx`, like `sx={{ fontSize: 'clamp(1.5rem, 4vw, 3rem)' }}`.
+Yes. In Tailwind you can write arbitrary values like `text-[clamp(1.5rem,4vw,3rem)]`. In Mantine you can use the `style` prop or a CSS module, like `style={{ fontSize: 'clamp(1.5rem, 4vw, 3rem)' }}`.
 
 ## ✅ Quick check
 

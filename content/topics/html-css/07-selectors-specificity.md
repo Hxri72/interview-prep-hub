@@ -122,7 +122,7 @@ Inline `style=""` beats any selector, unless the other rule uses `!important`.
 
 ## 🎯 Why do we use it?
 
-Understanding specificity lets you **predict which style wins**. You stop the "why is my CSS not working?" problem and the habit of adding `!important` everywhere. It's also the base for how libraries like MUI and Tailwind decide which style applies. See [MUI and Tailwind together](topic:mui-tailwind/mui-and-tailwind-together).
+Understanding specificity lets you **predict which style wins**. You stop the "why is my CSS not working?" problem and the habit of adding `!important` everywhere. It's also the base for how libraries like Mantine and Tailwind decide which style applies. See [Mantine and Tailwind together](topic:mantine-tailwind/mantine-and-tailwind-together).
 
 ## ⚠️ Common mistakes
 

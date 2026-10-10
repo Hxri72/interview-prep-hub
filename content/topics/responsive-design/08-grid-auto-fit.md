@@ -110,7 +110,7 @@ At a 1280px window, the space for columns is about 1232px (1280 minus the browse
 
 **Limiting the maximum columns.** `auto-fit` keeps adding columns on very wide screens. To stop at, say, 4 columns, put a `max-width` on the container, or use a media query for that one case.
 
-**In Tailwind or MUI.** Tailwind: `grid-cols-[repeat(auto-fit,minmax(260px,1fr))]`. MUI: `sx={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: 2 }}` (gap 2 = 16px in MUI). See [MUI Grid](topic:mui-tailwind/mui-grid).
+**In Tailwind or Mantine.** Tailwind: `grid-cols-[repeat(auto-fit,minmax(260px,1fr))]`. Mantine: `<SimpleGrid cols={{ base: 1, sm: 2, lg: 4 }} spacing="md">` (md = 16px gap), or recent versions' `minColWidth` prop for auto-fit. See [Mantine Grid](topic:mantine-tailwind/mantine-grid).
 
 ## 🎯 Why do we use it?
 

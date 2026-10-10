@@ -1,5 +1,5 @@
 ---
-title: "Recruiter & candidate UIs (React, Redux, MUI)"
+title: "Recruiter & candidate UIs (React, Redux, Mantine)"
 template: story
 stack: resume
 order: 14
@@ -9,9 +9,9 @@ askedFrequency: common
 summary:
   - "SkillKeepr has an admin portal (recruiters and hiring managers) and a talent portal (candidates). Both are React apps."
   - "State: Redux with redux-saga for API calls and multi-step flows. Pages are code-split and load on demand."
-  - "UI library: you say MUI. Confirm it in package.json before the interview — the code guide says Mantine."
+  - "UI library: Mantine (components, @mantine/form for forms, Mantine hooks), with a shared theme."
   - Ant Design and Tailwind are from your early career, not SkillKeepr.
-  - "Context API: you don't remember using it. Remove it from the resume or prepare a small example."
+  - "Context API: you're learning it now. Talk about it from your practice project, not as SkillKeepr work."
 cards:
   - q: Which portals does SkillKeepr have?
     a: An admin portal for recruiters and hiring managers, and a talent portal for candidates. There is also a cloud-admin portal for SkillKeepr staff.
@@ -19,15 +19,15 @@ cards:
     a: Redux, with redux-saga handling API calls and multi-step flows like "ask for confirmation, then save".
   - q: Why redux-saga instead of thunks?
     a: "Sagas handle complex flows well: cancelling an old search with takeLatest, waiting for a user's confirm click, or running uploads in parallel."
-  - q: How are pages loaded fast?
-    a: Each page is code-split with React.lazy, so the browser downloads a page's code only when the user opens it.
+  - q: Which UI library does SkillKeepr use?
+    a: "Mantine: its components, @mantine/form for forms, and hooks like useDebouncedValue, with a shared theme for colours and fonts."
   - q: Where did you use Ant Design and Tailwind?
     a: "Early in my career, before SkillKeepr. [FILL IN: which project]"
 ---
 
-:::warning[Check two resume words before the interview]
-- **MUI vs Mantine:** you say MUI is the main UI library at SkillKeepr. The internal code guide says the SkillKeepr UIs use **Mantine**. The names are easy to mix up. [FILL IN: confirm MUI vs Mantine — check package.json in the admin UI.]
-- **Context API:** you don't remember using it. Either remove it from the resume, or build one small example (like a theme or logged-in user context) so you can talk about it honestly.
+:::warning[Two resume words to keep honest]
+- **Mantine, not Material UI:** the SkillKeepr UIs use **Mantine**. Update the resume's "Material UI" to "Mantine".
+- **Context API:** you're learning it now. Build the [Context API practice project](topic:redux-context/context-practice-project), then talk about it as something you built while learning, not as SkillKeepr work.
 :::
 
 ## 💡 What is it?
@@ -38,7 +38,7 @@ SkillKeepr has two main web apps built with React:
 
 They use **Redux** with **redux-saga** for state and API calls. Each page loads its code only when it's opened.
 
-Your resume lists React, Redux, Context API, Material UI, Ant Design and Tailwind CSS. Ant Design and Tailwind are from your **early career**. MUI is what you say you use at SkillKeepr.
+The UI library is **Mantine**. Forms use `@mantine/form`, and many small features use Mantine hooks. Ant Design and Tailwind CSS are from your **early career**, before SkillKeepr.
 
 ## 🏠 Real-life example
 
@@ -66,7 +66,7 @@ These screens share data and run multi-step flows. One example: "ask the user to
 - **Redux + redux-saga:** each page has its own reducer and saga, added when the page loads.
 - **React Router** for pages, with protected routes that check login and permissions.
 - **Code splitting** with `React.lazy`, so each page loads only when it's needed.
-- **UI library:** [FILL IN: MUI or Mantine — confirm].
+- **UI library:** **Mantine**, with a shared theme (colours, fonts), `@mantine/form` for forms and Mantine hooks such as `useDebouncedValue` for search boxes.
 
 [FILL IN: 2–3 features you built on the UI — e.g. a list page with filters and pagination, a form, a dashboard.]
 [FILL IN: how you kept styling consistent — a shared theme, shared components.]
@@ -88,7 +88,7 @@ These screens share data and run multi-step flows. One example: "ask the user to
 
 > "At SkillKeepr there are two main React apps: an admin portal for recruiters and hiring managers, and a talent portal for candidates. We use Redux with redux-saga. Sagas handle API calls and multi-step flows, like waiting for a confirm click before saving. Every page is code-split, so it loads only when opened.
 >
-> I worked on [FILL IN: features]. For styling we use [FILL IN: MUI — confirm] with a shared theme, so screens look consistent.
+> I worked on [FILL IN: features]. For the UI we use Mantine with a shared theme, so screens look consistent, and `@mantine/form` for forms.
 >
 > One challenge was [FILL IN]. I solved it by [FILL IN]. Earlier in my career I also used Ant Design and Tailwind CSS on [FILL IN: project]."
 
@@ -119,6 +119,8 @@ Profile it with React DevTools. Then fix the cause: memoise expensive work, avoi
 - [What causes a re-render](topic:react/what-causes-a-re-render)
 - [useEffect: dependencies and cleanup](topic:react/use-effect)
 - [Context vs Redux: how to choose](topic:redux-context/how-to-choose)
-- [MUI and Tailwind together](topic:mui-tailwind/mui-and-tailwind-together)
+- [Mantine setup and core components](topic:mantine-tailwind/mantine-setup)
+- [Forms with @mantine/form](topic:mantine-tailwind/mantine-form)
+- [Responsive design with Mantine](topic:responsive-design/mantine-breakpoints)
 - [Debounce and throttle](topic:javascript/debounce-throttle)
 - [Responsive design basics](topic:responsive-design/what-is-responsive-design)

@@ -103,7 +103,7 @@ Create a job (with AI help) → bring in candidates (upload resumes or sync from
 
 ### What is the tech stack?
 
-React SPAs on the frontend. A serverless backend on AWS: Lambda functions with Node.js and TypeScript, MongoDB with Mongoose, and Joi for validation. Queues and scheduled jobs for background work. See [Platform architecture](topic:resume/platform-architecture).
+React SPAs on the frontend (Redux + redux-saga, Mantine for the UI). A serverless backend on AWS: Lambda functions with Node.js and TypeScript, MongoDB with Mongoose, and Joi for validation. Queues and scheduled jobs for background work. See [Platform architecture](topic:resume/platform-architecture).
 
 ### Why are you looking for a change?
 

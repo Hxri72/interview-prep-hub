@@ -9,7 +9,7 @@ summary:
   - "Responsive design means one page that changes its layout to fit any screen: phone, tablet or laptop."
   - "It uses flexible widths, Flexbox, Grid, media queries and images that shrink."
   - "Mobile-first means you write the phone styles first, then add rules for bigger screens with min-width."
-  - "Tailwind and Material UI both work mobile-first, so this one idea helps everywhere."
+  - "Tailwind and Mantine both work mobile-first, so this one idea helps everywhere."
   - "Always check the page at 375px (phone), 768px (tablet) and 1280px (laptop)."
 cards:
   - q: "What is responsive design?"
@@ -115,7 +115,7 @@ At 1280px (laptop): [  Card 1  ] [  Card 2  ] [  Card 3  ]   ← same row, just 
 - **Mobile-first:** base CSS is for phones. You add `@media (min-width: …)` rules. Each rule *adds* layout for bigger screens.
 - **Desktop-first:** base CSS is for laptops. You add `@media (max-width: …)` rules. Each rule *takes away* layout for smaller screens.
 
-Mobile-first is the common choice today. Phones get the simplest CSS. And [Tailwind](topic:responsive-design/tailwind-breakpoints) and [Material UI](topic:responsive-design/mui-breakpoints) both work this way. In Tailwind, `md:flex-row` means "from 768px **and up**". In MUI, `{ xs: 'column', md: 'row' }` means the same idea.
+Mobile-first is the common choice today. Phones get the simplest CSS. And [Tailwind](topic:responsive-design/tailwind-breakpoints) and [Mantine](topic:responsive-design/mantine-breakpoints) both work this way. In Tailwind, `md:flex-row` means "from 768px **and up**". In Mantine, `{ base: 'column', md: 'row' }` means the same idea.
 
 **Choose breakpoints by content, not by phone model.** A [breakpoint](glossary:breakpoint) is a width where the design changes. Make the window wider slowly. When the layout starts to look bad, that is your breakpoint. Don't design for "iPhone 15" — new phones come out every year.
 
@@ -143,7 +143,7 @@ Mobile-first is the common choice today. Phones get the simplest CSS. And [Tailw
 
 > "Responsive design means one page that adapts its layout to any screen size. I use flexible units like percent and rem, Flexbox for one-direction layouts, Grid for rows and columns, media queries for breakpoints, and images with max-width 100% so they shrink.
 >
-> I work mobile-first. I write the phone layout first, usually one column, then add min-width media queries to add columns on bigger screens. Tailwind and Material UI both follow this, so md:flex-row in Tailwind means 'from 768px and up'.
+> I work mobile-first. I write the phone layout first, usually one column, then add min-width media queries to add columns on bigger screens. Tailwind and Mantine both follow this, so md:flex-row in Tailwind means 'from 768px and up'.
 >
 > I pick breakpoints where the content starts to look bad, not for a specific phone. And I test at 375, 768 and 1280 pixels in DevTools, check for sideways scrolling, and try a real phone."
 
@@ -153,7 +153,7 @@ Mobile-first is the common choice today. Phones get the simplest CSS. And [Tailw
 
 ### Mobile-first or desktop-first — which do you use and why?
 
-Mobile-first. Phone CSS stays simple, and bigger screens only add rules. It also matches how Tailwind and MUI breakpoints work, so the same thinking applies everywhere.
+Mobile-first. Phone CSS stays simple, and bigger screens only add rules. It also matches how Tailwind and Mantine breakpoints work, so the same thinking applies everywhere.
 
 ### What is the difference between responsive and adaptive design?
 

@@ -116,7 +116,7 @@ The yellow box is always half the visible screen height.
 
 **rem respects user settings.** People with poor eyesight often set their browser's default font to 20px or more. If your fonts use `rem`, the whole page grows for them. With `px`, it ignores their setting.
 
-**Related topics:** [min(), max() and clamp()](topic:responsive-design/min-max-clamp) combine these units, like `clamp(1.5rem, 4vw, 3rem)`. In Tailwind, `p-4` = 1rem = 16px ([Tailwind classes](topic:mui-tailwind/tailwind-classes)). In MUI, 1 spacing unit = 8px ([sx spacing](topic:mui-tailwind/sx-spacing)).
+**Related topics:** [min(), max() and clamp()](topic:responsive-design/min-max-clamp) combine these units, like `clamp(1.5rem, 4vw, 3rem)`. In Tailwind, `p-4` = 1rem = 16px ([Tailwind classes](topic:mantine-tailwind/tailwind-classes)). In Mantine, spacing uses names: `p="md"` = 1rem = 16px ([Mantine style props](topic:mantine-tailwind/style-props-spacing)).
 
 ## 🎯 Why do we use it?
 

@@ -1,6 +1,6 @@
 ---
 title: Reusing Tailwind styles (components, clsx, @apply)
-stack: mui-tailwind
+stack: mantine-tailwind
 order: 13
 level: Intermediate
 mustKnow: false

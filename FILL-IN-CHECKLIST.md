@@ -1,7 +1,7 @@
 # [FILL IN] checklist
 
 Your real details are needed in these places. Edit the topic file, replace the whole `[FILL IN: …]` with the true detail, or delete the sentence if it does not apply.
-**591 items.**
+**598 items.**
 
 
 ## resume/01-skillkeepr-overview.md (7)
@@ -162,18 +162,15 @@ Your real details are needed in these places. Edit the topic file, replace the w
 - [ ] line 113: the index
 - [ ] line 113: the before/after numbers
 
-## resume/14-recruiter-candidate-ui.md (12)
+## resume/14-recruiter-candidate-ui.md (9)
 
 - [ ] line 25: which project
-- [ ] line 29: confirm MUI vs Mantine — check package.json in the admin UI.
 - [ ] line 60: which screens or features you worked on.
-- [ ] line 69: MUI or Mantine — confirm
 - [ ] line 71: 2–3 features you built on the UI — e.g. a list page with filters and pagination, a form, a dashboard.
 - [ ] line 72: how you kept styling consistent — a shared theme, shared components.
 - [ ] line 81: the real hard part for you.
 - [ ] line 85: a result you can share — a feature shipped, a page made faster, a bug fixed, feedback from recruiters.
 - [ ] line 91: features
-- [ ] line 91: MUI — confirm
 - [ ] line 93: project
 - [ ] line 115: if you know the team's reason.
 
@@ -410,7 +407,7 @@ Your real details are needed in these places. Edit the topic file, replace the w
 
 ## debugging/14-layout-breaks-mobile.md (1)
 
-- [ ] line 143: a real mobile layout bug you fixed with MUI or Tailwind, if you have one. Only add it if it's true.
+- [ ] line 143: a real mobile layout bug you fixed with Mantine or Tailwind, if you have one. Only add it if it's true.
 
 ## debugging/15-slow-big-form.md (1)
 
@@ -650,6 +647,10 @@ Your real details are needed in these places. Edit the topic file, replace the w
 
 - [ ] line 159: one real performance fix you made at SkillKeepr — the resume mentions indexing so response times held as data grew; add the details only if you remember them.
 
+## express/25-joi.md (1)
+
+- [ ] line 233: one schema you wrote, e.g. for which endpoint, and anything tricky like a when() rule.
+
 ## hr/01-star-method.md (3)
 
 - [ ] line 77: one specific thing you found or fixed while testing.
@@ -869,6 +870,74 @@ Your real details are needed in these places. Edit the topic file, replace the w
 
 - [ ] line 157: if you ever had to add a polyfill or fix a browser-support issue in the SkillKeepr frontend, mention it here. Only add it if it's true.
 
+## mantine-tailwind/01-component-library-vs-utility.md (1)
+
+- [ ] line 131: one SkillKeepr screen you built with Mantine, if you want a concrete example.
+
+## mantine-tailwind/02-mantine-setup.md (1)
+
+- [ ] line 187: one screen or component you built with Mantine at SkillKeepr.
+
+## mantine-tailwind/03-mantine-layout.md (1)
+
+- [ ] line 144: a page layout you built with these at SkillKeepr — e.g. a list page with a toolbar row and a results column.
+
+## mantine-tailwind/04-style-props-spacing.md (1)
+
+- [ ] line 145: if you used style props or the spacing scale at SkillKeepr, add one example.
+
+## mantine-tailwind/05-mantine-theming.md (1)
+
+- [ ] line 179: if you changed or extended the SkillKeepr theme, say what you added.
+
+## mantine-tailwind/06-mantine-grid.md (1)
+
+- [ ] line 149: a SkillKeepr screen where you used Grid or SimpleGrid, e.g. dashboard tiles.
+
+## mantine-tailwind/07-mantine-customizing.md (1)
+
+- [ ] line 150: a component you customised at SkillKeepr, e.g. a themed table or uploader.
+
+## mantine-tailwind/08-mantine-dark-mode.md (1)
+
+- [ ] line 155: whether the SkillKeepr portals support dark mode, and anything you built for it.
+
+## mantine-tailwind/09-tailwind-setup.md (1)
+
+- [ ] line 166: the early-career project where you used Tailwind, and what you built with it.
+
+## mantine-tailwind/10-tailwind-classes.md (1)
+
+- [ ] line 140: a project where you used Tailwind — your notes say it was early in your career.
+
+## mantine-tailwind/13-tailwind-reuse.md (1)
+
+- [ ] line 153: if you built a shared component like this in a past project, mention it — only if true.
+
+## mantine-tailwind/14-mantine-and-tailwind-together.md (1)
+
+- [ ] line 151: whether any project you worked on mixed Mantine (or another library) with Tailwind, and how you handled styling conflicts.
+
+## mantine-tailwind/15-ant-design.md (1)
+
+- [ ] line 150: which early project used Ant Design, and what you built with it.
+
+## mantine-tailwind/17-bundle-size.md (1)
+
+- [ ] line 146: if you reduced a bundle or sped up a page load, add the real before/after here — only if true.
+
+## mantine-tailwind/18-mantine-form.md (1)
+
+- [ ] line 156: a SkillKeepr form you worked on, if any — I worked mainly on the backend, so say so honestly if you didn't build the form UI.
+
+## mantine-tailwind/19-mantine-hooks.md (1)
+
+- [ ] line 141: a hook you personally used in SkillKeepr code, if any.
+
+## mantine-tailwind/20-antd-form-table.md (1)
+
+- [ ] line 156: which early-career project used Ant Design, and what form or table you built with it.
+
 ## mongodb/01-what-is-mongodb.md (1)
 
 - [ ] line 146: one or two lines on what the main SkillKeepr collections are (for example candidates, jobs, recruiters) and how big they are, only if you know it.
@@ -992,62 +1061,6 @@ Your real details are needed in these places. Edit the topic file, replace the w
 ## mongodb/31-atlas-vector-search.md (1)
 
 - [ ] line 170: whether SkillKeepr uses MongoDB Atlas, and whether any feature uses vector search — only if true.
-
-## mui-tailwind/01-component-library-vs-utility.md (1)
-
-- [ ] line 126: which approach your SkillKeepr screens use — confirm the UI library used at SkillKeepr — and one example screen.
-
-## mui-tailwind/02-mui-setup.md (1)
-
-- [ ] line 144: confirm the UI library used at SkillKeepr, and one screen you built with it.
-
-## mui-tailwind/03-mui-layout.md (1)
-
-- [ ] line 135: a layout you built with these at SkillKeepr — confirm the UI library used at SkillKeepr first.
-
-## mui-tailwind/04-sx-spacing.md (1)
-
-- [ ] line 133: confirm the UI library used at SkillKeepr, and whether your team used sx or styled more.
-
-## mui-tailwind/05-mui-theming.md (1)
-
-- [ ] line 151: confirm the UI library used at SkillKeepr, and what your team's theme customised — brand colours, fonts?
-
-## mui-tailwind/06-mui-grid.md (1)
-
-- [ ] line 133: confirm the UI library used at SkillKeepr, and a screen where you used a grid layout.
-
-## mui-tailwind/07-mui-customizing.md (1)
-
-- [ ] line 148: confirm the UI library used at SkillKeepr, and one component your team customised.
-
-## mui-tailwind/08-mui-dark-mode.md (1)
-
-- [ ] line 142: confirm the UI library used at SkillKeepr, and whether your app had dark mode.
-
-## mui-tailwind/09-tailwind-setup.md (1)
-
-- [ ] line 166: the early-career project where you used Tailwind, and what you built with it.
-
-## mui-tailwind/10-tailwind-classes.md (1)
-
-- [ ] line 140: a project where you used Tailwind — your notes say it was early in your career.
-
-## mui-tailwind/13-tailwind-reuse.md (1)
-
-- [ ] line 153: if you built a shared component like this in a past project, mention it — only if true.
-
-## mui-tailwind/14-mui-and-tailwind-together.md (1)
-
-- [ ] line 159: confirm the UI library at SkillKeepr — your resume says MUI and Tailwind; only describe a real setup you used.
-
-## mui-tailwind/15-ant-design.md (1)
-
-- [ ] line 148: which early project used Ant Design, and what you built with it.
-
-## mui-tailwind/17-bundle-size.md (1)
-
-- [ ] line 146: if you reduced a bundle or sped up a page load, add the real before/after here — only if true.
 
 ## nextjs/01-what-is-nextjs.md (1)
 
@@ -1344,7 +1357,7 @@ Your real details are needed in these places. Edit the topic file, replace the w
 
 ## react/20-forms-validation.md (1)
 
-- [ ] line 157: which form library you used at SkillKeepr — for example the UI library's own form hook — and one form you built.
+- [ ] line 157: one form you built with it.
 
 ## react/21-calling-apis.md (1)
 
@@ -1418,6 +1431,18 @@ Your real details are needed in these places. Edit the topic file, replace the w
 
 - [ ] line 193: one saga you wrote or changed at SkillKeepr, if you did.
 
+## redux-context/18-context-practice-project.md (1)
+
+- [ ] line 395: where you have actually used Context — this practice project, a personal app, or work
+
+## redux-context/19-saga-effects.md (1)
+
+- [ ] line 272: one saga you wrote yourself, and which effects it used.
+
+## redux-context/20-saga-testing.md (1)
+
+- [ ] line 187: whether your team tests sagas at SkillKeepr, and which style. You wrote Jest unit tests on the backend; only claim frontend saga tests if you really wrote them.
+
 ## responsive-design/01-what-is-responsive-design.md (1)
 
 - [ ] line 150: one screen you made responsive at work, e.g. a recruiter list that becomes cards on phones.
@@ -1430,13 +1455,13 @@ Your real details are needed in these places. Edit the topic file, replace the w
 
 - [ ] line 144: if you built a responsive screen with Tailwind early in your career, name it here.
 
-## responsive-design/14-mui-breakpoints.md (1)
+## responsive-design/14-mantine-breakpoints.md (1)
 
-- [ ] line 154: confirm the UI library used at SkillKeepr before saying you used MUI breakpoints there.
+- [ ] line 174: one screen you built with Mantine that changes layout on mobile, if you have one.
 
 ## responsive-design/15-matching-breakpoints.md (1)
 
-- [ ] line 150: only if a project of yours used both libraries — say which one owned the breakpoints.
+- [ ] line 154: only if a project of yours mixed Mantine (or another component library) with Tailwind — say which one owned the breakpoints.
 
 ## responsive-design/16-common-layouts.md (1)
 
@@ -1625,6 +1650,12 @@ Your real details are needed in these places. Edit the topic file, replace the w
 ## testing/16-clean-code-solid.md (1)
 
 - [ ] line 143: one refactor you did — what was messy, what you split or changed, and the result.
+
+## testing/17-agile-scrum.md (3)
+
+- [ ] line 195: sprint length
+- [ ] line 195: team size and roles
+- [ ] line 197: tool, e.g. Jira
 
 ## typescript/01-what-is-typescript.md (1)
 

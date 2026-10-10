@@ -7,7 +7,7 @@ level: Intermediate
 mustKnow: true
 askedFrequency: very common
 summary:
-  - "Frontend: three React single-page apps, served from S3 through CloudFront."
+  - "Frontend: three React single-page apps (Redux + redux-saga, Mantine UI), served from S3 through CloudFront."
   - "Backend: serverless on AWS — API Gateway in front of many Lambda functions, written in Node.js and TypeScript with the Serverless Framework."
   - "Data: MongoDB with one database per customer company, accessed with Mongoose; requests are validated with Joi."
   - "Background work: SQS queues, Step Functions, EventBridge scheduled jobs and AWS Batch for long imports."

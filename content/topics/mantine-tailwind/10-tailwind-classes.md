@@ -1,6 +1,6 @@
 ---
 title: Tailwind spacing, colours and typography classes
-stack: mui-tailwind
+stack: mantine-tailwind
 order: 10
 level: Basic
 mustKnow: true
@@ -155,7 +155,7 @@ One step is `0.25rem`. `rem` follows the page's root font size, usually 16px. If
 
 ### How do you set a custom brand colour?
 
-Add it in CSS with `@theme`, like `--color-brand-500: #1f5f99;`. Then `bg-brand-500` and `text-brand-500` work. See [Customising Tailwind with @theme](topic:mui-tailwind/tailwind-theme).
+Add it in CSS with `@theme`, like `--color-brand-500: #1f5f99;`. Then `bg-brand-500` and `text-brand-500` work. See [Customising Tailwind with @theme](topic:mantine-tailwind/tailwind-theme).
 
 ## ✅ Quick check
 

@@ -117,7 +117,7 @@ declare const __APP_VERSION__: string;   // injected by the bundler at build tim
 **Declaration merging (augmentation).** A `.d.ts` file can also **add to** existing types:
 - `req.user` on Express's `Request`. See [TypeScript with Express](topic:typescript/ts-express).
 - Custom environment variables on `ImportMetaEnv` in Vite (`import.meta.env.VITE_API_URL`).
-- A custom theme on a UI library's theme type, for example MUI's `Palette`.
+- A custom theme on a UI library's theme type, for example adding custom colour names to Mantine's `MantineThemeColorsOverride`.
 
 **Generating `.d.ts` for your own library.** Set `"declaration": true` in `tsconfig.json`, and `tsc` writes `.d.ts` files next to the JavaScript output. That's how shared packages give types to the apps that use them.
 

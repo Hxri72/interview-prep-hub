@@ -1,6 +1,6 @@
 ---
 title: "Tailwind states: hover, focus, dark mode"
-stack: mui-tailwind
+stack: mantine-tailwind
 order: 11
 level: Intermediate
 mustKnow: false
@@ -46,7 +46,7 @@ The switch is the same switch. Only its look changes with the situation.
 
 ## 🧑‍💻 Code example
 
-Vite React app with Tailwind v4 (see [Tailwind classes](topic:mui-tailwind/tailwind-classes) for setup). Put the CSS in `src/index.css` and the JSX in `src/App.jsx`. Run `npm run dev`.
+Vite React app with Tailwind v4 (see [Tailwind classes](topic:mantine-tailwind/tailwind-classes) for setup). Put the CSS in `src/index.css` and the JSX in `src/App.jsx`. Run `npm run dev`.
 
 ```css
 @import "tailwindcss";                                 /* load Tailwind */

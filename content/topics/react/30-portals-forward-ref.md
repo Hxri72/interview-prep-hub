@@ -101,7 +101,7 @@ export default function App() {                                    // the main c
 - `createPortal(children, domNode, key?)` renders `children` into `domNode`.
 - The portal is still **part of the React tree**. It gets context from its parents (theme, Redux store, router).
 - **Events bubble through the React tree**, not the DOM tree. A click inside the modal reaches `onClick` handlers on the modal's React parents, even though in the DOM it sits under `<body>`. Use `e.stopPropagation()` if you don't want that.
-- Common uses: modals, dialogs, tooltips, dropdown menus, toast messages. Component libraries like MUI use portals inside their `Dialog`, `Menu` and `Popover`.
+- Common uses: modals, dialogs, tooltips, dropdown menus, toast messages. Component libraries like Mantine use portals inside their `Modal`, `Menu` and `Popover`.
 - **Accessibility:** a real modal also needs focus trapping, `Escape` to close, `role="dialog"`, `aria-modal="true"`, and returning focus when it closes. The native `<dialog>` element with `showModal()` gives much of this for free.
 
 **Refs:**

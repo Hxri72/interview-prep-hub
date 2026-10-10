@@ -1,6 +1,6 @@
 ---
 title: "Customising Tailwind with @theme"
-stack: mui-tailwind
+stack: mantine-tailwind
 order: 12
 level: Intermediate
 mustKnow: false
@@ -16,8 +16,8 @@ cards:
     a: "In your main CSS file, inside an @theme { } block. tailwind.config.js is optional in v4."
   - q: What classes does --color-brand-500 create?
     a: "Every colour utility with that name: bg-brand-500, text-brand-500, border-brand-500, ring-brand-500, and so on."
-  - q: How do you change the md breakpoint to 900px?
-    a: "Add --breakpoint-md: 900px; inside @theme. Then md: means 900px and up."
+  - q: How do you change the md breakpoint to match Mantine's md (62em = 992px)?
+    a: "Add --breakpoint-md: 62em; inside @theme. Then md: means 62em (992px) and up."
   - q: What is the difference between @theme and :root?
     a: "Both create CSS variables, but only @theme variables also create Tailwind classes."
   - q: How do you remove Tailwind's default colours?
@@ -95,15 +95,15 @@ On a very wide 1920px+ screen, the card gets much more padding (48px).
 | `--text-*` | `text-*` (font size) | `--text-tiny: 0.625rem` → `text-tiny` (10px) |
 | `--spacing` | all spacing (`p-*`, `m-*`, `w-*`, `gap-*`) | `--spacing: 0.25rem` = 4px per step |
 | `--radius-*` | `rounded-*` | `--radius-card` → `rounded-card` |
-| `--breakpoint-*` | responsive prefixes | `--breakpoint-md: 900px` → `md:` starts at 900px |
+| `--breakpoint-*` | responsive prefixes | `--breakpoint-md: 62em` → `md:` starts at 62em (992px) |
 | `--shadow-*` | `shadow-*` | `--shadow-soft` → `shadow-soft` |
 
 **Override vs extend.**
 - Adding a new name **extends** the theme. The defaults stay.
-- Using an existing name **overrides** it. `--breakpoint-md: 900px;` changes what `md:` means.
+- Using an existing name **overrides** it. `--breakpoint-md: 62em;` changes what `md:` means.
 - `--color-*: initial;` **removes** all default colours. Then only your colours exist. This stops people using random off-brand colours.
 
-**They are real CSS variables.** Tailwind also writes the theme values as variables on `:root`. So you can use `var(--color-brand-600)` in plain CSS, inline styles, or a chart library. (If a variable seems missing because no class uses it, `@theme static { … }` tells Tailwind to always output it.) This is how you share brand colours with non-Tailwind code, like MUI's theme.
+**They are real CSS variables.** Tailwind also writes the theme values as variables on `:root`. So you can use `var(--color-brand-600)` in plain CSS, inline styles, or a chart library. (If a variable seems missing because no class uses it, `@theme static { … }` tells Tailwind to always output it.) This is how you share brand colours with non-Tailwind code, like Mantine's theme.
 
 **`@theme` vs `:root`.** A variable in `:root` is only a CSS variable. A variable in `@theme` is a CSS variable **and** a Tailwind class generator. Use `@theme` for design tokens. Use `:root` for values that shouldn't become classes.
 
@@ -118,7 +118,7 @@ On a very wide 1920px+ screen, the card gets much more padding (48px).
 - **One place for brand decisions.** Change `--color-brand-600` once, and every button and link updates.
 - **Design tokens.** Designers and developers share the same names: "brand-600", "radius-card".
 - **No magic numbers.** People write `bg-brand-600`, not `bg-[#2554d9]` copied around the codebase.
-- **Sharing with other tools.** The same values exist as CSS variables for MUI, charts or plain CSS.
+- **Sharing with other tools.** The same values exist as CSS variables for Mantine, charts or plain CSS.
 
 ## ⚠️ Common mistakes
 
@@ -131,15 +131,15 @@ On a very wide 1920px+ screen, the card gets much more padding (48px).
 
 > "In Tailwind v4, theming moved from the JavaScript config into CSS. I add an @theme block in the main CSS file. Each variable there is a design token and also creates utilities. For example, --color-brand-600 gives me bg-brand-600, text-brand-600 and so on. The namespace decides the class type: color, font, radius, breakpoint, and so on.
 >
-> A new name extends the theme, and an existing name overrides it, so --breakpoint-md: 900px changes what md: means. If I want to lock the team to brand colours only, I reset all colours with --color-*: initial.
+> A new name extends the theme, and an existing name overrides it, so --breakpoint-md: 62em changes what md: means. If I want to lock the team to brand colours only, I reset all colours with --color-*: initial.
 >
-> Because the tokens are also plain CSS variables, I can share them with other libraries, like an MUI theme or a chart."
+> Because the tokens are also plain CSS variables, I can share them with other libraries, like a Mantine theme or a chart."
 
 ## 🔁 Follow-up questions
 
-### How would you make Tailwind and MUI use the same brand colour?
+### How would you make Tailwind and Mantine use the same brand colour?
 
-Define the colour once as an `@theme` variable. In MUI's `createTheme`, use the same hex value, or read the CSS variable. See [Using MUI and Tailwind together](topic:mui-tailwind/mui-and-tailwind-together).
+Define the colour once as an `@theme` variable. In Mantine's `createTheme`, add the same colour as a 10-shade array in `colors` and set it as `primaryColor`. Mantine also exposes its own CSS variables, like `var(--mantine-color-blue-6)`. See [Using Mantine and Tailwind together](topic:mantine-tailwind/mantine-and-tailwind-together).
 
 ### How do you add a custom font?
 
@@ -167,8 +167,8 @@ For example **`bg-accent-500`** and **`text-accent-500`**. Also `border-accent-5
 **No.** `:root` only creates a CSS variable. Only `@theme` makes Tailwind create classes.
 :::
 
-### 3. After adding `--breakpoint-md: 900px;`, when does `md:flex-row` start to apply?
+### 3. After adding `--breakpoint-md: 62em;`, when does `md:flex-row` start to apply?
 
 :::answer
-**At 900px wide and up**, instead of the default 768px.
+**At 62em (992px) wide and up**, instead of the default 768px. (With the default 16px font size, 1em = 16px.)
 :::

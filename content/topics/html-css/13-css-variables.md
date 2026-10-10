@@ -129,7 +129,7 @@ Components never change. Only the variable values change.
 @property --angle { syntax: '<angle>'; inherits: false; initial-value: 0deg; }   /* typed variable */
 ```
 
-**7. Design tokens.** Tailwind v4 and MUI v6+ expose their theme as CSS variables. See [customising Tailwind with @theme](topic:mui-tailwind/tailwind-theme) and [dark mode in MUI](topic:mui-tailwind/mui-dark-mode).
+**7. Design tokens.** Tailwind v4 and Mantine (v7+) expose their theme as CSS variables. See [customising Tailwind with @theme](topic:mantine-tailwind/tailwind-theme) and [dark mode in Mantine](topic:mantine-tailwind/mantine-dark-mode).
 
 :::version[Version note]
 `@property` works in all major browsers since mid-2024 (Firefox was last). Plain custom properties have worked everywhere for years.
@@ -171,9 +171,9 @@ Media query conditions are evaluated at the document level, not per element, so 
 
 No, not for normal use. Changing a variable on `:root` makes the browser recalculate styles for elements that use it. That is fine for themes. Avoid changing it on every mouse move on a huge page without testing.
 
-### How do Tailwind v4 and MUI use CSS variables?
+### How do Tailwind v4 and Mantine use CSS variables?
 
-Tailwind v4 turns everything in `@theme` into CSS variables, like `--color-brand-500`. MUI can output its theme as variables with `cssVariables: true`, which helps dark mode avoid a flash.
+Tailwind v4 turns everything in `@theme` into CSS variables, like `--color-brand-500`. Mantine (v7+) always outputs its theme as variables, like `--mantine-color-blue-6` and `--mantine-spacing-md`, so dark mode is just a different set of variable values.
 
 ## ✅ Quick check
 

@@ -1,6 +1,6 @@
 ---
 title: "Tailwind: the utility-first idea and setup (v4)"
-stack: mui-tailwind
+stack: mantine-tailwind
 order: 9
 level: Basic
 mustKnow: true
@@ -122,7 +122,7 @@ What every class means:
 - Text: `text-sm` 14px, `text-base` 16px, `text-lg` 18px, `text-xl` 20px, `text-2xl` 24px.
 - Arbitrary values for one-offs: `w-[327px]`, `bg-[#1f5f99]`.
 
-**Variants (prefixes).** `hover:`, `focus:`, `md:` (from 768px), `dark:` and more add conditions to a class. See [Tailwind states](topic:mui-tailwind/tailwind-states).
+**Variants (prefixes).** `hover:`, `focus:`, `md:` (from 768px), `dark:` and more add conditions to a class. See [Tailwind states](topic:mantine-tailwind/tailwind-states).
 
 **Customising in v4.** No JS config file is needed. You add design tokens in CSS:
 
@@ -133,7 +133,7 @@ What every class means:
 }                           /* end of @theme */
 ```
 
-See [customising Tailwind with @theme](topic:mui-tailwind/tailwind-theme).
+See [customising Tailwind with @theme](topic:mantine-tailwind/tailwind-theme).
 
 :::version[Version note]
 **Tailwind v3** used `npx tailwindcss init`, a `tailwind.config.js` with a `content: [...]` list of files, PostCSS, and three lines: `@tailwind base; @tailwind components; @tailwind utilities;`.
@@ -153,7 +153,7 @@ See [customising Tailwind with @theme](topic:mui-tailwind/tailwind-theme).
 - **Building class names with string templates** (`` `text-${size}` ``). Tailwind can't see them, so they are missing in the CSS.
 - **Following v3 tutorials in a v4 project** (`@tailwind base`, `tailwind.config.js`). Use the v4 setup.
 - **Forgetting that 1 unit = 4px.** `p-4` is 16px, not 4px.
-- **Huge, unreadable class strings.** Extract repeated patterns into components. See [reusing Tailwind styles](topic:mui-tailwind/tailwind-reuse).
+- **Huge, unreadable class strings.** Extract repeated patterns into components. See [reusing Tailwind styles](topic:mantine-tailwind/tailwind-reuse).
 
 ## 🗣️ How to answer in an interview
 

@@ -162,9 +162,9 @@ The browser needs to know which elements to measure. Measuring every element wou
 
 1% of the container's inline size (width). `10cqi` in a 300px card is 30px.
 
-### Can I use container queries with MUI or plain CSS-in-JS?
+### Can I use container queries with Mantine or CSS-in-JS?
 
-Yes. Container queries are plain CSS, so they work anywhere CSS works. In MUI you can write an `@container (min-width: 400px)` key inside `sx` or `styled()`, with the parent marked `containerType: 'inline-size'`. Newer MUI versions also add helpers for this; check the docs for your version.
+Yes. Container queries are plain CSS, so they work anywhere CSS works. Mantine's `Grid` and `SimpleGrid` accept `type="container"`, so their responsive values follow the parent's width instead of the screen. In CSS modules you write `@container` rules as usual.
 
 ## ✅ Quick check
 

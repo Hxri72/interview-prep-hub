@@ -8,17 +8,17 @@
 - { slug: html-css, title: HTML5 & CSS3, group: core, icon: "🧱", planned: 20, description: "The structure (HTML) and the look (CSS) of every web page." }
 - { slug: responsive-design, title: Responsive Design, group: core, icon: "📱", planned: 17, description: "One page that fits every screen: Flexbox, Grid, media queries, Tailwind and MUI breakpoints." }
 - { slug: react, title: React.js, group: core, icon: "⚛️", planned: 34, description: "Building user interfaces from small, reusable components." }
-- { slug: redux-context, title: Redux & Context API, group: core, icon: "🗂️", planned: 17, description: "Sharing data between many components without passing props everywhere." }
-- { slug: mui-tailwind, title: Material UI & Tailwind, group: core, icon: "🎨", planned: 17, description: "Ready-made components (MUI) and utility classes (Tailwind) for styling fast." }
+- { slug: redux-context, title: Redux & Context API, group: core, icon: "🗂️", planned: 20, description: "Sharing data between many components without passing props everywhere." }
+- { slug: mantine-tailwind, title: Mantine & Tailwind, group: core, icon: "🎨", planned: 20, description: "Mantine (the component library used at SkillKeepr), Tailwind utility classes, and Ant Design." }
 - { slug: nextjs, title: Next.js, group: core, icon: "▲", planned: 23, description: "A React framework with routing, server rendering and APIs built in (App Router, Next.js 16)." }
 - { slug: nodejs, title: Node.js, group: core, icon: "🟩", planned: 31, description: "Running JavaScript on the server: the event loop, modules, streams and more." }
-- { slug: express, title: Express.js, group: core, icon: "🚂", planned: 24, description: "The most popular Node.js web framework: routes, middleware and error handling." }
+- { slug: express, title: Express.js, group: core, icon: "🚂", planned: 25, description: "The most popular Node.js web framework: routes, middleware and error handling." }
 - { slug: rest-auth, title: REST APIs & Auth, group: core, icon: "🔐", planned: 27, description: "Designing APIs and keeping them safe: JWT, bcrypt, webhooks, WebSockets, Swagger." }
 - { slug: mongodb, title: MongoDB & Mongoose, group: core, icon: "🍃", planned: 31, description: "Document database: schemas, indexes, aggregation and data modelling." }
 - { slug: postgresql, title: PostgreSQL & SQL, group: core, icon: "🐘", planned: 23, description: "Relational database: tables, joins, transactions and indexes." }
 - { slug: architecture, title: Architecture, group: core, icon: "🏛️", planned: 17, description: "Monolith vs microservices, serverless, event-driven and multi-tenant design." }
 - { slug: devops, title: Cloud & DevOps, group: core, icon: "☁️", planned: 22, description: "Git, GitHub Actions CI/CD, Railway, AWS, GCP and Docker basics." }
-- { slug: testing, title: Testing & Quality, group: core, icon: "🧪", planned: 16, description: "Jest, Supertest, code reviews, logging and production support." }
+- { slug: testing, title: Testing & Quality, group: core, icon: "🧪", planned: 17, description: "Jest, Supertest, code reviews, logging and production support." }
 
 - { slug: resume, title: Resume Deep-Dive, group: interview, icon: "📄", planned: 16, description: "Every project on my resume as a story: problem → what I built → hard part → result." }
 - { slug: debugging, title: Debugging Scenarios, group: interview, icon: "🐞", planned: 33, description: "\"Something is broken — what do you do?\" Detect → Debug → Fix → Prevent." }

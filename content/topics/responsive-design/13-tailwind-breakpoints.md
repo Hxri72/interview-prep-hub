@@ -135,7 +135,7 @@ In **Tailwind v3**, breakpoints lived in `tailwind.config.js` under `theme.scree
 - **Thinking `md:` means "only tablets".** It means tablets **and everything bigger**.
 - **Writing the desktop style first** and trying to undo it on phones. Write the phone style with no prefix, then add prefixes.
 - **Using `sm:` for phones.** Plain classes are for phones. `sm:` starts at 640px.
-- **Mixing up `md:` (768px screen) and MUI's `md` (900px).** See [matching breakpoints](topic:responsive-design/matching-breakpoints).
+- **Mixing up `md:` (768px screen) and Mantine's `md` (992px).** Mantine's `sm` is 768px. See [matching breakpoints](topic:responsive-design/matching-breakpoints).
 
 ## 🗣️ How to answer in an interview
 

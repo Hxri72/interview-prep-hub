@@ -120,7 +120,7 @@ Always:    the "Apply" buttons line up at the bottom of each card,
 
 **Equal-height cards.** Both give equal heights in one row. Grid also keeps rows aligned across the whole gallery. With subgrid (all major browsers since 2023), even the titles and buttons inside different cards can line up.
 
-**In Tailwind and MUI.** Tailwind: `flex justify-between items-center` and `grid grid-cols-1 md:grid-cols-3 gap-4`. MUI: `<Stack direction="row">` is Flexbox, and `<Grid container>` is a 12-column layout built on Flexbox in v7 ([MUI layout](topic:mui-tailwind/mui-layout), [MUI Grid](topic:mui-tailwind/mui-grid)).
+**In Tailwind and Mantine.** Tailwind: `flex justify-between items-center` and `grid grid-cols-1 md:grid-cols-3 gap-4`. Mantine: `<Group>` and `<Stack>` are Flexbox rows and columns, `<SimpleGrid>` is CSS Grid, and `<Grid>` is a 12-column layout ([Mantine layout](topic:mantine-tailwind/mantine-layout), [Mantine Grid](topic:mantine-tailwind/mantine-grid)).
 
 ## 🎯 Why do we use it?
 
