@@ -8,9 +8,10 @@ mustKnow: false
 askedFrequency: common
 summary:
   - SkillKeepr has a shared backend library ("core-service") used by several services, so common code is written once.
-  - "It holds shared pieces: data models, repositories (database query code), database connection handling, authentication and utilities like file storage and email."
   - I worked on this library, including the authentication modules, together with the team.
-  - "The resume says this cut development time by about 30% — only say a number if you can explain how it was measured."
+  - "Shared patterns: a response builder, an authorizer decorator for protected handlers, pagination and sorting helpers, and data-transformation helpers."
+  - "The ~30% faster development is an estimate, not a measured number. Always say \"about\" or \"an estimated\"."
+  - I don't claim I built the whole library. I say which parts I worked on and which ones I reused.
 cards:
   - q: What were the reusable backend modules?
     a: A shared library used across services — models, repositories, database connection handling, authentication and utilities — so new features don't rebuild the same code.
@@ -21,7 +22,9 @@ cards:
   - q: What is the risk of a shared library?
     a: Drift and breaking changes. If services use different versions, a fix in one place isn't everywhere. You need versioning and clear ownership.
   - q: How did you measure "30% faster"?
-    a: "[FILL IN: the honest answer — or say it was the team's rough estimate.]"
+    a: We didn't measure it formally. It's an estimate of the time saved by reusing shared code instead of rewriting it for each feature.
+  - q: What is an authorizer decorator?
+    a: A small wrapper you put around a protected handler. It runs the login and permission checks first, so each handler doesn't repeat that code.
 ---
 
 ## 💡 What is it?
@@ -64,6 +67,39 @@ Authentication is the worst place for copies. One weak copy can become a securit
 - **Authentication** — reading the login token, checking the tenant and checking permissions.
 - **Utilities** — file storage, email and other common helpers.
 
+**Common patterns the team reused in every service:**
+
+| Pattern | What it does in simple words |
+|---|---|
+| **Response builder** | Builds every API reply in the same shape, e.g. `{ success, data, message }`. |
+| **Authorizer decorator** | A wrapper around a protected handler. It checks the login token and permissions before the handler runs. |
+| **Pagination and sorting helpers** | Turn `?page=2&sort=name` into the right database query, the same way everywhere. |
+| **Data-transformation helpers** | Turn database records into the shape the frontend expects. |
+| **Stripe and integration wrappers** | One place to call outside services like Stripe. |
+
+A **decorator** is a function that wraps another function and adds extra behaviour, like a check that runs first. Here is the idea (not the real code). Save it as `authorize.js` and run `node authorize.js`:
+
+```js
+function withAuth(handler, role) {                      // takes a handler and the role it needs, e.g. 'admin'
+  return (req) => {                                     // returns a new handler that wraps the old one
+    if (!req.user) return { status: 401 };              // 401 = not logged in
+    if (req.user.role !== role) return { status: 403 }; // 403 = logged in, but not allowed
+    return handler(req);                                // checks passed → run the real handler
+  };                                                    // end of the wrapper
+}                                                       // end of withAuth
+
+const deleteJob = withAuth(() => ({ status: 200 }), 'admin'); // 200 = OK; only admins may delete a job
+console.log(deleteJob({ user: { role: 'admin' } }));    // an admin → allowed
+console.log(deleteJob({ user: { role: 'viewer' } }));   // a viewer → blocked
+```
+
+```text
+{ status: 200 }
+{ status: 403 }
+```
+
+When I built features, I followed these patterns and reused the shared modules instead of writing the same logic again.
+
 **My part:** I worked on the authentication modules with the team.
 [FILL IN: exactly what you did in auth — e.g. token checks, permission checks, login flow — and anything else you added to the library.]
 
@@ -86,7 +122,8 @@ Authentication is the worst place for copies. One weak copy can become a securit
 
 - New features reuse ready-made pieces, so they are faster to build.
 - Auth works the same way in every service.
-- The resume says development time was cut by **about 30%**. [FILL IN: how this was measured — compare ticket times before/after, or the team's estimate. If it was only an estimate, say "roughly" or remove the number.]
+- Endpoints look and behave the same, because they share the response, auth and pagination code.
+- The resume says development time was cut by **about 30%**. This is an **estimate**, not a before-and-after measurement. Always say "about" or "an estimated".
 
 ## 🗣️ How to answer in an interview
 
@@ -94,7 +131,9 @@ Authentication is the worst place for copies. One weak copy can become a securit
 >
 > I worked on that library with the team, especially the authentication modules — reading the login token, checking the tenant and checking permissions. Having auth in one place means every service checks access the same way.
 >
-> The benefit is speed and consistency: new features reuse tested building blocks instead of copying code. [FILL IN: the 30% claim and how it was measured — or say 'it noticeably cut our development time'.] The risk is that one change affects every service, so we test changes against more than one service before releasing."
+> We also reused common patterns: a response builder so every endpoint replies in the same shape, an authorizer decorator for protected handlers, and pagination and sorting helpers. When I built features, I followed these instead of rewriting the logic.
+>
+> The benefit is speed and consistency. We estimate it cut development time by about 30%, but that's an estimate, not a formal measurement. The risk is that one change affects every service, so we test changes against more than one service before releasing."
 
 ## 🔁 Follow-up questions
 
@@ -113,6 +152,14 @@ Keep changes backward-compatible when you can. Add tests in the library. Test it
 ### How would you prove the 30%?
 
 Compare the time to build similar features before and after, using sprint tickets or story points. If there's no data, say it honestly: "it was the team's estimate."
+
+### Did you build the whole shared library yourself?
+
+No, and I don't claim that. I worked on parts of it, especially authentication, with the team. Many other utilities already existed, and I reused them. I can explain which parts I worked on and which I only used.
+
+### How do you explain the "about 30%" number?
+
+It's an estimate of the time saved by reusing shared patterns. The code clearly shows less repeated code. But we didn't measure the exact percentage before and after.
 
 ### Why put authentication in a shared library?
 

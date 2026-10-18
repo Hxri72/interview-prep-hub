@@ -1,18 +1,18 @@
 # [FILL IN] checklist
 
 Your real details are needed in these places. Edit the topic file, replace the whole `[FILL IN: …]` with the true detail, or delete the sentence if it does not apply.
-**598 items.**
+**596 items.**
 
 
 ## resume/01-skillkeepr-overview.md (7)
 
 - [ ] line 25: your honest split, e.g. 70% backend / 30% frontend
-- [ ] line 70: team size and roles — how many developers, QA, product, design.
-- [ ] line 71: how work is assigned to you — sprint tickets, feature ownership?
-- [ ] line 77: the hardest thing for you when you joined, or the hardest feature so far — one concrete example.
-- [ ] line 84: any result you can prove — features shipped, bugs fixed, test coverage you added, praise from the team.
-- [ ] line 110: your honest reason.
-- [ ] line 114: one real trade-off you have seen — for example faster cold starts, more tests in CI, or simpler shared libraries.
+- [ ] line 74: team size and roles — how many developers, QA, product, design.
+- [ ] line 75: how work is assigned to you — sprint tickets, feature ownership?
+- [ ] line 81: the hardest thing for you when you joined, or the hardest feature so far — one concrete example.
+- [ ] line 88: any result you can prove — features shipped, bugs fixed, test coverage you added, praise from the team.
+- [ ] line 120: your honest reason.
+- [ ] line 124: one real trade-off you have seen — for example faster cold starts, more tests in CI, or simpler shared libraries.
 
 ## resume/02-platform-architecture.md (6)
 
@@ -31,72 +31,63 @@ Your real details are needed in these places. Edit the topic file, replace the w
 - [ ] line 99: add one sentence about what you personally built or fixed in this area.
 - [ ] line 117: if you worked on any of this.
 
-## resume/04-stripe-billing.md (8)
+## resume/04-stripe-billing.md (10)
 
-- [ ] line 25: what you actually did.
-- [ ] line 79: which events your code handles.
-- [ ] line 80: what the cron does exactly, and how often it runs.
-- [ ] line 81: what happens to a company's access after a failed payment — grace period, emails, blocking?
-- [ ] line 95: which of these you actually used, and any real bug you hit.
-- [ ] line 101: any measurable result — fewer manual fixes, fewer support tickets, etc.
-- [ ] line 111: one more sentence — e.g. how you handled duplicate events, or a result.
-- [ ] line 125: what you did.
+- [ ] line 27: what you actually did.
+- [ ] line 81: which events your code handles.
+- [ ] line 82: what the cron does exactly, and how often it runs.
+- [ ] line 91: how many days
+- [ ] line 96: exact retry rules and event names — check the code before you say them.
+- [ ] line 110: which of these you actually used, and any real bug you hit.
+- [ ] line 116: any measurable result — fewer manual fixes, fewer support tickets, etc.
+- [ ] line 126: one more sentence — e.g. how you handled duplicate events, or a result.
+- [ ] line 140: what you did.
+- [ ] line 148: exact events and retry rules
 
-## resume/05-reusable-modules.md (8)
+## resume/05-reusable-modules.md (5)
 
-- [ ] line 18: one more concrete piece you touched.
-- [ ] line 24: the honest answer — or say it was the team's rough estimate.
-- [ ] line 68: exactly what you did in auth — e.g. token checks, permission checks, login flow — and anything else you added to the library.
-- [ ] line 75: which one SkillKeepr uses, if you want to mention it.
-- [ ] line 83: a real moment where a shared-library change was tricky for you.
-- [ ] line 89: how this was measured — compare ticket times before/after, or the team's estimate. If it was only an estimate, say "roughly" or remove the number.
-- [ ] line 97: the 30% claim and how it was measured — or say 'it noticeably cut our development time'.
-- [ ] line 103: the pieces you know best.
+- [ ] line 19: one more concrete piece you touched.
+- [ ] line 104: exactly what you did in auth — e.g. token checks, permission checks, login flow — and anything else you added to the library.
+- [ ] line 111: which one SkillKeepr uses, if you want to mention it.
+- [ ] line 119: a real moment where a shared-library change was tricky for you.
+- [ ] line 142: the pieces you know best.
 
-## resume/06-ats-integration.md (6)
+## resume/06-ats-integration.md (4)
 
-- [ ] line 79: your own part inside the team's work — e.g. the sync endpoint, the duplicate check, the status sync.
-- [ ] line 80: how a company connects its ATS account — through unified.to's connect screen?
-- [ ] line 94: the hardest bug or case you hit — e.g. missing emails, a field that differed between ATS tools.
-- [ ] line 121: was automatic sync discussed?
-- [ ] line 125: what your code does.
-- [ ] line 129: what you did.
+- [ ] line 76: the real intervals, e.g. 2, 4 or 12 hours — check the config
+- [ ] line 118: the hardest bug or case you hit — e.g. missing emails, a field that differed between ATS tools.
+- [ ] line 157: check if your code has that index before you say so
+- [ ] line 161: what your code does.
 
-## resume/07-voice-agent-microservice.md (13)
+## resume/07-voice-agent-microservice.md (8)
 
-- [ ] line 32: the real details it collects.
-- [ ] line 95: which AWS services — ECS, EC2, Lambda?
-- [ ] line 96: how audio flows with Twilio — Media Streams over WebSocket, or Gather/Say?
-- [ ] line 97: how the recruiter sees the score and recording — in the SkillKeepr admin portal?
-- [ ] line 98: what the AI evaluation checks, and which model scores the call.
-- [ ] line 110: what you did about latency, and the rough time per turn if you know it.
-- [ ] line 111: how you handled interruptions, silence or bad audio.
-- [ ] line 120: number of calls made or customers using it, if you know.
-- [ ] line 130: what you did about it.
-- [ ] line 138: your real reasons.
-- [ ] line 142: your real reason — quality of conversation, following instructions, cost?
-- [ ] line 146: what your agent does.
-- [ ] line 150: what you did.
+- [ ] line 81: the exact network setup between the two services — don't guess.
+- [ ] line 120: which AWS service runs the voice service — ECS, EC2, Lambda?
+- [ ] line 121: what the AI evaluation checks, and which model scores the call.
+- [ ] line 139: what the cause and fix were.
+- [ ] line 141: the rough time per turn (latency numbers), if you know them.
+- [ ] line 151: number of calls made or customers using it, if you know.
+- [ ] line 177: the real reason Python was chosen — e.g. speech and AI libraries.
+- [ ] line 181: what the agent does — repeat the question, or move on
 
-## resume/08-voice-state-machine.md (17)
+## resume/08-voice-state-machine.md (16)
 
-- [ ] line 22: e.g. greeting → consent → questions → candidate's questions → wrap-up, and what moves each one.
-- [ ] line 24: confirm your design.
-- [ ] line 59: phase 1
-- [ ] line 59: phase 2
-- [ ] line 59: final phase
-- [ ] line 69: the real list of phases.
-- [ ] line 70: what moves each phase forward — an answer, a time limit, a number of questions, a signal from Claude?
-- [ ] line 71: confirm steps 1–5 match your design.
-- [ ] line 72: where the call's state is kept during a call, and what happens if the service restarts.
-- [ ] line 81: your hardest part, and what you did.
-- [ ] line 89: benefits you really saw — fewer broken calls, easier debugging?
-- [ ] line 95: your phases
-- [ ] line 97: one real benefit you saw — e.g. easier testing, or seeing exactly which phase caused a problem.
-- [ ] line 99: one hard case you handled, like interruptions or long silence.
-- [ ] line 109: real phases and triggers.
-- [ ] line 117: what you did.
-- [ ] line 121: what you did.
+- [ ] line 23: e.g. greeting → consent → questions → candidate's questions → wrap-up, and what moves each one.
+- [ ] line 27: confirm your design.
+- [ ] line 62: phase 1
+- [ ] line 62: phase 2
+- [ ] line 62: final phase
+- [ ] line 72: the real list of phases.
+- [ ] line 73: what moves each phase forward — an answer, a time limit, a number of questions, a signal from Claude?
+- [ ] line 74: confirm steps 1–5 match your design.
+- [ ] line 75: where the call's state is kept during a call, and what happens if the service restarts.
+- [ ] line 97: what the cause and fix were.
+- [ ] line 99: what was decided.
+- [ ] line 114: your phases
+- [ ] line 128: real phases and triggers.
+- [ ] line 136: what the cause was.
+- [ ] line 144: what you did.
+- [ ] line 148: what you did.
 
 ## resume/09-grok-voice-premium.md (13)
 
@@ -114,53 +105,54 @@ Your real details are needed in these places. Edit the topic file, replace the w
 - [ ] line 109: what your agent does.
 - [ ] line 113: what you measured, if anything.
 
-## resume/10-openai-structured-outputs.md (13)
+## resume/10-openai-structured-outputs.md (11)
 
-- [ ] line 23: what your backend did
-- [ ] line 55: anything specific — how long recruiters spent on JDs before, or what problem the product team wanted to solve.
-- [ ] line 87: confirm how the backend validated the AI output — JSON Schema, Zod, Joi, or the OpenAI SDK's structured output option.
-- [ ] line 88: which fields the AI returned.
-- [ ] line 89: the resume also says "text assistant" — what was it, and did you work on it?
-- [ ] line 95: the real hard part for you — invalid replies, slow replies, keeping the conversation history, or something else.
-- [ ] line 96: what happened when validation failed — retry, default values, or an error message.
-- [ ] line 102: any result — time saved per JD, number of JDs created this way, or feedback.
-- [ ] line 110: how you validated it and what happened when validation failed.
-- [ ] line 118: what you did.
-- [ ] line 122: what you did, if anything.
-- [ ] line 126: any measures in your feature.
-- [ ] line 130: the real reason — team choice, existing account, quality.
+- [ ] line 23: what happened next — retry or error
+- [ ] line 57: anything specific — how long recruiters spent on JDs before, or what problem the product team wanted to solve.
+- [ ] line 117: the real JD fields and how the backend validated them. Don't name a validation library until you check the code.
+- [ ] line 118: the resume also says "text assistant" — what was it, and did you work on it?
+- [ ] line 126: what happened when validation failed — retry, default values, or an error message.
+- [ ] line 134: any result — time saved per JD, number of JDs created this way, or feedback.
+- [ ] line 158: why the team chose Python for the agent, if you know
+- [ ] line 162: what you did.
+- [ ] line 166: what you did, if anything.
+- [ ] line 170: any measures in your feature.
+- [ ] line 174: the real reason — team choice, existing account, quality.
 
-## resume/11-gap-analysis.md (2)
+## resume/11-gap-analysis.md (11)
 
-- [ ] line 65: only if you learn the real details from your team — what was compared, what you did, and what was found.
-- [ ] line 105: replace this with a real 2-minute story once you know what you did. Use: problem → what you compared → one contradiction you found → how it was resolved.
+- [ ] line 29: confirm whether the trust-tier and voice-phase parts are true.
+- [ ] line 69: rule
+- [ ] line 69: rule
+- [ ] line 70: rule
+- [ ] line 70: rule
+- [ ] line 71: rule
+- [ ] line 71: rule
+- [ ] line 92: one concrete difference you found, said simply. For example, "production used a different weight for experience".
+- [ ] line 100: whether there is now a test for the formula, and roughly when this happened.
+- [ ] line 112: say yes only if you added a test.
+- [ ] line 118: who confirmed this, for example the tech lead.
 
-## resume/12-build-vs-buy.md (12)
+## resume/12-build-vs-buy.md (6)
 
-- [ ] line 19: confirm
-- [ ] line 57: what triggered the evaluation — cost, quality, control, or a leadership question?
-- [ ] line 67: the managed vendor's name.
-- [ ] line 68: cost per call for each option, and the volumes you checked.
-- [ ] line 69: the switching point — "below X calls a month, buy; above X, build".
-- [ ] line 93: the real hard part for you.
-- [ ] line 99: what was decided in practice, and what happened after.
-- [ ] line 107: the numbers — e.g. at low volume the vendor was cheaper, but above X calls a month our own pipeline was cheaper.
-- [ ] line 109: the exact recommendation
-- [ ] line 115: your real list.
-- [ ] line 123: a document, slides, or a meeting — and what they asked.
-- [ ] line 127: confirm with your numbers.
+- [ ] line 54: what made cost a concern — call volume, a price change, a customer plan?
+- [ ] line 71: how you worked out the 65% — for example, cost per minute of each part vs Retell's price per minute, at your call volume.
+- [ ] line 100: the hardest part for you in practice.
+- [ ] line 108: whether Retell AI was fully switched off, and when.
+- [ ] line 133: your real list.
+- [ ] line 141: your real view.
 
 ## resume/13-mongodb-aggregation-indexing.md (9)
 
-- [ ] line 89: the one real pipeline you will talk about — which screen, which stages, and why.
-- [ ] line 90: the one real index you added — fields, and which query it helped.
-- [ ] line 99: the real hard part you faced.
-- [ ] line 105: numbers if you have them — e.g. "the jobs list went from 2.1 s to 180 ms; explain() showed COLLSCAN → IXSCAN, docs examined 40,000 → 20".
-- [ ] line 111: the screen
-- [ ] line 111: the stages, e.g. $match on status, $lookup departments and recruiters, $project, $sort, $skip/$limit, plus a count for the total
-- [ ] line 113: which query got slow
-- [ ] line 113: the index
-- [ ] line 113: the before/after numbers
+- [ ] line 132: the one real pipeline you will talk about — which screen, which stages, and why.
+- [ ] line 133: the one real index you added — fields, and which query it helped.
+- [ ] line 142: the real hard part you faced.
+- [ ] line 148: numbers if you have them — e.g. "the jobs list went from 2.1 s to 180 ms; explain() showed COLLSCAN → IXSCAN, docs examined 40,000 → 20".
+- [ ] line 154: the screen
+- [ ] line 154: the stages, e.g. $match on status, $lookup departments and recruiters, $project, $sort, $skip/$limit, plus a count for the total
+- [ ] line 156: which query got slow
+- [ ] line 156: the index
+- [ ] line 156: the before/after numbers
 
 ## resume/14-recruiter-candidate-ui.md (9)
 
@@ -183,20 +175,29 @@ Your real details are needed in these places. Edit the topic file, replace the w
 - [ ] line 88: a measurable or clear result — e.g. a job moved to a queue so the API stayed fast, or a function you made faster.
 - [ ] line 96: your Lambda work
 
-## resume/16-production-support-quality.md (12)
+## resume/16-production-support-quality.md (13)
 
 - [ ] line 17: one real test
 - [ ] line 23: what was slow → what you changed → result
-- [ ] line 55: your optimisation story — what was slow → how you found it → what you changed → the result.
-- [ ] line 67: one real test you wrote — what it checked.
-- [ ] line 71: how you wrote it — annotations in code, or a separate spec file — and which endpoints.
-- [ ] line 74: what the GitHub Actions workflow runs — lint, tests, scans, build?
-- [ ] line 75: the logging and error-tracking tools you used.
-- [ ] line 81: the real hard part — a tricky bug or a slow piece of code.
-- [ ] line 85: results — e.g. "the endpoint went from X s to Y ms", or "tests caught a bug before release".
-- [ ] line 91: what was slow
-- [ ] line 91: logs, timing, explain()
-- [ ] line 103: your real bug story.
+- [ ] line 57: your optimisation story — what was slow → how you found it → what you changed → the result.
+- [ ] line 69: one real test you wrote — what it checked.
+- [ ] line 73: how you wrote it — annotations in code, or a separate spec file — and which endpoints.
+- [ ] line 84: what your team's GitHub Actions workflow runs — lint, tests, build, deploy?
+- [ ] line 85: the error-tracking tool you used, if any.
+- [ ] line 87: your sprint length
+- [ ] line 93: the real hard part — a tricky bug or a slow piece of code.
+- [ ] line 97: results — e.g. "the endpoint went from X s to Y ms", or "tests caught a bug before release".
+- [ ] line 103: what was slow
+- [ ] line 103: logs, timing, explain()
+- [ ] line 115: your real bug story.
+
+## resume/17-question-bank.md (5)
+
+- [ ] line 79: which frontend parts of the voice feature you built.
+- [ ] line 159: check the code first.
+- [ ] line 201: the real intervals, from the config.
+- [ ] line 233: the exact events and retry rules, from the code.
+- [ ] line 349: your sprint length.
 
 ## ai/03-tokens-cost.md (1)
 

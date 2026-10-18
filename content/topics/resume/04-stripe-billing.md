@@ -8,10 +8,10 @@ mustKnow: true
 askedFrequency: very common
 summary:
   - "My part of SkillKeepr billing was auto-renewal: a renewal cron and the Stripe webhook handling. Other developers built the purchase flow."
-  - Stripe renews the subscription and charges the card; it then sends webhook events, and our backend updates the company's plan and access.
   - A scheduled cron job checks plans and expiry as a safety net, in case a webhook is missed or delayed.
   - I tested renewals with Stripe Test Clocks, which let you move time forward so a month's renewal happens in minutes.
   - "Standard safety rules for webhooks: verify the signature with the raw body, ignore duplicate events, and reply 200 quickly."
+  - "The wider billing system (not all mine) charges automatically, sends expiry reminders, and blocks an account only after a grace period."
 cards:
   - q: What exactly did you build in Stripe billing?
     a: The auto-renewal part — a renewal cron and the webhook handling that updates a company's plan when Stripe renews or fails a payment. Other developers built the purchase flow.
@@ -21,6 +21,8 @@ cards:
     a: The webhook reacts right away when Stripe renews or fails a payment. The cron is a safety net that checks plan status and expiry on a schedule, in case a webhook is missed.
   - q: How do you verify a Stripe webhook?
     a: Use the Stripe-Signature header and the webhook secret with the raw request body. If you parse the JSON first, the bytes change and verification fails.
+  - q: What happens if a renewal payment fails?
+    a: The account is not blocked straight away. The system sends reminders during a grace period, and only blocks the account after that period ends.
   - q: What if Stripe sends the same event twice?
     a: "The standard approach is to store processed event IDs and skip repeats, or make the update idempotent. [FILL IN: what you actually did.]"
 ---
@@ -78,7 +80,20 @@ Scheduled cron (safety net): check plans and expiry dates, fix anything a webhoo
 
 [FILL IN: which events your code handles.]
 [FILL IN: what the cron does exactly, and how often it runs.]
-[FILL IN: what happens to a company's access after a failed payment — grace period, emails, blocking?]
+
+**How the wider billing system works.** This is what the platform does. Other developers built parts of it, so I don't claim all of it.
+
+| Part | What the system does |
+|---|---|
+| New plan | The backend creates a Stripe subscription. It saves the subscription ID, the start date and the expiry date. |
+| Collection | The subscription uses `charge_automatically`. That means Stripe tries the payment by itself on each renewal. |
+| Reminders | Scheduled jobs send expiry reminders and other notices. |
+| Grace period (extra days before blocking) | A failed or expired plan is **not** blocked at once. The account is blocked only after a set number of days. [FILL IN: how many days] |
+| Blocked account | A notice is sent when the account is blocked. |
+| Manual renewal | A company can also renew by hand. |
+| Free tier | Free plans have their own separate extension flow. |
+
+[FILL IN: exact retry rules and event names — check the code before you say them.]
 
 **Testing with Stripe Test Clocks.** A Test Clock is a fake clock in Stripe's test mode. You create a test customer and subscription on the clock. Then you **move the clock forward**, for example by one month. Stripe acts as if that time really passed. It creates the invoice, tries the payment and sends the webhooks — in minutes. You can also use a card that always fails to test failed renewals.
 
@@ -127,6 +142,18 @@ Store processed event IDs with a [unique index](topic:mongodb/special-indexes), 
 ### A customer says "I was charged but have no access." What do you check?
 
 Look at the event in the Stripe dashboard. Did the webhook reach us? Did our handler return an error? Then check the company's plan record in the database. Fix the data, then fix the cause.
+
+### What happens if a payment fails?
+
+A failed payment does **not** block the account at once. The system watches the payment events and the plan status. It sends reminders during a grace period. Only after that period does it block the account. [FILL IN: exact events and retry rules]
+
+### Why have a grace period at all?
+
+Cards fail for small reasons, like an expired card. Blocking a company at once would stop their hiring work. A grace period gives them time to fix the card, and the reminders tell them what to do.
+
+### Do you remember every event name and line of this code?
+
+Be honest: "I worked on this earlier in my time at SkillKeepr. I can explain the flow clearly. For exact event names and code details, I'd revisit the module before changing it." Interviewers respect this more than a guess.
 
 ### Why both a webhook and a cron?
 

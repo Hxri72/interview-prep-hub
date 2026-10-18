@@ -457,7 +457,7 @@ Sources used: Resume, Resume Interview Question Bank, Backend Mastery Plan, Fron
 
 ## INTERVIEW SECTIONS
 
-### 17. Resume Deep-Dive (16)
+### 17. Resume Deep-Dive (17)
 Each page: problem → what I built → hard part → result, plus likely follow-ups. Missing details become `[FILL IN: ...]`.
 | # | Topic | Level | ★ |
 |---|---|---|---|
@@ -466,17 +466,18 @@ Each page: problem → what I built → hard part → result, plus likely follow
 | 3 | Multi-tenant platform: API design to production | I | ★ |
 | 4 | Stripe subscription billing with secure webhooks | I | ★ |
 | 5 | Reusable backend modules (~30% faster development) | I | |
-| 6 | Workable ATS integration via Unified API | I | ★ |
-| 7 | AI voice agent microservice on GCP (Twilio + STT/TTS) | I | ★ |
+| 6 | ATS integration via unified.to (Workable, Greenhouse, Lever, Zoho) | I | ★ |
+| 7 | AI voice agent microservice on AWS (Python FastAPI, Twilio + Google STT/TTS) | I | ★ |
 | 8 | Voice agent: the LLM-driven phase-based state machine | A | ★ |
 | 9 | xAI Grok Voice as a premium voice option | I | |
 | 10 | OpenAI chatbot with schema-validated structured outputs | I | ★ |
-| 11 | Gap analysis: monolith vs proposed three-service design | I | ★ |
-| 12 | Build-vs-buy evaluation for the voice stack | I | ★ |
+| 11 | Gap analysis: prototype vs production candidate scoring | I | ★ |
+| 12 | Build vs buy: replacing Retell AI with our own voice pipeline | I | ★ |
 | 13 | MongoDB aggregation and indexing on multi-tenant data | I | ★ |
 | 14 | Recruiter & candidate UIs (React, Redux, Context, MUI, Tailwind, Ant Design) | I | |
 | 15 | Monolith, microservices and AWS Lambda work | I | |
 | 16 | Production support, Swagger, Jest and GitHub Actions | I | |
+| 17 | Resume question bank: quick answers for every resume line | I | ★ |
 
 ### 18. Debugging Scenarios (33)
 Every page uses Detect → Debug → Fix → Prevent.

@@ -20,7 +20,7 @@
 - { slug: devops, title: Cloud & DevOps, group: core, icon: "☁️", planned: 22, description: "Git, GitHub Actions CI/CD, Railway, AWS, GCP and Docker basics." }
 - { slug: testing, title: Testing & Quality, group: core, icon: "🧪", planned: 17, description: "Jest, Supertest, code reviews, logging and production support." }
 
-- { slug: resume, title: Resume Deep-Dive, group: interview, icon: "📄", planned: 16, description: "Every project on my resume as a story: problem → what I built → hard part → result." }
+- { slug: resume, title: Resume Deep-Dive, group: interview, icon: "📄", planned: 17, description: "Every project on my resume as a story: problem → what I built → hard part → result." }
 - { slug: debugging, title: Debugging Scenarios, group: interview, icon: "🐞", planned: 33, description: "\"Something is broken — what do you do?\" Detect → Debug → Fix → Prevent." }
 - { slug: dsa, title: Arrays & DSA, group: interview, icon: "🧮", planned: 41, description: "Array problems solved two ways (methods and loops), plus the common patterns." }
 - { slug: system-design, title: System Design Basics, group: interview, icon: "🏗️", planned: 20, description: "Designing APIs, databases, caching, queues and scaling — for a 3-year developer." }

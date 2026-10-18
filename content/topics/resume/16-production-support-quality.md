@@ -9,8 +9,8 @@ askedFrequency: common
 summary:
   - "Your confirmed work: backend code optimisation, Jest unit tests, and Swagger docs for the backend."
   - Production support means watching logs, finding the cause of live issues, and fixing them safely.
-  - Unit tests check one function or service at a time, with databases and other services mocked.
   - Swagger (OpenAPI) documents every API endpoint so frontend developers know how to call it.
+  - "Real production stories you can use: the voice agent interrupting candidates, and scores that differed between prototype and production. You traced both in AWS CloudWatch logs."
   - Prepare ONE optimisation story and ONE production bug story — interviewers almost always ask.
 cards:
   - q: What do you test with Jest?
@@ -21,6 +21,8 @@ cards:
     a: It documents each API endpoint — URL, method, inputs and outputs — so other developers can use the API without reading the code.
   - q: Tell me about an optimisation you made.
     a: "[FILL IN: what was slow → what you changed → result]"
+  - q: What is CI/CD?
+    a: CI (Continuous Integration) checks every change automatically, with tests and a build. CD (Continuous Delivery or Deployment) prepares or releases those changes to a server.
   - q: What should never be written to logs?
     a: Passwords, tokens, API keys and personal data.
 ---
@@ -70,9 +72,19 @@ New code must not break old features. Frontend developers also need to know exac
 
 [FILL IN: how you wrote it — annotations in code, or a separate spec file — and which endpoints.]
 
-**CI and monitoring:**
-[FILL IN: what the GitHub Actions workflow runs — lint, tests, scans, build?]
-[FILL IN: the logging and error-tracking tools you used.]
+**Production troubleshooting with AWS CloudWatch.** CloudWatch is AWS's service for logs and metrics. Two real cases you can talk about:
+- **Voice agent delays:** the agent sometimes replied slowly or cut candidates off. You read CloudWatch and voice-service logs to find the slow stage. See [the voice agent story](topic:resume/voice-agent-microservice).
+- **Scoring mismatch:** prototype and production gave different scores. After aligning the formulas, you checked the logs to confirm which formula was applied. See [the gap analysis story](topic:resume/gap-analysis).
+
+**CI/CD with GitHub Actions (general idea):**
+- **CI** (Continuous Integration): every push or pull request runs checks automatically, like install, tests and build.
+- **CD** (Continuous Delivery or Deployment): after the checks pass, the change is prepared for release, or released to a server.
+- **GitHub Actions** runs these steps from a workflow file in the repository. It does **not** deploy anything by itself. The team must write the deploy steps.
+
+[FILL IN: what your team's GitHub Actions workflow runs — lint, tests, build, deploy?]
+[FILL IN: the error-tracking tool you used, if any.]
+
+**Agile and Scrum:** the team works in **sprints**. A sprint is a fixed period, often two weeks. The team plans the sprint's work (features, bugs, performance fixes), meets daily, reviews the finished work, and talks about how to improve. See [Agile and Scrum](topic:hr/agile-scrum). [FILL IN: your sprint length]
 
 ## 🧗 The hard part
 
@@ -90,7 +102,7 @@ New code must not break old features. Frontend developers also need to know exac
 >
 > I've also done backend code optimisation. For example, [FILL IN: what was slow]. I found the cause by [FILL IN: logs, timing, explain()]. I changed [FILL IN], and the result was [FILL IN].
 >
-> For production issues, I start from the logs, find the root cause, fix it, and then add a test or a check so it doesn't come back."
+> For production issues, I start from the logs. For example, when our voice agent was interrupting candidates, I traced the call stages in AWS CloudWatch to find the cause. I find the root cause, find the root cause, fix it, and then add a test or a check so it doesn't come back."
 
 ## 🔁 Follow-up questions
 
@@ -110,6 +122,14 @@ Correctness, edge cases, readability, security (input validation, no secrets), t
 
 Generate them from code annotations or schemas where possible, and update them in the same pull request as the API change.
 
+### What does working in a Scrum team mean for you?
+
+We plan work in sprints. Each sprint has a set of tasks, like features, bug fixes and performance work. We coordinate daily, review what's finished and discuss how to improve. It helps us deliver features in small steps.
+
+### Does GitHub Actions deploy your app automatically?
+
+Only if the team sets it up. A workflow runs the steps you write: install, test, build, and maybe deploy. Without deploy steps, it only checks the code.
+
 ### What would you add to CI?
 
 Lint, type-check, unit tests and a build on every pull request, so problems are caught before merging.
@@ -120,5 +140,7 @@ Lint, type-check, unit tests and a build on every pull request, so problems are 
 - [Testing routes with Supertest](topic:express/supertest)
 - [Logging and request IDs](topic:express/logging)
 - [Error-handling middleware](topic:express/error-middleware)
+- [What is CI/CD](topic:devops/what-is-cicd)
 - [GitHub Actions](topic:devops/github-actions)
+- [Agile and Scrum](topic:hr/agile-scrum)
 - [Node.js performance tips](topic:nodejs/performance-tips)

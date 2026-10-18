@@ -90,13 +90,32 @@ export const ANSWER_SECTIONS = [
   { key: 'yours', label: '✍️ Your own version' },
 ];
 
+/** Resume question bank: short Q&As across every resume area. Each area section is collapsible like follow-ups. */
+export const BANK_SECTIONS = [
+  { key: 'what', label: '💡 What is it?' },
+  { key: 'example', label: '🏠 Real-life example' },
+  { key: 'structure', label: '🧩 How to use this page' },
+  { key: 'followup', label: '👋 About me and SkillKeepr' },
+  { key: 'followup', label: '🎙️ AI voice agent' },
+  { key: 'followup', label: '🤖 AI job-description assistant' },
+  { key: 'followup', label: '📊 Scoring and gap analysis' },
+  { key: 'followup', label: '🔗 ATS integration' },
+  { key: 'followup', label: '💳 Stripe billing' },
+  { key: 'followup', label: '♻️ Reusable modules' },
+  { key: 'followup', label: '🍃 MongoDB indexes' },
+  { key: 'followup', label: '⚙️ CI/CD and Agile' },
+  { key: 'mistakes', label: '🛡️ Honest-answer reminders' },
+  { key: 'revise', label: '✅ Final revision checklist' },
+];
+
 const TEMPLATES: Record<string, { key: string; label: string }[]> = {
   concept: CONCEPT_SECTIONS,
   story: STORY_SECTIONS,
   scenario: SCENARIO_SECTIONS,
   answer: ANSWER_SECTIONS,
+  bank: BANK_SECTIONS,
 };
-const ALL_SECTIONS = [...CONCEPT_SECTIONS, ...STORY_SECTIONS, ...SCENARIO_SECTIONS, ...ANSWER_SECTIONS];
+const ALL_SECTIONS = [...CONCEPT_SECTIONS, ...STORY_SECTIONS, ...SCENARIO_SECTIONS, ...ANSWER_SECTIONS, ...BANK_SECTIONS];
 
 /** Compare headings by their words only, so emoji differences don't matter. */
 const norm = (s: string) => s.toLowerCase().replace(/[^a-z0-9 ]/g, '').replace(/\s+/g, ' ').trim();
@@ -119,7 +138,7 @@ interface ParsedTopic {
   file: string;
   meta: {
     id: string; stack: string; slug: string; title: string; order: number;
-    level: string; mustKnow: boolean; askedFrequency: string;
+    level: string; mustKnow: boolean; askedFrequency: string; readMinutes: number;
   };
   summary: string[];
   cards: Card[];
@@ -131,7 +150,7 @@ interface ParsedTopic {
 }
 interface ParsedProblem {
   file: string;
-  meta: { id: string; slug: string; title: string; order: number; difficulty: string; pattern: string; topic?: string };
+  meta: { id: string; slug: string; title: string; order: number; difficulty: string; pattern: string; topic?: string; readMinutes: number };
   html: string;
   searchText: string;
   errors: string[];
@@ -345,6 +364,21 @@ function readFrontmatter(file: string): { data: Record<string, any>; content: st
   }
 }
 
+/**
+ * Estimated reading time in minutes.
+ * Prose is read at about 200 words a minute; code is read more slowly, at about 100.
+ */
+function readingMinutes(markdown: string): number {
+  const codeBlocks = markdown.match(/```[\s\S]*?```/g) ?? [];
+  const codeWords = codeBlocks.join(' ').split(/\s+/).filter(Boolean).length;
+  const prose = markdown
+    .replace(/```[\s\S]*?```/g, ' ') // drop code blocks (counted above)
+    .replace(/\]\([^)]*\)/g, ']') // drop link targets, keep link text
+    .replace(/[#>*_`|:[\]-]/g, ' '); // drop Markdown symbols
+  const proseWords = prose.split(/\s+/).filter((w) => /[a-z0-9]/i.test(w)).length;
+  return Math.max(1, Math.round(proseWords / 200 + codeWords / 100));
+}
+
 /** "09-closures.md" → "closures" */
 const slugFromFile = (file: string) => path.basename(file, '.md').replace(/^\d+[-_]/, '');
 
@@ -424,7 +458,7 @@ class ContentStore {
 
     return {
       file,
-      meta: { id, stack: folder, slug, title: String(fm.title ?? slug), order: Number(fm.order ?? 999), level: fm.level, mustKnow: !!fm.mustKnow, askedFrequency: fm.askedFrequency },
+      meta: { id, stack: folder, slug, title: String(fm.title ?? slug), order: Number(fm.order ?? 999), level: fm.level, mustKnow: !!fm.mustKnow, askedFrequency: fm.askedFrequency, readMinutes: readingMinutes(content) },
       summary,
       cards,
       html,
@@ -450,7 +484,7 @@ class ContentStore {
     const html = render(content, ctx);
     return {
       file,
-      meta: { id: slug, slug, title: String(fm.title ?? slug), order: Number(fm.order ?? 999), difficulty: fm.difficulty, pattern: String(fm.pattern ?? ''), topic: fm.topic },
+      meta: { id: slug, slug, title: String(fm.title ?? slug), order: Number(fm.order ?? 999), difficulty: fm.difficulty, pattern: String(fm.pattern ?? ''), topic: fm.topic, readMinutes: readingMinutes(content) },
       html,
       // search only the problem statement, never the hidden solution
       searchText: `${fm.pattern ?? ''} ${content.split(':::solution')[0].slice(0, 400)}`.replace(/[#`*_>]/g, ' ').replace(/\s+/g, ' '),

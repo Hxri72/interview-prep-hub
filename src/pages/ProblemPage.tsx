@@ -41,6 +41,7 @@ export default function ProblemPage() {
       <div className="mt-3 mb-6 flex flex-wrap items-center gap-2">
         <LevelBadge level={meta.difficulty} />
         {meta.pattern && <Badge className="bg-slate-100 text-slate-700">Pattern: {meta.pattern}</Badge>}
+        <Badge className="bg-slate-100 text-slate-700">⏱ {meta.readMinutes} min read</Badge>
         {topic && <Link to={`/topic/${topic.id}`} className="text-sm text-brand-700 hover:underline">Learn the idea: {topic.title} →</Link>}
       </div>
       {html === null ? <Spinner /> : <Prose html={html} />}

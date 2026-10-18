@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router';
-import { stackGroups, stackBySlug, topicById, topics, topicsOf, problems } from '../lib/content';
+import { stackGroups, stackBySlug, topicById, topics, topicsOf, problems, formatMinutes } from '../lib/content';
 import { exportProgress, importProgress, resetProgress, useProgress } from '../lib/progress';
 import { allCardIds, planCardIds, planProblem, planTopics } from '../lib/plan';
 import { Card, LevelBadge, PageTitle, ProgressBar, btn } from '../components/ui';
@@ -47,12 +47,15 @@ export default function Dashboard() {
           <h2 className="mb-3 text-lg font-bold">📅 Today's plan</h2>
           <ol className="space-y-3 text-sm">
             <li>
-              <p className="font-semibold">1. Learn {todayTopics.length} topic{todayTopics.length === 1 ? '' : 's'}</p>
+              <p className="font-semibold">
+                1. Learn {todayTopics.length} topic{todayTopics.length === 1 ? '' : 's'}
+                {todayTopics.length > 0 && <span className="font-normal text-slate-500"> (about {formatMinutes(todayTopics.reduce((sum, t) => sum + t.readMinutes, 0))})</span>}
+              </p>
               <ul className="mt-1 space-y-1">
                 {todayTopics.map((t) => (
                   <li key={t.id}>
                     <Link to={`/topic/${t.id}`} className="text-brand-700 hover:underline">{t.title}</Link>
-                    <span className="text-slate-500"> · {stackBySlug.get(t.stack)?.title}{p.revise[t.id] ? ' · revise' : ''}</span>
+                    <span className="text-slate-500"> · {stackBySlug.get(t.stack)?.title} · {t.readMinutes} min{p.revise[t.id] ? ' · revise' : ''}</span>
                   </li>
                 ))}
                 {!todayTopics.length && <li className="text-slate-500">All topics learned 🎉</li>}

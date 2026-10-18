@@ -20,6 +20,7 @@ export interface TopicMeta {
   mustKnow: boolean;
   askedFrequency: Frequency;
   cardCount: number;
+  readMinutes: number; // estimated reading time
 }
 
 export interface ProblemMeta {
@@ -30,6 +31,7 @@ export interface ProblemMeta {
   difficulty: 'Easy' | 'Medium' | 'Hard';
   pattern: string;
   topic?: string;
+  readMinutes: number; // estimated reading time
 }
 
 export interface GlossaryEntry {

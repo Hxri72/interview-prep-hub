@@ -7,11 +7,11 @@ level: Intermediate
 mustKnow: true
 askedFrequency: very common
 summary:
-  - "The feature: an AI chatbot that helps recruiters create job descriptions (JDs)."
-  - The recruiter gives only the high-level details. OpenAI writes the rest of the JD.
+  - "The feature: an AI chatbot that helps recruiters create job descriptions (JDs). The recruiter gives the high-level details, and OpenAI writes the rest."
   - I built the backend. Another developer built the frontend.
   - Structured outputs mean the AI replies in fixed JSON that the code can trust, checked against a schema.
-  - If the AI reply doesn't match the schema, the backend must retry, fix or reject it — never save it blindly.
+  - "The flow: frontend → our Node.js backend → a Python agent that calls OpenAI → back to our backend. I mapped and validated the reply into our JD shape."
+  - The JD goes back to the recruiter as a preview. It is saved to MongoDB only after the recruiter confirms it.
 cards:
   - q: What does the JD chatbot do?
     a: A recruiter gives high-level job details, like role, skills and experience. OpenAI generates the full job description from them.
@@ -20,7 +20,9 @@ cards:
   - q: What is a structured output?
     a: The AI is asked to reply in JSON that matches a fixed schema. The backend checks it before using it, so other code can trust the data.
   - q: What do you do if the AI returns invalid JSON?
-    a: "The standard approach is to validate it, retry once with the error, and fall back or show an error if it still fails. [FILL IN: what your backend did]"
+    a: "We extract the fields we need, map them to our schema, and validate them. A field we can rebuild from the recruiter's request is filled in; a field with the wrong type is not treated as valid. [FILL IN: what happened next — retry or error]"
+  - q: Was the generated JD saved straight away?
+    a: No. The backend returned it to the frontend as a preview. It was saved to MongoDB only after the recruiter reviewed and confirmed it.
   - q: Why not just save the AI's plain text?
     a: Other parts of the system need fields like title, skills and experience separately. Plain text can't be used reliably by code.
 ---
@@ -56,62 +58,104 @@ The AI can write these parts. But the backend needs them as **separate fields**,
 
 ## 🛠️ What I built
 
-The **backend** of the AI JD chatbot.
+The **backend** of the AI JD chatbot. The AI part itself runs in a separate **Python agent** that talks to OpenAI.
 
 ```text
-Recruiter types high-level details in the chat
+Recruiter types: "MERN stack developer, 3 years"
         │
-Backend receives the message ─► sends it to the AI with instructions
+Frontend ─► our Node.js / Express backend
         │
-AI replies ─► backend checks the reply ─► saves the conversation
+Backend ─► Python agent ─► OpenAI writes the JD
+        │                     (e.g. adds MongoDB, Express.js, React, Node.js as skills)
+        ▼
+Backend gets the reply back
         │
-When the recruiter is happy ─► backend creates the job description
+Backend maps the reply to our JD shape and validates it
+        │
+Frontend shows a preview ─► recruiter reviews and edits
+        │
+Recruiter confirms ─► backend saves the JD in MongoDB
 ```
 
-**How structured outputs usually work (general idea):**
-- You give the model a **schema**: the exact fields and types you want back.
-- The model replies in JSON.
-- The backend **validates** the JSON against the schema before using it.
+**Why mapping was needed.** The Python agent's reply did not always have the exact shape our backend expected. So I:
+1. took out the fields we needed,
+2. mapped them to our JD fields,
+3. filled a field from the recruiter's request when we could rebuild it,
+4. treated a field with a wrong type or shape as **not valid**.
 
-Example (not the real SkillKeepr schema):
+Example of the idea (not the real SkillKeepr code). Save it as `map-jd.js` and run `node map-jd.js`:
 
 ```js
-const JobDescriptionSchema = z.object({          // the shape we expect from the AI
-  title: z.string(),                             // job title, e.g. "Node.js Developer"
-  summary: z.string(),                           // a short paragraph about the role
-  skills: z.array(z.string()),                   // list of skills, e.g. ["Node.js", "MongoDB"]
-  minExperienceYears: z.number().min(0),         // minimum years of experience, 0 or more
-});                                              // end of the schema
+const aiReply = { job_title: 'MERN Developer', skills: 'React, Node.js' }; // a messy AI reply: wrong field name, skills as one string
+const request = { role: 'MERN Developer', experience: 3 };                  // what the recruiter typed (3 = years)
+
+function mapJd(reply, req) {                                    // turns the AI reply into our JD shape
+  const skills = typeof reply.skills === 'string'               // did the AI send skills as one string?
+    ? reply.skills.split(',').map((s) => s.trim())              // yes → split at commas into a list
+    : reply.skills;                                             // no → use it as it is
+  const jd = {                                                  // the shape our backend expects
+    title: reply.title ?? reply.job_title ?? req.role,          // try each name; fall back to the recruiter's role
+    skills,                                                     // the list of skills
+    minExperienceYears: reply.minExperienceYears ?? req.experience, // rebuild from the request if missing
+  };                                                            // end of jd
+  if (!Array.isArray(jd.skills)) throw new Error('skills is not a list'); // wrong shape → not valid data
+  if (typeof jd.minExperienceYears !== 'number') throw new Error('experience is not a number'); // wrong type → not valid
+  return jd;                                                    // safe to send to the frontend as a preview
+}                                                               // end of mapJd
+
+console.log(mapJd(aiReply, request));                           // print the mapped JD
 ```
 
-[FILL IN: confirm how the backend validated the AI output — JSON Schema, Zod, Joi, or the OpenAI SDK's structured output option.]
-[FILL IN: which fields the AI returned.]
+```text
+{
+  title: 'MERN Developer',
+  skills: [ 'React', 'Node.js' ],
+  minExperienceYears: 3
+}
+```
+
+[FILL IN: the real JD fields and how the backend validated them. Don't name a validation library until you check the code.]
 [FILL IN: the resume also says "text assistant" — what was it, and did you work on it?]
 
 ## 🧗 The hard part
 
-**How this usually goes:** AI replies are not always perfect. Sometimes a field is missing. Sometimes the JSON is broken. Sometimes the text is too long. The backend must handle all of this without breaking the recruiter's chat.
+**The AI reply's shape changed.** Sometimes a field was missing, named differently, or the wrong type. The backend had to turn every reply into the same predictable shape, so the frontend never broke.
 
-[FILL IN: the real hard part for you — invalid replies, slow replies, keeping the conversation history, or something else.]
+**Deciding what to fix and what to reject.** A missing title can come from the recruiter's request. But a broken skills field can't be guessed. So we only filled in fields we could rebuild safely.
+
 [FILL IN: what happened when validation failed — retry, default values, or an error message.]
 
 ## 🏆 The result
 
-Recruiters can create a full job description from a few high-level details. The backend only saves AI replies that match the expected structure.
+- Recruiters can create a full job description from a few high-level details.
+- The frontend always gets the same JD shape, so the preview doesn't break.
+- Nothing is saved until the recruiter confirms it, so bad AI text never lands in the database by itself.
 
 [FILL IN: any result — time saved per JD, number of JDs created this way, or feedback.]
 
 ## 🗣️ How to answer in an interview
 
-> "At SkillKeepr I built the backend of an AI chatbot that helps recruiters create job descriptions. The recruiter gives the high-level details, like the role and key skills, and OpenAI generates the rest of the JD. Another developer built the frontend.
+> "At SkillKeepr I built the backend of an AI feature that helps recruiters create job descriptions. Another developer built the frontend.
 >
-> The important part was making the AI's reply usable by code. Other features need the JD as separate fields, not one paragraph. So we asked the model for structured output, JSON that matches a schema, and validated it before saving.
+> The recruiter types the high-level request, like 'MERN stack developer'. The frontend sends it to our Node.js and Express backend. The backend calls a Python agent that uses OpenAI to generate the JD. For a MERN role, it adds skills like MongoDB, Express, React and Node.
 >
-> [FILL IN: how you validated it and what happened when validation failed.]
+> The reply didn't always match the structure our backend expected. So I extracted the fields we needed, mapped them to our schema, and validated them. If a field could be rebuilt from the original request, we normalised it. If a field had the wrong type, we didn't treat it as valid.
 >
-> The hard part was [FILL IN]. The result is that recruiters can create a full JD in a few steps."
+> Then we returned the JD to the frontend as a preview. It was saved to MongoDB only after the recruiter reviewed and confirmed it."
 
 ## 🔁 Follow-up questions
+
+### Why did the backend need to map and validate the AI response?
+
+AI output can change shape from one reply to the next. The frontend needs one predictable structure. So the backend takes out the needed fields, maps them to our schema and checks them before sending them on.
+
+### Why not save the JD as soon as the AI writes it?
+
+The AI can make mistakes. The recruiter must check it first. So we show a preview and save to MongoDB only after the recruiter confirms.
+
+### Why is there a Python agent between your backend and OpenAI?
+
+The AI logic lived in a separate Python agent. Our Node.js backend called it and handled the mapping, validation and saving. [FILL IN: why the team chose Python for the agent, if you know]
 
 ### What if the model returns invalid JSON?
 

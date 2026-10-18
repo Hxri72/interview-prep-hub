@@ -10,6 +10,7 @@ summary:
   - The voice agent's call is built as a phase-based state machine — clear phases, and clear rules for moving between them.
   - Claude (the LLM) writes the words inside a phase; the code decides which phase is allowed next.
   - This keeps the call predictable, easier to test and easier to debug than one free-form prompt.
+  - "A real fix of mine: the agent took a 2–3 second pause as the end of a turn and interrupted candidates. I raised the wait to about 5–7 seconds."
   - "Be ready to name every phase and say what moves the call forward. [FILL IN the real phases.]"
 cards:
   - q: What is a state machine?
@@ -20,6 +21,8 @@ cards:
     a: Claude, in the standard voice setup. Speech-to-text and text-to-speech are separate services.
   - q: What were the phases, and what moves the call forward?
     a: "[FILL IN: e.g. greeting → consent → questions → candidate's questions → wrap-up, and what moves each one.]"
+  - q: What state-machine problems did you debug?
+    a: Calls that connected but the agent didn't reply, and the agent interrupting candidates too early. I traced the state changes in CloudWatch and the service logs, and raised the end-of-turn wait from 2–3 to 5–7 seconds.
   - q: How does the LLM fit with the state machine?
     a: "Each turn, the code sends Claude the current phase's instructions and the conversation so far; Claude replies and signals if the phase goal is met; the code checks that and moves to the next allowed phase. [FILL IN: confirm your design.]"
 ---
@@ -71,14 +74,29 @@ If you give an LLM one big prompt and let it run, it may skip questions, repeat 
 [FILL IN: confirm steps 1–5 match your design.]
 [FILL IN: where the call's state is kept during a call, and what happens if the service restarts.]
 
+**Turn-taking inside each phase.** The flow also tracks **who is talking right now**:
+
+| Turn state | What the service does next |
+|---|---|
+| Candidate is speaking | Listen and wait. Don't reply yet. |
+| Candidate has finished | Turn the speech into text and ask Claude for a reply. |
+| Agent is speaking | Play the reply. Watch for the candidate interrupting. |
+
+**Voice activity detection** (VAD) helps here. It is code that notices when someone is speaking and when they stop. The service logs the timing of each stage, so you can see where a call slows down.
+
 ## 🧗 The hard part
 
-Usual hard parts:
-- **Deciding when a phase is "done".** The LLM's judgement must be checked by code, not trusted blindly.
-- **Off-script candidates.** People ask questions, go silent or interrupt. You need rules for these cases.
-- **Keeping the phases written down in one place,** so the code, the prompts and the team all agree.
+**Deciding when the candidate has finished speaking.** Some candidates pause to think. The agent took a pause of about **2–3 seconds** as the end of their turn. So it started talking and **interrupted** them.
 
-[FILL IN: your hardest part, and what you did.]
+What I did:
+1. I made test calls myself and watched the voice service's logs and **AWS CloudWatch** (AWS's log service).
+2. I followed each stage: candidate speaking → transcription → Claude's reply → agent speaking.
+3. I raised the wait to about **5–7 seconds**, so candidates had time to continue.
+4. I tested with more calls and checked the logs again.
+
+**Another problem:** some calls **connected, but the agent never replied**. I traced the logs, the settings and the state changes to find where the call got stuck. [FILL IN: what the cause and fix were.]
+
+We also discussed how to handle long silence. [FILL IN: what was decided.]
 
 ## 🏆 The result
 
@@ -86,7 +104,8 @@ Usual hard parts:
 - When a call goes wrong, you can see exactly which phase it was in.
 - Adding or changing a question means changing one phase, not rewriting a giant prompt.
 
-[FILL IN: benefits you really saw — fewer broken calls, easier debugging?]
+- Logging each stage's timing helped me find exactly where the interruptions came from.
+- After the wait change, the agent interrupted candidates less.
 
 ## 🗣️ How to answer in an interview
 
@@ -94,9 +113,9 @@ Usual hard parts:
 >
 > The call has these phases: [FILL IN: your phases]. On each turn, the code sends Claude the current phase's instructions and the conversation so far. Claude replies, and signals whether that phase's goal is met. The code checks that signal and moves to the next allowed phase. So Claude handles the natural language, but the code controls the flow.
 >
-> [FILL IN: one real benefit you saw — e.g. easier testing, or seeing exactly which phase caused a problem.]
+> The flow also tracks turn-taking: whether the candidate is speaking, has finished, or the agent is speaking. Voice activity detection helps decide when to transcribe, when to wait and when to reply.
 >
-> [FILL IN: one hard case you handled, like interruptions or long silence.]"
+> One real problem I fixed: the agent treated a 2–3 second pause as the end of the candidate's turn, so it interrupted people who were thinking. I traced it in CloudWatch and the service logs, raised the wait to about 5–7 seconds, and tested with more calls. Because every stage is separate and logged, it was easy to see where the problem was."
 
 ## 🔁 Follow-up questions
 
@@ -107,6 +126,14 @@ Defined states and transitions, with one active state at a time. It gives a pred
 ### What were the phases, and what moves the call forward?
 
 Name each phase and the event or answer that moves it. [FILL IN: real phases and triggers.]
+
+### Why not just reply as soon as the candidate stops talking?
+
+People pause to think. A short wait makes the agent interrupt them. A long wait makes the call feel slow. I found 2–3 seconds was too short, and moved it to about 5–7 seconds. It is a trade-off between speed and politeness.
+
+### How did you debug a call where the agent didn't reply?
+
+I made test calls and followed the logs stage by stage: speech received, transcribed, sent to Claude, reply spoken. The stage where the log stopped showed where the call got stuck. [FILL IN: what the cause was.]
 
 ### How is this similar to LangGraph or agent frameworks?
 

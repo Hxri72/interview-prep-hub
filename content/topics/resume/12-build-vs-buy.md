@@ -1,5 +1,5 @@
 ---
-title: Build-vs-buy evaluation for the voice stack
+title: "Build vs buy: replacing Retell AI with our own voice pipeline"
 template: story
 stack: resume
 order: 12
@@ -7,124 +7,142 @@ level: Intermediate
 mustKnow: true
 askedFrequency: common
 summary:
-  - "⚠️ Confirm the details of this resume line before your interview — they aren't confirmed yet."
-  - "The choice: a managed voice-AI vendor, or our own pipeline (Twilio + Google speech services + Claude) hosted on AWS."
-  - The fair way to compare is cost per call at different call volumes, plus engineering effort and control.
-  - "Buying is usually cheaper at small scale. Building often wins at large scale. The \"switching point\" is where the lines cross."
-  - The resume says the recommendation was presented to leadership and adopted.
+  - "We first used Retell AI, a ready-made voice-agent service. Its cost became a concern."
+  - "I researched an alternative: Twilio for calls, Google Cloud Speech-to-Text and Text-to-Speech, and an LLM for the conversation."
+  - I presented the cost and feasibility findings to the team. I was then asked to build it as a separate voice service.
+  - "I estimated about 65% lower cost. It is an estimate, not a measured production saving."
+  - "Trade-offs: lower cost and more control, but more build effort and we must maintain it ourselves."
 cards:
   - q: What does build vs buy mean?
     a: Deciding whether to build a system yourself or pay a vendor for a ready-made one.
-  - q: What did you compare for the voice stack?
-    a: "A managed vendor against our own pipeline: Twilio for calls, Google Cloud speech services, and Claude as the brain, hosted on AWS. [FILL IN: confirm]"
-  - q: How do you compare costs fairly?
-    a: Work out the cost per call for each option at several volumes, for example 1,000, 10,000 and 100,000 calls a month, and add engineering and maintenance effort.
-  - q: What is a scale-based switching recommendation?
-    a: '"Use option A below a certain number of calls, and switch to option B above it, because that is where B becomes cheaper."'
+  - q: Why did you look for an alternative to Retell AI?
+    a: Cost became a concern as we made more calls. So I researched building our own pipeline.
+  - q: What did you propose instead?
+    a: Twilio for the phone call, Google Cloud speech-to-text and text-to-speech, and an LLM (Claude) for the conversation, as a separate voice service.
+  - q: How much did it save?
+    a: I estimated about 65% lower cost. It is an estimate from my research, not a measured saving.
+  - q: What trade-offs did you consider?
+    a: Cost, build effort, control over the pipeline, and the work of maintaining the service ourselves.
 ---
-
-:::warning[Confirm before the interview]
-You haven't confirmed the details of this resume line yet. Before an interview, check the vendor name, the costs and the switching point. Every part marked [FILL IN] must be true before you say it.
-:::
 
 ## 💡 What is it?
 
-Your resume says you **led a build-vs-buy evaluation** for the voice stack. You compared a **managed vendor** with a **self-built pipeline**. The self-built pipeline was GCP speech services + Twilio + Claude API.
+"**Build vs buy**" means: do we build it ourselves, or pay for a ready-made product?
 
-The resume says you **presented a scale-based recommendation** to leadership, and the team adopted it.
+SkillKeepr's AI voice agent first used **Retell AI**. Retell AI is a ready-made service for voice agents. As usage grew, its **cost became a concern**.
 
-"Build vs buy" means: do we build it ourselves, or pay someone for a ready-made product?
+I researched building our own pipeline instead. I presented the findings, and the team asked me to build it.
 
 ## 🏠 Real-life example
 
 Think of **school lunch**.
 
-You can **buy** lunch from the canteen every day. It is easy, but each plate costs money. Or you can **cook** at home. You buy a stove and learn to cook first, but each plate is cheap.
+You can **buy** lunch from the canteen every day. It is easy, but each plate costs money. Or you can **cook** at home. You need a stove and some practice first, but each plate is cheap.
 
-If you eat at school **twice a month**, buying is smarter. If you eat there **every day for years**, cooking wins.
+If you eat at school every day for years, cooking wins.
 
-- **Canteen** = the managed vendor (buy).
-- **Cooking at home** = your own pipeline (build).
-- **Stove and learning** = engineering effort.
-- **"Every day for years"** = high call volume, where building becomes cheaper.
+- **The canteen** = Retell AI (buy).
+- **Cooking at home** = our own pipeline: Twilio + Google speech + an LLM (build).
+- **The stove and practice** = the engineering effort to build it.
+- **Washing the pots every day** = maintaining the service ourselves.
+- **Eating every day** = making a lot of calls, where building becomes cheaper.
 
 ## 🧩 The problem
 
-The AI voice agent phones candidates for recruiters and collects their basic details. As usage grows, the cost per call matters a lot.
+The voice agent phones candidates and collects their basic details. Every call costs money.
 
-A managed voice vendor is fast to start with. A self-built pipeline needs engineering work, but gives more control and may cost less per call at scale.
+With Retell AI, the **cost per call** was high for the number of calls we wanted to make. [FILL IN: what made cost a concern — call volume, a price change, a customer plan?]
 
-[FILL IN: what triggered the evaluation — cost, quality, control, or a leadership question?]
+We needed a cheaper way that still sounded good and stayed reliable.
 
 ## 🛠️ What I built
 
-**Known facts about the voice stack:**
-- **Self-built (standard voice):** Twilio for phone calls, Google Cloud Speech-to-Text and Text-to-Speech, Claude as the brain. Hosted on AWS.
-- **Premium voice:** xAI Grok Voice instead of Google's speech services.
+**1. Research.** I looked at building the same thing from separate parts:
 
-**From the resume:** you compared this with a managed vendor and presented a switching recommendation.
+| Part | Job | Service |
+|---|---|---|
+| Phone line | places the call, carries the audio | Twilio |
+| Ears | turns the candidate's speech into text | Google Cloud Speech-to-Text |
+| Brain | decides what to say next | an LLM (Claude) |
+| Voice | turns the reply text into speech | Google Cloud Text-to-Speech |
 
-[FILL IN: the managed vendor's name.]
-[FILL IN: cost per call for each option, and the volumes you checked.]
-[FILL IN: the switching point — "below X calls a month, buy; above X, build".]
+**2. Cost and feasibility.** I compared the cost of this pipeline with Retell AI. I also checked that it was possible to build with our team. I **estimated about 65% lower cost**.
 
-**How this is usually done (general knowledge):**
+[FILL IN: how you worked out the 65% — for example, cost per minute of each part vs Retell's price per minute, at your call volume.]
+
+**3. Presentation.** I presented the cost and feasibility findings to the team.
+
+**4. Build.** I was asked to implement it. I built it as a **separate voice service**. See [the voice agent story](topic:resume/voice-agent-microservice).
+
+**How a fair cost comparison is usually done (general knowledge):**
 
 ```text
-Cost per call
-   │\
-   │ \  vendor (simple, fixed price per minute)
-   │  \___________________
-   │       /
-   │      /  self-built (high start cost, cheap per call)
-   │_____/________________________ calls per month
-         ↑ switching point
+Cost per month
+   │            / vendor (price per minute × minutes)
+   │          /
+   │        /        ____ own pipeline (start cost, then cheap per minute)
+   │      /   ______/
+   │    /____/
+   │___/_________________________ calls per month
+       ↑ switching point: building becomes cheaper
 ```
 
-1. List all costs for each option: per-minute fees, AI model tokens, speech services, phone minutes, hosting, engineering time.
-2. Calculate cost per call at several volumes.
-3. Add non-money factors: control, voice quality, data privacy, how fast you can change things.
-4. Find the volume where the self-built option becomes cheaper.
+1. List every cost: phone minutes, speech services, LLM tokens (the units an LLM charges for), hosting, and engineering time.
+2. Work out the cost per call for each option.
+3. Add the non-money factors: control, voice quality, data privacy, and maintenance.
 
 ## 🧗 The hard part
 
-**General knowledge:** the hard part is making the comparison fair. Vendor prices are simple. Your own costs are spread across many services and engineering hours, and they are easy to underestimate.
+**Making the comparison fair.** Retell AI has one simple price. Our own pipeline has many small costs spread over many services. These are easy to underestimate.
 
-[FILL IN: the real hard part for you.]
+**Honest trade-offs.** Building gives lower cost and more control. But we must build it, fix it and keep it running ourselves. Retell AI did that work for us.
+
+[FILL IN: the hardest part for you in practice.]
 
 ## 🏆 The result
 
-From the resume: leadership **adopted** the scale-based recommendation.
+- The team adopted the proposal, and I built the separate voice service.
+- **Estimated** cost saving: about **65%**. This came from my research. It was not measured in production.
+- We got more **control** over the call flow, for example the phases of the call and how long to wait for the candidate.
 
-[FILL IN: what was decided in practice, and what happened after.]
+[FILL IN: whether Retell AI was fully switched off, and when.]
 
 ## 🗣️ How to answer in an interview
 
-Only use this story after you've confirmed the [FILL IN] parts.
+> "Our AI voice agent was first built on Retell AI, which is a managed voice-agent platform. As we made more calls, cost became a concern. So I researched building our own pipeline: Twilio for telephony, Google Cloud for speech-to-text and text-to-speech, and an LLM for the conversation.
+>
+> I compared the costs and checked the feasibility. I presented the findings to the team. My estimate was that this could cut costs by around 65%. That's an estimate from my research, not a measured production number.
+>
+> I was then asked to build it, so I implemented it as a separate voice service.
+>
+> The trade-off was clear. We got lower cost and full control over the pipeline. In return, we took on the build effort and the job of maintaining it ourselves."
 
-> "For our AI voice agent, I compared two options: a managed voice-AI vendor, and our own pipeline using Twilio, Google's speech services and Claude, hosted on AWS. I compared the cost per call at different volumes, plus engineering effort and how much control we'd have.
->
-> [FILL IN: the numbers — e.g. at low volume the vendor was cheaper, but above X calls a month our own pipeline was cheaper.]
->
-> I presented a scale-based recommendation to leadership: [FILL IN: the exact recommendation]. The team adopted it."
+**If they ask "how did you measure 65%?"** answer honestly: "It was an estimate from comparing per-minute costs. We didn't do a formal before-and-after measurement."
 
 ## 🔁 Follow-up questions
 
+### What trade-offs did you consider?
+
+- **Cost:** our own pipeline was estimated to be much cheaper per call.
+- **Effort:** we had to build and test it ourselves.
+- **Control:** we could change every step, like the call phases and the wait times.
+- **Maintenance:** we now fix and run it ourselves. Retell AI used to do that for us.
+
 ### What costs did you include for the self-built option?
 
-Typical items: phone minutes (Twilio), speech services, AI model tokens, AWS hosting, and engineering and maintenance time. [FILL IN: your real list.]
+Typical items: Twilio phone minutes, Google speech services, LLM tokens, hosting, and engineering time. [FILL IN: your real list.]
 
 ### Why not just pick the cheapest option?
 
-Cost is one factor. Control over the call flow, voice quality, data privacy and speed of change also matter. A cheap option you can't change can cost more later.
+Cost is only one factor. Voice quality, reliability, control and the effort to maintain it also matter. A cheap option that breaks often costs more in the end.
 
-### How did you present it to leadership?
+### Would you ever go back to a managed vendor?
 
-[FILL IN: a document, slides, or a meeting — and what they asked.]
+At very low call volumes, maybe, because a vendor needs no build or maintenance work. Above a certain volume, our own pipeline costs less per call. [FILL IN: your real view.]
 
-### Would your answer change at 10× the volume?
+### Is the 65% a measured number?
 
-Usually, the self-built option becomes even more attractive at higher volume, because its cost per call stays low. [FILL IN: confirm with your numbers.]
+No. It is my estimate from the research. I say "estimated" every time, unless I can show a measured saving.
 
 ## 📚 Topics to revise
 
@@ -132,3 +150,4 @@ Usually, the self-built option becomes even more attractive at higher volume, be
 - [Grok Voice as a premium option](topic:resume/grok-voice-premium)
 - [Voice AI basics](topic:ai/voice-ai)
 - [Microservices](topic:architecture/microservices)
+- [Resume question bank](topic:resume/question-bank)

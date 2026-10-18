@@ -62,6 +62,8 @@ Use ONLY facts from the resume and notes. Every missing detail (numbers, names, 
 **`template: scenario`** is for Debugging Scenarios:
 `## 💡 What is it?` (the symptom) → `## 🏠 Real-life example` → `## 🔎 Detect` → `## 🐞 Debug` → `## 🔧 Fix` (code with every line commented) → `## 🛡️ Prevent` → `## 🗣️ How to answer in an interview` → `## 🔁 Follow-up questions` → `## ✅ Quick check`.
 
+**`template: bank`** is for the Resume question bank (`resume/question-bank`): `## 💡 What is it?` → `## 🏠 Real-life example` → `## 🧩 How to use this page` → one collapsible `###` Q&A section per area (see `BANK_SECTIONS` in `plugins/content.ts`) → `## 🛡️ Honest-answer reminders` → `## ✅ Final revision checklist`. Keep it in sync with the story pages.
+
 **`template: answer`** is for HR & Behavioural:
 `## 💡 What they really want to know` → `## 🏠 Real-life example` → `## 🧩 How to structure your answer` → `## 🗣️ Sample answer` (first person, built only from confirmed facts plus `[FILL IN]`) → `## ✅ Do` → `## ❌ Don't` → `## 🔁 Follow-up questions` (### headings) → `## ✍️ Your own version` (a fill-in skeleton).
 Never put real salary numbers or notice details on the public site.
@@ -93,9 +95,9 @@ To add a new template, add its section list to `TEMPLATES` in `plugins/content.t
 - Write all content originally. Don't copy text from other websites.
 - Next.js: Hari has **not** used it in production. Keep it beginner level, and keep interview answers honest about that.
 
-## Known facts (resume + notes + Hari's answers on 2026-10-09)
+## Known facts (resume + notes + Hari's answers on 2026-10-09 and 2026-10-11)
 
-Sources: the resume, the PDF notes, `source-notes/INTERVIEW_GUIDE.md` (an internal guide to how SkillKeepr is built), and Hari's own answers in chat. The guide says what the **codebase** contains, not who built it. Only claim Hari built something if he said so.
+Sources: the resume, the PDF notes, the "SkillKeepr Backend Interview Preparation Notes" Hari pasted on 2026-10-11 (confirmed by him where they conflicted), `source-notes/INTERVIEW_GUIDE.md` (an internal guide to how SkillKeepr is built), and Hari's own answers in chat. The guide says what the **codebase** contains, not who built it. Only claim Hari built something if he said so.
 
 **Public-site rule:** the site is public. Write SkillKeepr at the level Hari would say in an interview: features, what he built, high-level architecture. NEVER publish internal repo, file or env-variable names, hostnames, or the security weaknesses listed in the guide.
 
@@ -113,13 +115,16 @@ Sources: the resume, the PDF notes, `source-notes/INTERVIEW_GUIDE.md` (an intern
 
 **Hari's own work:**
 - **Stripe:** only the **auto-renewal** part: the renewal cron and the webhook trigger. He tested it with **Stripe Test Clocks**. Other developers built the purchase flow.
-- **AI JD chatbot:** recruiters give high-level JD details, and OpenAI generates the rest. Hari built the **backend**; another developer built the frontend. Structured-output details: [FILL IN].
+  - The codebase (not necessarily Hari) has: `charge_automatically` collection, stored subscription ID and plan dates, scheduled jobs for expiry reminders and blocked-account notices, account blocking after a configured grace period, a manual renewal path, and a separate free-tier extension flow. Exact event names and retry rules: [FILL IN]. Hari may say he would revisit the module for low-level details.
+- **AI JD chatbot:** recruiters give high-level JD details, and OpenAI generates the rest. Hari built the **backend**; another developer built the frontend.
+  - Flow: frontend → Node backend → a **Python agent** that calls OpenAI → back to the Node backend. Hari **mapped and validated** the response into the expected JD shape (it didn't always match). The JD is returned for **preview** and saved to MongoDB **only after the recruiter confirms**. Validation library: [FILL IN] (don't name one).
 - **ATS integration via unified.to:**
-  - unified.to is one API for many ATSs: Greenhouse, Lever, Zoho, and others.
+  - unified.to is one API for many ATSs: Workable, Greenhouse, Lever, Zoho, and others. Recruiters authorise their ATS account; Hari built the backend, another developer the frontend.
   - Built by Hari's team: pulling jobs (they already existed in Greenhouse/Lever), pulling candidates, and syncing interview status.
-  - A **Sync button** on a JD fetches new candidates. Duplicates are checked by **email**; if the candidate already exists, the full details aren't fetched again.
-  - Tested with Zoho, Greenhouse and Lever. It was a **trial feature with no real customer usage**. Never call it Workable.
-- **Shared core-service library:** Hari worked on it, including the authentication modules (built together with the team). The "~30% faster development" claim needs a source: [FILL IN: how measured].
+  - A **Sync button** on a JD fetches new candidates (manual sync). There was also a configurable **time-based (scheduled) sync**; intervals: [FILL IN]. It was **not** webhook-driven.
+  - Duplicates are checked by **email**; if the candidate already exists, the full details aren't fetched again and the existing record is **not updated**. The existing candidate is just linked to the JD, and an existing candidate–JD link is skipped.
+  - Tested with **Workable**, Zoho, Greenhouse and Lever. It was a **trial feature with no real customer usage**. Don't claim a compound unique index unless verified.
+- **Shared core-service library:** Hari worked on it, including the authentication modules (built together with the team). Shared patterns in the codebase: a response builder, authorizer decorators, pagination/sorting helpers, data-transformation helpers, Stripe wrappers, integration utilities. The "~30% faster development" is an **estimate, not measured**. Don't claim he built the whole library.
 - **Other work:** backend code optimisation, Jest unit tests, Swagger docs. PostgreSQL is used: [FILL IN: where].
 - **MongoDB aggregations and indexes:** Hari doesn't remember exactly which pipelines or indexes he wrote. Pages must suggest that he confirm one real pipeline and one real index from the code before claiming them.
 
@@ -128,7 +133,11 @@ Sources: the resume, the PDF notes, `source-notes/INTERVIEW_GUIDE.md` (an intern
 - All services are **hosted on AWS** (not GCP).
 - Standard voice: Twilio + Google Cloud Speech-to-Text and Text-to-Speech + Claude as the LLM, driven by a phase-based state machine.
 - Premium voice: xAI Grok Voice instead of Google's speech services. **Grok handles only the call audio (the voice).** Claude still does the thinking: the conversation logic and decisions, in both modes.
-- Flow, with no recruiter involved:
+- The voice service is a **Python FastAPI** microservice (the main platform backend is Node.js). The main backend calls it over HTTP to start a call; it calls back over HTTP with the transcript and recording info. Internal networking details: don't guess.
+- **Build-vs-buy (confirmed 2026-10-11):** SkillKeepr first used **Retell AI**; cost became a concern. Hari researched Twilio + Google Cloud speech + an LLM, presented cost and feasibility to the team, and was asked to build the separate voice service. He **estimated** about **65%** lower cost (an estimate, not measured).
+- **Latency/turn-taking fix (Hari's):** the agent took a short pause as the end of the candidate's turn and interrupted. He raised the wait from about **2–3 s to 5–7 s**, tested with calls, and checked AWS CloudWatch and voice-service logs. He also saw calls that connected but the agent didn't respond, and traced them in the logs.
+- Interview levels: configurations such as **basic** (experience, notice period, visa/sponsorship; about 5–10 minutes) and **intermediate** (skills and past experience; longer).
+- Calls start in two ways: **a recruiter can start a call** from SkillKeepr, and calls also go out **automatically** to eligible candidates. Automatic flow:
   1. Candidates are scored.
   2. Each candidate who is **eligible after scoring** gets an automatic call from the AI agent.
   3. The call recording is **stored in S3**.
@@ -139,8 +148,8 @@ Sources: the resume, the PDF notes, `source-notes/INTERVIEW_GUIDE.md` (an intern
 **Railway:** used only for personal projects.
 
 **Unclear, so flag them:**
-- **Gap analysis:** Hari doesn't know about it. Mark it "prepare or remove from resume".
-- **Build-vs-buy:** not yet confirmed. Keep it as [FILL IN].
+- **Gap analysis (confirmed 2026-10-11):** the tech lead asked Hari to find why resume scoring and candidate scoring gave different results between the **prototype and production**. He traced the logic (technical skills, experience, trust score), found the formulas differed, aligned production with the prototype (the prototype held the intended business rules), and checked the applied formula in **CloudWatch logs** (no formal automated test unless confirmed). Trust Score: he investigated how it is calculated but did **not** fix a Trust Score issue.
+- **Context API and GCP:** the notes' "Tell me about yourself" mentions both. Keep the rules above: never claim Context API at work, and GCP means only Google Cloud speech services (hosting is AWS).
 
 **Education:** BSc Physics (2022), MERN course at Brototype Kozhikode (2023), MCA at Amity Online (2026).
 
@@ -148,7 +157,7 @@ Sources: the resume, the PDF notes, `source-notes/INTERVIEW_GUIDE.md` (an intern
 
 ## Workflow
 
-All 22 stacks are written (535 topics, October 2026). When adding or editing topics, follow the templates above. Run `npm run build`, fix every error, and add new glossary words to `content/glossary.yaml`. Every definition with `: ` in it must be in double quotes.
+All 22 stacks are written (544 topics, October 2026). When adding or editing topics, follow the templates above. Run `npm run build`, fix every error, and add new glossary words to `content/glossary.yaml`. Every definition with `: ` in it must be in double quotes.
 Practice problems live in `content/problems/`: Problem → Examples → Think first (`:::hint`) → Solution (`:::solution`, two ways, complexity, "what to say"). Use these pattern names: Hash map / Set, Two pointers, Sliding window, Kadane, Prefix sum, Binary search, Stack, Single pass, Recursion, Math / XOR, Reverse trick, Sorting.
 
 ## Slugs already linked from written topics (use these exact file slugs when writing those stacks)

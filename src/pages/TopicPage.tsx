@@ -68,6 +68,7 @@ export default function TopicPage() {
           <LevelBadge level={meta.level} />
           {meta.mustKnow && <Badge className="bg-rose-100 text-rose-800">⭐ Must know</Badge>}
           <Badge className={freqStyle[meta.askedFrequency]}>Asked: {meta.askedFrequency}</Badge>
+          <Badge className="bg-slate-100 text-slate-700">⏱ {meta.readMinutes} min read</Badge>
         </div>
         <div className="mb-6">{actions}</div>
 

@@ -9,16 +9,16 @@ askedFrequency: very common
 summary:
   - SkillKeepr is a multi-tenant recruitment SaaS built by Haspaces Technology Solutions. I have worked there as a Software Engineer since May 2023.
   - "It has three portals: an admin portal for recruiters, a talent portal for candidates, and a cloud-admin portal for SkillKeepr staff."
-  - Each customer company gets its own database, but all companies share the same servers.
   - "My parts: Stripe auto-renewal, the backend of the AI job-description chatbot, ATS integration through unified.to (with my team), shared core-service and auth modules, backend optimisation, Jest tests and Swagger docs."
-  - "My most recent project: an AI voice agent that phones candidates for recruiters."
+  - "My most recent project: an AI voice agent that phones candidates for recruiters. I proposed it as a cheaper option than Retell AI, then built it."
+  - "I started with bug fixes and small features, then took ownership of bigger backend features and integrations. My main focus is the backend."
 cards:
   - q: What is SkillKeepr, in one sentence?
     a: A multi-tenant recruitment SaaS where companies manage jobs, candidates and interviews, with AI helping in job descriptions, search and screening.
   - q: Who uses the platform?
     a: Recruiters and hiring managers (admin portal), candidates (talent portal), and SkillKeepr staff who manage customer companies (cloud-admin portal).
   - q: What is your role there?
-    a: Software Engineer since May 2023. I build backend features in Node.js and TypeScript, and also work on React screens.
+    a: Software Engineer since May 2023. I focus on backend development and integrations in Node.js and TypeScript. I started with bug fixes and grew into owning larger features.
   - q: Name three things you built.
     a: The Stripe auto-renewal flow (cron + webhook), the backend of the AI job-description chatbot, and an AI voice agent that calls candidates.
   - q: How is your time split between frontend and backend?
@@ -62,10 +62,14 @@ These are the parts I personally worked on:
 
 - **Stripe auto-renewal** — the renewal cron and the webhook trigger. See [Stripe billing](topic:resume/stripe-billing).
 - **The AI job-description chatbot (backend)** — a recruiter gives the main points, and OpenAI writes the rest. Another developer built the frontend. See [OpenAI structured outputs](topic:resume/openai-structured-outputs).
-- **ATS integration through unified.to** (with my team) — pulling jobs and candidates from Greenhouse, Lever and Zoho. See [ATS integration](topic:resume/ats-integration).
+- **ATS integration through unified.to** (backend; with my team) — pulling jobs and candidates from Workable, Greenhouse, Lever and Zoho. See [ATS integration](topic:resume/ats-integration).
 - **The shared core-service library**, including the authentication modules, together with the team. See [Reusable modules](topic:resume/reusable-modules).
 - **Backend code optimisation**, **Jest unit tests** and **Swagger** API docs.
-- **My recent project:** an **AI voice agent** that phones candidates for recruiters. See [Voice agent](topic:resume/voice-agent-microservice).
+- **My recent project:** an **AI voice agent** that phones candidates for recruiters. We first used a paid tool called Retell AI. I researched a cheaper pipeline, presented it, and built it as a separate service. See [Voice agent](topic:resume/voice-agent-microservice) and [Build vs buy](topic:resume/build-vs-buy).
+- **Scoring investigation** — I found why prototype and production gave different candidate scores, and aligned the formulas. See [Gap analysis](topic:resume/gap-analysis).
+- **Production support** — tracing issues like voice-agent delays in AWS CloudWatch logs.
+
+**How my role grew:** I started with **bug fixes and small features**. Over time I took ownership of **larger backend features and integrations**. When a feature needed a new API design or a new outside service, I discussed the approach with my tech lead first. Then I built it.
 
 [FILL IN: team size and roles — how many developers, QA, product, design.]
 [FILL IN: how work is assigned to you — sprint tickets, feature ownership?]
@@ -85,17 +89,23 @@ The platform is big. It has many services, many background jobs and many externa
 
 ## 🗣️ How to answer in an interview
 
-> "I'm a Software Engineer at Haspaces Technology Solutions, where I work on SkillKeepr. It's a multi-tenant recruitment SaaS. There are three portals: one for recruiters, one for candidates, and one for our own team to manage customer companies. Each customer gets its own database, and the backend is serverless on AWS.
+> "I'm a Software Engineer at Haspaces Technology Solutions, where I work on SkillKeepr. My main focus is backend development and integrations. I started with bug fixes and small features, and grew into owning bigger backend features.
 >
-> On the backend I built the Stripe auto-renewal flow, which is a renewal cron plus webhook handling. I built the backend for our AI job-description chatbot, where a recruiter gives the key points and OpenAI writes the full job description. With my team I built the ATS integration through unified.to, so we can pull jobs and candidates from tools like Greenhouse and Lever. I've also worked on our shared core-service library, including authentication, plus Jest tests, Swagger docs and backend optimisation.
+> SkillKeepr It's a multi-tenant recruitment SaaS. There are three portals: one for recruiters, one for candidates, and one for our own team to manage customer companies. Each customer gets its own database, and the backend is serverless on AWS.
 >
-> Most recently, I built an AI voice agent. It phones candidates for recruiters and collects their basic details, so recruiters save time on first calls."
+> On the backend I built the Stripe auto-renewal flow, which is a renewal cron plus webhook handling. I built the backend for our AI job-description chatbot, where a recruiter gives the key points and OpenAI writes the full job description. With my team I built the ATS integration through unified.to, so we can pull jobs and candidates from tools like Workable, Greenhouse and Lever. I've also worked on our shared core-service library, including authentication, plus Jest tests, Swagger docs and backend optimisation.
+>
+> Most recently, I worked on an AI voice agent. We were using Retell AI, but cost was a concern. I researched a pipeline with Twilio, Google's speech services and an LLM, presented it to the team, and then built it as a separate service. It phones candidates and collects their basic details, so recruiters save time on first calls."
 
 ## 🔁 Follow-up questions
 
 ### Which parts did you build yourself, and which did others build?
 
-Be exact. Mine: Stripe auto-renewal (cron + webhook), the JD chatbot backend, the voice agent, Jest tests, Swagger docs, backend optimisation. Shared with the team: ATS integration via unified.to, the core-service and auth modules. Others built: the Stripe purchase flow and the JD chatbot frontend.
+Be exact. Mine: Stripe auto-renewal (cron + webhook), the JD chatbot backend, the ATS integration backend, the voice service, the scoring investigation, Jest tests, Swagger docs, backend optimisation. Shared with the team: interview-status sync for the ATS, the core-service and auth modules. Others built: the Stripe purchase flow and the JD chatbot frontend.
+
+### How did you design features end to end?
+
+I followed the existing architecture and coding patterns. When a feature needed a new API design or an outside integration that didn't fit, I discussed it with my tech lead before building. My best end-to-end example is the voice service: research, proposal, build, and then fixing issues from the logs.
 
 ### What does SkillKeepr do for a recruiter, step by step?
 

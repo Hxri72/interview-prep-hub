@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { Link, useParams } from 'react-router';
-import { stackBySlug, topicsOf } from '../lib/content';
+import { formatMinutes, stackBySlug, topicsOf } from '../lib/content';
 import { useProgress } from '../lib/progress';
 import { EmptyState, LevelBadge, PageTitle, ProgressBar } from '../components/ui';
 import NotFound from './NotFound';
@@ -16,6 +16,8 @@ export default function StackPage() {
 
   const list = topicsOf(stack);
   const done = list.filter((t) => p.learned[t.id]).length;
+  const totalMin = list.reduce((sum, t) => sum + t.readMinutes, 0);
+  const leftMin = list.filter((t) => !p.learned[t.id]).reduce((sum, t) => sum + t.readMinutes, 0);
 
   return (
     <div className="max-w-3xl">
@@ -24,6 +26,11 @@ export default function StackPage() {
         <p className="mb-1 text-sm text-slate-600">
           {done} of {list.length} learned · {list.length} of {info.planned} topics written
         </p>
+        {list.length > 0 && (
+          <p className="mb-1 text-sm text-slate-600">
+            ⏱ About {formatMinutes(totalMin)} to read the whole stack{done > 0 && leftMin > 0 ? ` · ${formatMinutes(leftMin)} left` : ''}
+          </p>
+        )}
         <ProgressBar value={done} total={list.length} label={`${info.title} progress`} />
       </div>
       {list.length ? (
@@ -37,6 +44,7 @@ export default function StackPage() {
                   {t.mustKnow && <span className="ml-2 text-xs" aria-label="must know">⭐</span>}
                 </span>
                 <LevelBadge level={t.level} />
+                <span className="hidden w-12 text-right text-xs text-slate-500 tabular-nums sm:inline">{t.readMinutes} min</span>
                 <span className="w-5 text-center" aria-label={p.learned[t.id] ? 'learned' : 'not learned'}>
                   {p.learned[t.id] ? <span className="text-emerald-600">✓</span> : p.revise[t.id] ? '🔁' : ''}
                 </span>

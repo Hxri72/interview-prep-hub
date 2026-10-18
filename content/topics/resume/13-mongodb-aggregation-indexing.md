@@ -86,6 +86,49 @@ db.jobs.aggregate([                                         // run a pipeline on
 ]);
 ```
 
+**How an index finds a candidate, step by step.** Be ready to explain this in an interview.
+
+```js
+db.candidates.createIndex({ email: 1 });                    // 1 = ascending order; helps any search by email
+db.candidates.findOne({ email: 'hari@example.com' });        // find one candidate by email
+db.candidates.find({ email: 'hari@example.com' })            // the same search again...
+  .explain('executionStats');                                // ...but show HOW MongoDB ran it
+```
+
+1. **Without the index**, MongoDB may do a **COLLSCAN** (collection scan). It checks many or all documents one by one.
+2. **With the index**, MongoDB keeps the emails in a sorted tree (a B-tree).
+3. The **query planner** (the part that picks a plan) decides if the index helps this query.
+4. MongoDB starts at the top of the tree. It compares your email with the values there.
+5. It follows only the branch where your email can be. It skips the rest of the tree.
+6. At the matching entry, it follows the pointer to the document and reads it.
+
+So it takes about **log(n)** steps instead of n. The real cost still depends on how many documents match, the cache, and other work.
+
+**What to read in `explain('executionStats')`:**
+
+| Field | Meaning |
+|---|---|
+| `COLLSCAN` | A collection scan: no useful index was used. |
+| `IXSCAN` | An index scan: MongoDB walked an index. |
+| `totalDocsExamined` | How many documents MongoDB looked at. Close to `nReturned` is good. |
+| `executionTimeMillis` | Time taken in milliseconds. It can be noisy on small test data. |
+
+**Unique and compound indexes:**
+
+```js
+db.candidates.createIndex({ email: 1 }, { unique: true });   // unique: true = refuse a second candidate with the same email
+db.candidateJobs.createIndex(                                // a compound index = an index on 2+ fields
+  { candidateId: 1, jobDescriptionId: 1 },                   // field order matters; match your queries
+  { unique: true }                                           // one link per candidate + job pair
+);                                                           // end of createIndex
+```
+
+- A normal index only makes search faster. A **unique** index also stops duplicates.
+- SkillKeepr has one database per tenant, so `{ email: 1 }` is already unique **per company**. In a shared database you would use `{ tenantId: 1, email: 1 }`.
+- **Cost:** indexes use extra storage, and every insert, update and delete must update them too.
+
+These are general examples. Don't say SkillKeepr has these exact indexes until you check the code.
+
 [FILL IN: the one real pipeline you will talk about — which screen, which stages, and why.]
 [FILL IN: the one real index you added — fields, and which query it helped.]
 
@@ -129,6 +172,14 @@ Use cursor (keyset) pagination: "give me 20 items after this `_id` or `createdAt
 ### Why database-per-tenant instead of a tenantId field?
 
 Strong isolation between customers, simple backup or deletion per customer, and no risk of forgetting a tenant filter. The cost: more connections to manage and migrations run per tenant.
+
+### Why doesn't MongoDB check every candidate one by one when an index exists?
+
+The index is a sorted tree. At each step MongoDB compares the value it wants with the values in a tree node. Then it follows only the branch where that value can be. Each step throws away a large part of the search, like finding a word in a dictionary.
+
+### What is the difference between a normal, a unique and a compound index?
+
+A normal index makes search faster. A unique index also refuses duplicate values. A compound index covers more than one field, and the field order should match your queries.
 
 ### What does explain() show you?
 

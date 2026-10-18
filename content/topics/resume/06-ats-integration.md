@@ -1,33 +1,33 @@
 ---
 template: story
-title: "ATS integration via unified.to (Greenhouse, Lever, Zoho)"
+title: "ATS integration via unified.to (Workable, Greenhouse, Lever, Zoho)"
 stack: resume
 order: 6
 level: Intermediate
 mustKnow: true
 askedFrequency: very common
 summary:
-  - "unified.to is one API that connects to many ATS tools — Greenhouse, Lever, Zoho and more — so we write one integration instead of many."
-  - "My team built three things on it: pulling jobs, pulling candidates, and syncing interview status."
-  - A Sync button on a job fetches new candidates from the company's ATS.
-  - We check duplicates by email — if the candidate already exists, we skip fetching their full details again.
-  - It was tested with Zoho, Greenhouse and Lever, and released as a trial feature; real customers had not used it yet.
+  - "unified.to is one API that connects to many ATS tools — Workable, Greenhouse, Lever, Zoho and more — so we write one integration instead of many."
+  - "I built the backend; another developer built the frontend. Recruiters connect (authorise) their ATS account first."
+  - "Two ways to sync: a Sync button on a job (manual), and a configurable time-based sync (scheduled polling). It was not webhook-driven."
+  - "Duplicates are checked by email. An existing candidate is reused, not updated, and only linked to the job. If that link already exists, we skip it."
+  - It was tested with Workable, Zoho, Greenhouse and Lever, and released as a trial feature; real customers had not used it yet.
 cards:
   - q: What is unified.to and why use it?
-    a: A unified API — one API in front of many ATS tools. You build one integration and support Greenhouse, Lever, Zoho and others, with one data format.
-  - q: What did you build with it?
-    a: With my team — pulling jobs that already exist in the customer's ATS, pulling candidates for a job, and syncing interview status.
-  - q: How does a recruiter get new candidates?
-    a: They click a Sync button on the job. We fetch candidates from the ATS through unified.to and add the new ones.
+    a: A unified API — one API in front of many ATS tools. You build one integration and support Workable, Greenhouse, Lever, Zoho and others, with one data format.
+  - q: What did you build?
+    a: The backend. Pulling jobs and their candidates from the recruiter's ATS through unified.to, plus interview-status sync with my team. Another developer built the frontend.
+  - q: Manual sync vs scheduled sync vs event-driven sync?
+    a: Manual = the recruiter clicks Sync. Scheduled = our system checks every few hours (polling). Event-driven = the ATS tells us when something changes, often with a webhook. We had manual and scheduled.
   - q: How do you avoid duplicate candidates?
-    a: We match by email. If a candidate with that email already exists, we don't fetch and save their full details again.
-  - q: Is it used by real customers?
-    a: Not yet. It was tested with Zoho, Greenhouse and Lever and released as a trial feature. I say that honestly and focus on how it was designed and tested.
+    a: We match by email. If the candidate exists, we reuse that record and just link it to the job. If the link already exists, we skip it.
+  - q: What if the candidate's phone number changed in the ATS?
+    a: In our flow we did not update existing candidates. We reused the record as it was. It stops duplicates, but it doesn't refresh old details.
 ---
 
 ## 💡 What is it?
 
-Many companies already use an **ATS** (Applicant Tracking System). It's software where they keep their jobs and candidates. Examples are **Greenhouse**, **Lever** and **Zoho**.
+Many companies already use an **ATS** (Applicant Tracking System). It's software where they keep their jobs and candidates. Examples are **Workable**, **Greenhouse**, **Lever** and **Zoho**.
 
 These companies don't want to type everything into SkillKeepr again. So we connect SkillKeepr to their ATS.
 
@@ -42,6 +42,12 @@ Think of a **universal travel adapter**.
 - A **universal adapter** fits all sockets = **unified.to**.
 - Your laptop only needs **one plug** = SkillKeepr only talks to unified.to.
 
+Now think of a **class register**. A new student joins. The teacher first checks if the name is already in the register. If yes, she doesn't write it again. She only adds a tick for the new class.
+
+- **The register** = SkillKeepr's candidate list.
+- **The student's name** = the candidate's email.
+- **The tick for a class** = the link between the candidate and a job.
+
 ## 🧩 The problem
 
 Recruiters already have their jobs and candidates in an ATS. Without an integration:
@@ -49,66 +55,84 @@ Recruiters already have their jobs and candidates in an ATS. Without an integrat
 - data gets out of date,
 - and candidates appear twice.
 
-Building a separate integration for Greenhouse, Lever, Zoho and others would take a long time. Each one has different data shapes and login methods.
+Building a separate integration for Workable, Greenhouse, Lever, Zoho and others would take a long time. Each one has different data shapes and login methods.
 
 ## 🛠️ What I built
 
-**With my team, on top of unified.to:**
+**My part:** the **backend** of the integration. Another developer built the frontend.
 
-1. **Pull jobs.** The companies already had jobs in Greenhouse and Lever. We fetch those jobs into SkillKeepr.
-2. **Pull candidates.** Each job has a **Sync button**. Clicking it fetches the new candidates for that job from the ATS.
-3. **Interview status sync.** When the interview status changes, we keep it in sync with the ATS.
+**Step 1: connect.** The recruiter authorises (gives permission to) their ATS account. After that, our backend can call the unified.to API for that company.
 
-**Duplicate check by email:**
+**Step 2: pull jobs and candidates.**
+1. **Pull jobs.** The jobs already existed in the company's ATS. We fetch them into SkillKeepr.
+2. **Pull candidates.** We fetch the candidates for each job.
+3. **Interview status sync.** With my team, we keep interview status in sync with the ATS.
+
+**Two ways to start a sync:**
+
+| Way | Who starts it | How it works |
+|---|---|---|
+| **Manual sync** | The recruiter | Clicks the **Sync** button on a job. |
+| **Scheduled sync** | Our system | Checks for new candidates every few hours. The interval is configurable. [FILL IN: the real intervals, e.g. 2, 4 or 12 hours — check the config] |
+| Event-driven (not used) | The ATS | The ATS sends us a [webhook](topic:rest-auth/webhooks) when something changes. We did **not** build this. |
+
+**What happens to each candidate:**
 
 ```text
-Recruiter clicks "Sync" on a job
-   │
-Fetch candidates for that job from the ATS (through unified.to)
+Fetch candidates for a job from the ATS (through unified.to)
    │
 For each candidate:
-   email already in SkillKeepr?  ──yes──►  skip — don't fetch full details again
-            │
-            no
-            ▼
-   fetch full details  →  create the candidate in SkillKeepr
+   email already in SkillKeepr?
+        │                    │
+        no                   yes
+        ▼                    ▼
+   fetch full details    reuse the existing record
+   create the candidate  (don't fetch or update details)
+        │                    │
+        └────────┬───────────┘
+                 ▼
+   already linked to this job?  ──yes──►  skip
+                 │
+                 no
+                 ▼
+   create the link (candidate ↔ job)
 ```
 
-**Testing:** we tested it with **Zoho, Greenhouse and Lever**. It went out as a **trial feature**. Real customers had not used it yet.
+- **Storing a candidate** and **linking a candidate to a job** are two different things. One candidate can be linked to many jobs.
+- We did **not update** an existing candidate's details. So the flow stops duplicates, but old details stay as they were.
 
-[FILL IN: your own part inside the team's work — e.g. the sync endpoint, the duplicate check, the status sync.]
-[FILL IN: how a company connects its ATS account — through unified.to's connect screen?]
-
-:::warning[Fix your resume wording]
-Your resume says "Workable". The real integration was **unified.to**, tested with Greenhouse, Lever and Zoho. Update the resume line so it matches this story.
-:::
+**Testing:** we tested it with **Workable, Zoho, Greenhouse and Lever**. It went out as a **trial feature**. Real customers had not used it yet.
 
 ## 🧗 The hard part
 
 **Different ATS, different data.** Even with unified.to, each ATS fills fields differently. Some fields can be missing or named in a different way.
 
-**Duplicates.** The same person can apply many times, or be synced twice. Matching by email stops duplicate candidates.
+**Duplicates.** The same person can apply to many jobs, or be synced twice. Matching by email stops duplicate candidates. Checking the candidate–job link stops duplicate links.
 
 **Many candidates at once.** A big job can have many candidates. Fetching full details for everyone is slow, so we skip people we already have.
+
+:::note[General knowledge, not a claim]
+Checking "does this link exist?" in code can fail if two syncs run at the same time. Both see "no link" and both create one. A **compound unique index** on candidate + job lets the database refuse the second copy. Only say your project had this index if you check the code first.
+:::
 
 [FILL IN: the hardest bug or case you hit — e.g. missing emails, a field that differed between ATS tools.]
 
 ## 🏆 The result
 
-- One integration covers Greenhouse, Lever, Zoho and others.
-- Recruiters bring in jobs and candidates with one click, without copying by hand.
-- Duplicates are avoided with the email check.
+- One integration covers Workable, Greenhouse, Lever, Zoho and others.
+- Recruiters bring in jobs and candidates with one click, or automatically on a schedule.
+- Duplicate candidates and duplicate job links are avoided.
 - It is tested and released as a trial; it's ready for real customers.
 
 ## 🗣️ How to answer in an interview
 
-> "Many of our customers already keep jobs and candidates in an ATS, like Greenhouse or Lever. Building a separate integration for each ATS is a lot of work, so we used unified.to, which is one API in front of many ATS tools.
+> "Many of our customers already keep jobs and candidates in an ATS, like Workable, Greenhouse or Lever. Building a separate integration for each ATS is a lot of work. So we used unified.to, which is one API in front of many ATS tools.
 >
-> With my team I built three flows on top of it. First, pulling jobs — the jobs already existed in the customer's Greenhouse or Lever. Second, pulling candidates: each job has a Sync button, and clicking it fetches new candidates for that job. Third, keeping interview status in sync.
+> I built the backend, and another developer built the frontend. The recruiter first authorises their ATS account. Then our backend pulls their jobs and the candidates for each job. Sync can start in two ways: a Sync button on the job, or a scheduled sync that runs every few hours. It's polling, not webhook-driven.
 >
-> To avoid duplicates, we match candidates by email. If the email already exists in SkillKeepr, we skip fetching their full details again. That keeps the data clean and the sync fast.
+> To avoid duplicates, we match candidates by email. If the candidate already exists, we reuse that record and just link it to the job. If they're already linked to that job, we skip it. One honest limit: we didn't update existing candidates, so a new phone number in the ATS wouldn't come across.
 >
-> We tested it with Zoho, Greenhouse and Lever, and it went out as a trial feature. It hasn't had real customer usage yet, but the flows are built and tested end to end."
+> We tested it with Workable, Zoho, Greenhouse and Lever, and it went out as a trial feature. It hasn't had real customer usage yet."
 
 ## 🔁 Follow-up questions
 
@@ -116,21 +140,29 @@ Your resume says "Workable". The real integration was **unified.to**, tested wit
 
 One integration instead of many. One data format. One login flow. The downside is that you depend on another company, and very ATS-specific features may not be available.
 
-### Why a Sync button instead of automatic sync?
+### What is the difference between manual sync, scheduled polling and event-driven sync?
 
-It's simple and the recruiter controls when data comes in. Automatic options are **webhooks** (the ATS tells us when something changes) or **polling** (we check on a schedule). [FILL IN: was automatic sync discussed?]
+- **Manual:** starts when a user asks, like the Sync button.
+- **Scheduled polling:** our system checks at fixed times, like every few hours.
+- **Event-driven:** the other system tells us when an event happens, like "candidate created", often with a webhook.
+
+We had manual and scheduled sync. So don't call it webhook-driven.
+
+### What if an existing candidate has a new phone number or resume in the ATS?
+
+In our flow we did **not** update existing candidates. We reused the record and linked it to the job. So it prevented duplicates, but it didn't refresh old details. If asked how to improve it: compare an "updated at" time from the ATS and update only the changed fields.
+
+### How did you avoid linking the same candidate to the same job twice?
+
+Before creating the link, we checked if the candidate was already linked to that job. If yes, we skipped it. In general, a compound unique index on candidate + job makes this safe even when two syncs run together. [FILL IN: check if your code has that index before you say so]
 
 ### What if a candidate has no email?
 
 [FILL IN: what your code does.] A common approach is to fall back to another unique field, like the candidate's ID in the ATS, or to flag the record for review.
 
-### What if the ATS or unified.to is down or slow?
-
-Use timeouts and retries with backoff. Show the recruiter a clear message instead of failing silently. For big imports, run the work in the background. [FILL IN: what you did.]
-
 ### It wasn't used by real customers — so what did you learn?
 
-Be positive and honest: "It was a trial launch. We tested it end to end with three ATS tools. I learned how unified APIs work, how to handle messy outside data, and how to avoid duplicates."
+Be positive and honest: "It was a trial launch. We tested it end to end with four ATS tools. I learned how unified APIs work, how to handle messy outside data, and how to avoid duplicates."
 
 ## 📚 Topics to revise
 

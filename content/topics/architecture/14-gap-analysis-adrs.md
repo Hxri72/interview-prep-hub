@@ -24,8 +24,8 @@ cards:
     a: In the code repository, often in a docs/adr folder, as numbered Markdown files, so they're reviewed in pull requests like code.
 ---
 
-:::warning[About the resume line]
-Your resume says you ran gap analyses, but you told me you can't explain that line. This page teaches the **general idea** so you can learn it. Before an interview, ask your team what it refers to, or reword or remove the bullet. See [the gap analysis resume page](topic:resume/gap-analysis).
+:::note[Your real example]
+This page teaches the **general idea**. Your own example is the candidate-scoring gap between the prototype and production. See [the gap analysis resume page](topic:resume/gap-analysis).
 :::
 
 ## 💡 What is it?
