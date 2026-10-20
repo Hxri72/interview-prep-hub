@@ -391,3 +391,9 @@
 - id: latency
   term: Latency
   definition: "How long you wait for a response. In AI apps it often means the time until the first words or the first audio appear."
+- id: agent
+  term: AI agent
+  definition: "A program where an LLM works in a loop with tools towards a goal. It picks the next step, your code runs the tool, the result goes back to the model, and it repeats until done."
+- id: human-in-the-loop
+  term: Human-in-the-loop
+  definition: "A design where a person must approve important or risky steps (like sending an email or a payment) before the AI continues."

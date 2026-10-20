@@ -589,7 +589,7 @@ Every problem solved with array methods AND plain loops, with time/space complex
 | 19 | Practice: file upload service | I | |
 | 20 | Practice: job board / college admission portal | I | |
 
-### 21. AI for Software Engineers (26)
+### 21. AI for Software Engineers (35)
 | # | Topic | Level | ★ |
 |---|---|---|---|
 | 1 | AI, machine learning, deep learning and LLMs | B | ★ |
@@ -618,6 +618,15 @@ Every problem solved with array methods AND plain loops, with time/space complex
 | 24 | Prompt injection and guardrails | A | ★ |
 | 25 | Controlling AI cost and latency in production | A | |
 | 26 | Voice AI: speech-to-text, text-to-speech and real-time pipelines | A | |
+| 27 | Adding GenAI to a MERN app: an end-to-end AI chat feature | B | ★ |
+| 28 | Choosing an LLM: providers, model sizes and open models | B | |
+| 29 | RAG step 1: loading and chunking documents | B | ★ |
+| 30 | RAG step 2: embeddings and vector search with MongoDB | B | ★ |
+| 31 | RAG step 3: answering with sources (plus an "Ask the Docs" practice project) | B | ★ |
+| 32 | Making RAG better: hybrid search, re-ranking and evaluation | I | |
+| 33 | Agentic AI for beginners: from chatbot to agent | B | ★ |
+| 34 | Build your first AI agent in Node.js | B | ★ |
+| 35 | Agent memory and state (short-term and long-term) | I | |
 
 ### 22. HR & Behavioural (19)
 Sample answers based on my resume; personal details I must supply become `[FILL IN: ...]`.

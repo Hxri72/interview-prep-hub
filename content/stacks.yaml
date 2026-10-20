@@ -24,5 +24,5 @@
 - { slug: debugging, title: Debugging Scenarios, group: interview, icon: "🐞", planned: 33, description: "\"Something is broken — what do you do?\" Detect → Debug → Fix → Prevent." }
 - { slug: dsa, title: Arrays & DSA, group: interview, icon: "🧮", planned: 41, description: "Array problems solved two ways (methods and loops), plus the common patterns." }
 - { slug: system-design, title: System Design Basics, group: interview, icon: "🏗️", planned: 20, description: "Designing APIs, databases, caching, queues and scaling — for a 3-year developer." }
-- { slug: ai, title: AI for Engineers, group: interview, icon: "🤖", planned: 26, description: "How LLMs work, prompting, structured outputs, tool calling, RAG, agents, MCP." }
+- { slug: ai, title: AI for Engineers, group: interview, icon: "🤖", planned: 35, description: "How LLMs work, prompting, structured outputs, tool calling, RAG, agents, MCP." }
 - { slug: hr, title: HR & Behavioural, group: interview, icon: "🤝", planned: 19, description: "Tell me about yourself, why change, salary, notice period, strengths and weaknesses." }

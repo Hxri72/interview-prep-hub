@@ -1,7 +1,7 @@
 # [FILL IN] checklist
 
 Your real details are needed in these places. Edit the topic file, replace the whole `[FILL IN: …]` with the true detail, or delete the sentence if it does not apply.
-**596 items.**
+**605 items.**
 
 
 ## resume/01-skillkeepr-overview.md (7)
@@ -295,6 +295,42 @@ Your real details are needed in these places. Edit the topic file, replace the w
 
 - [ ] line 151: the real latency per turn you saw, how you handled barge-in and silence, and the real phase names — only what's true.
 - [ ] line 161: what your agent does.
+
+## ai/27-genai-in-mern.md (1)
+
+- [ ] line 263: one detail you remember, like how you handled a response that didn't match the expected shape.
+
+## ai/28-choosing-llm.md (1)
+
+- [ ] line 158: why those models were chosen for each, if you know.
+
+## ai/29-rag-chunking.md (1)
+
+- [ ] line 188: once you've built the "Ask the Docs" practice project, add one line about how you chunked it.
+
+## ai/30-rag-vector-search-mongodb.md (1)
+
+- [ ] line 203: once built, mention your practice project and which embedding model you used.
+
+## ai/31-rag-answer-with-sources.md (1)
+
+- [ ] line 211: once you finish the Ask the Docs project below, describe it here in one or two sentences.
+
+## ai/32-rag-improving.md (1)
+
+- [ ] line 187: once built, add your practice project's before/after hit rate, e.g. "hybrid search raised hit@3 from X to Y".
+
+## ai/33-agentic-ai-basics.md (1)
+
+- [ ] line 156: add a practice agent you built, once you've built one.
+
+## ai/34-first-agent-node.md (1)
+
+- [ ] line 259: link or name of your practice agent project.
+
+## ai/35-agent-memory.md (1)
+
+- [ ] line 162: where your voice agent keeps call state during a call, if you know.
 
 ## architecture/01-what-is-architecture.md (1)
 
