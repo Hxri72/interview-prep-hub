@@ -397,3 +397,6 @@
 - id: human-in-the-loop
   term: Human-in-the-loop
   definition: "A design where a person must approve important or risky steps (like sending an email or a payment) before the AI continues."
+- id: origin
+  term: Origin
+  definition: "The scheme, host and port of a URL together, like https://app.example.com:443. Two URLs are the same origin only if all three match."

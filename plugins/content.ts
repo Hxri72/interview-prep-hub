@@ -108,14 +108,29 @@ export const BANK_SECTIONS = [
   { key: 'revise', label: '✅ Final revision checklist' },
 ];
 
+/** SkillKeepr Story: one chapter of the hiring platform's user journey, linked to concept topics. */
+export const CHAPTER_SECTIONS = [
+  { key: 'what', label: '💡 What happens in this chapter' },
+  { key: 'example', label: '🏠 Real-life example' },
+  { key: 'flow', label: '🗺️ The flow' },
+  { key: 'tech', label: '🧱 Tech used' },
+  { key: 'code', label: '🧑‍💻 Key code idea' },
+  { key: 'hard', label: '🧗 Hard parts and trade-offs' },
+  { key: 'mine', label: '🙋 My part' },
+  { key: 'interview', label: '🗣️ How to explain it in an interview' },
+  { key: 'followup', label: '🔁 Follow-up questions' },
+  { key: 'revise', label: '📚 Topics to revise' },
+];
+
 const TEMPLATES: Record<string, { key: string; label: string }[]> = {
   concept: CONCEPT_SECTIONS,
   story: STORY_SECTIONS,
   scenario: SCENARIO_SECTIONS,
   answer: ANSWER_SECTIONS,
   bank: BANK_SECTIONS,
+  chapter: CHAPTER_SECTIONS,
 };
-const ALL_SECTIONS = [...CONCEPT_SECTIONS, ...STORY_SECTIONS, ...SCENARIO_SECTIONS, ...ANSWER_SECTIONS, ...BANK_SECTIONS];
+const ALL_SECTIONS = [...CONCEPT_SECTIONS, ...STORY_SECTIONS, ...SCENARIO_SECTIONS, ...ANSWER_SECTIONS, ...BANK_SECTIONS, ...CHAPTER_SECTIONS];
 
 /** Compare headings by their words only, so emoji differences don't matter. */
 const norm = (s: string) => s.toLowerCase().replace(/[^a-z0-9 ]/g, '').replace(/\s+/g, ' ').trim();

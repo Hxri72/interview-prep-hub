@@ -1,7 +1,7 @@
 # [FILL IN] checklist
 
 Your real details are needed in these places. Edit the topic file, replace the whole `[FILL IN: …]` with the true detail, or delete the sentence if it does not apply.
-**605 items.**
+**665 items.**
 
 
 ## resume/01-skillkeepr-overview.md (7)
@@ -1564,6 +1564,100 @@ Your real details are needed in these places. Edit the topic file, replace the w
 
 - [ ] line 156: a real security measure you added or reviewed in a backend you worked on. Only add it if it's true.
 
+## skillkeepr-story/01-meet-skillkeepr.md (2)
+
+- [ ] line 165: team size and how work is split
+- [ ] line 187: your honest answer, for example the tenant flow or the background jobs.
+
+## skillkeepr-story/02-new-company-joins.md (1)
+
+- [ ] line 142: Did you work on tenant setup or the connection handling? If not, say "I didn't build tenant setup, but I worked inside this design every day — every API I wrote ran against the tenant's own database."
+
+## skillkeepr-story/03-recruiter-logs-in.md (2)
+
+- [ ] line 135: which part of auth you touched — for example the permission checks, the token helpers, or tests.
+- [ ] line 162: how your team handles logout and token expiry.
+
+## skillkeepr-story/04-dashboard-loads.md (2)
+
+- [ ] line 130: confirm ONE real pipeline you wrote — which screen, which stages — and ONE index you added, before claiming them. See [MongoDB aggregation and indexing (resume)
+- [ ] line 131: which frontend screens you built, if any.
+
+## skillkeepr-story/05-creating-job-with-ai.md (4)
+
+- [ ] line 25: what your backend actually did
+- [ ] line 138: the library or approach you used — don't guess
+- [ ] line 139: retry, error message, or let the recruiter edit
+- [ ] line 159: what your backend did
+
+## skillkeepr-story/06-ats-sync.md (1)
+
+- [ ] line 153: how you handled a missing email.
+
+## skillkeepr-story/07-bulk-resume-upload.md (2)
+
+- [ ] line 141: only if you worked on it — e.g. an endpoint, the worker, the report. If not, say "I know how it works, but another developer built it."
+- [ ] line 149: add one sentence about your own part, or keep it as "how our platform does it".
+
+## skillkeepr-story/08-search-and-scoring.md (3)
+
+- [ ] line 127: only if you worked on it
+- [ ] line 141: only if you know the team's reason
+- [ ] line 149: any test or comparison you also did
+
+## skillkeepr-story/09-ai-screening-call.md (3)
+
+- [ ] line 140: what else you did for latency, if anything
+- [ ] line 153: the real phase names and rough time per turn
+- [ ] line 181: any before/after numbers you have
+
+## skillkeepr-story/10-scheduling-interview.md (2)
+
+- [ ] line 121: how SkillKeepr handles this, if you know
+- [ ] line 128: which parts of scheduling, reminders or calendar sync you worked on, if any. If none, say "I know how it works, but another developer built it."
+
+## skillkeepr-story/11-live-interview.md (1)
+
+- [ ] line 131: which parts of the live interview, code editor or recording flow you worked on, if any. If none, say "I know how it works, but another developer built it."
+
+## skillkeepr-story/12-billing-renewal.md (2)
+
+- [ ] line 129: the exact Stripe events your code handles
+- [ ] line 144: the exact events you handle, retry rules, and how you stored processed event IDs
+
+## skillkeepr-story/13-keeping-tenants-apart.md (3)
+
+- [ ] line 139: which part of the auth or tenant check you personally wrote or changed — only if true.
+- [ ] line 140: a real tenant-related bug or test you worked on, if any.
+- [ ] line 146: your exact part.
+
+## skillkeepr-story/14-when-things-break.md (7)
+
+- [ ] line 25: any automated test, only if you added one.
+- [ ] line 93: name
+- [ ] line 133: what you found as the cause, if you know it.
+- [ ] line 135: whether you added one.
+- [ ] line 140: the cause and fix.
+- [ ] line 150: how you'd prevent it next time — for example a test with fixed sample resumes.
+- [ ] line 156: any numbers or feedback you have.
+
+## skillkeepr-story/15-shipping-a-change.md (3)
+
+- [ ] line 138: your role in the pipeline — do you deploy yourself, or does a lead or a scheduled release do it?
+- [ ] line 139: how often you release, and how you roll back in practice.
+- [ ] line 145: your exact role in deploys.
+
+## skillkeepr-story/16-growing-10x.md (3)
+
+- [ ] line 112: one real optimisation you made, with before/after if you have it.
+- [ ] line 113: one improvement from this list you'd pick first at SkillKeepr, and why.
+- [ ] line 121: one optimisation you've already done.
+
+## skillkeepr-story/17-whole-story.md (2)
+
+- [ ] line 142: team size, your exact frontend/backend split, and how long you've owned each piece.
+- [ ] line 168: one sentence about what you'd improve next, from Chapter 16.
+
 ## system-design/01-how-to-approach.md (1)
 
 - [ ] line 137: if you designed a real feature this way at SkillKeepr, add one line, e.g. the AI voice agent's call flow.
@@ -1745,3 +1839,68 @@ Your real details are needed in these places. Edit the topic file, replace the w
 ## typescript/21-zod.md (1)
 
 - [ ] line 160: the SkillKeepr backend services validate with Joi — mention one place you added or changed a Joi schema. Only if it's true.
+
+## web-fundamentals/12-what-is-bundler.md (1)
+
+- [ ] line 169: which bundler your current project uses, e.g. "At SkillKeepr the React apps are built with webpack 5" — the codebase uses a custom webpack 5 setup; say what you personally did with it, if anything.
+
+## web-fundamentals/13-webpack.md (1)
+
+- [ ] line 167: what you personally changed or debugged in this setup, if anything.
+
+## web-fundamentals/14-babel.md (1)
+
+- [ ] line 183: whether your SkillKeepr frontend uses Babel through babel-loader — the codebase's webpack config is Babel-based; say only what you touched.
+
+## web-fundamentals/15-typescript-compile.md (1)
+
+- [ ] line 179: how TypeScript was compiled in your SkillKeepr projects — e.g. through webpack with a loader, or a type-check script before deploy. Only if you know.
+
+## web-fundamentals/16-jsx-compile.md (1)
+
+- [ ] line 175: which tool compiled JSX in your SkillKeepr frontend — e.g. Babel through webpack. Only if you know.
+
+## web-fundamentals/17-vite.md (2)
+
+- [ ] line 178: SkillKeepr's frontend uses a custom webpack 5 setup — mention only if you worked on it.
+- [ ] line 199: a Vite project you built — e.g. this Interview Prep Hub, which uses Vite 8 + React with a custom content plugin.
+
+## web-fundamentals/18-minify-sourcemaps.md (1)
+
+- [ ] line 162: how your team handled production errors from minified code — e.g. source maps in an error tracker. Only if true.
+
+## web-fundamentals/19-env-build-vs-runtime.md (1)
+
+- [ ] line 169: how environment config worked in your SkillKeepr services — keep it high level, no real names or values.
+
+## web-fundamentals/20-localhost-dev-server.md (1)
+
+- [ ] line 181: your local setup at SkillKeepr — e.g. how many services you run locally, and whether you used a custom hostname for tenants.
+
+## web-fundamentals/21-hot-reload.md (1)
+
+- [ ] line 165: your daily dev setup — e.g. webpack dev server with hot reload for the frontend, and how you restarted backend services locally. Only if you know.
+
+## web-fundamentals/22-dev-vs-prod-build.md (1)
+
+- [ ] line 143: how builds ran at your work — for example, a webpack production build on the CI server before upload. Only add what's true.
+
+## web-fundamentals/23-spa-serving.md (1)
+
+- [ ] line 132: how SkillKeepr's SPA routing is handled on CloudFront, if you know — only add what's true.
+
+## web-fundamentals/24-hosting-frontend-aws.md (1)
+
+- [ ] line 125: your own part in this setup, if any.
+
+## web-fundamentals/25-hosting-backend-aws.md (1)
+
+- [ ] line 128: the AWS service that runs the voice service, and your own part in deploying it.
+
+## web-fundamentals/26-same-origin-policy.md (1)
+
+- [ ] line 129: a CORS issue you fixed at work, if any — only add it if it's true.
+
+## web-fundamentals/28-end-to-end-story.md (1)
+
+- [ ] line 132: which parts of this flow you personally worked on — e.g. the Stripe renewal job, the JD chatbot backend, the ATS sync

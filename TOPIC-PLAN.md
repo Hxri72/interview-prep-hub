@@ -9,6 +9,38 @@ Sources used: Resume, Resume Interview Question Bank, Backend Mastery Plan, Fron
 
 ## CORE STACKS
 
+### 0. How the Web Works — core fundamentals (28)
+| # | Topic | Level | ★ |
+|---|---|---|---|
+| 1 | From typing code to a user seeing your app: the whole journey | B | ★ |
+| 2 | Client and server: who runs what | B | ★ |
+| 3 | Life of an HTTP request: DNS → TCP → TLS → HTTP → response | I | ★ |
+| 4 | Inside a JavaScript engine: parsing, bytecode and JIT (V8) | I | |
+| 5 | How JavaScript runs in the browser: engine, Web APIs, event loop, rendering | I | ★ |
+| 6 | How JavaScript runs in Node.js: V8, libuv and Node APIs | I | ★ |
+| 7 | Same JavaScript, two homes: browser vs Node runtimes in depth | I | ★ |
+| 8 | Where your variables live: stack, heap and garbage collection | I | |
+| 9 | How the browser turns HTML, CSS and JS into pixels | I | |
+| 10 | Why modules exist: script tags → CommonJS → ES Modules | B | ★ |
+| 11 | What npm install really does | B | |
+| 12 | What a bundler does (webpack, Vite, esbuild, Rollup) | B | ★ |
+| 13 | webpack explained: entry, output, loaders, plugins, code splitting | I | ★ |
+| 14 | Babel explained: transpiling, presets, polyfills, browserslist | I | ★ |
+| 15 | How TypeScript becomes JavaScript | B | |
+| 16 | How JSX becomes JavaScript | B | |
+| 17 | Vite explained: native ESM dev server and production build | I | |
+| 18 | Minification, source maps and hashed file names | I | |
+| 19 | Environment variables at build time vs run time | I | ★ |
+| 20 | localhost, ports and what npm run dev does | B | ★ |
+| 21 | Hot reload (HMR): how the page updates without a refresh | I | |
+| 22 | Development build vs production build | B | |
+| 23 | How a React SPA is served: static files and routing fallback | I | |
+| 24 | Hosting a frontend on AWS: S3, CloudFront, Route 53 and certificates | I | ★ |
+| 25 | Hosting a Node backend on AWS: EC2 vs Lambda + API Gateway vs containers | I | ★ |
+| 26 | Same-origin policy: why the browser blocks requests | I | |
+| 27 | Browser caching and cache busting | I | |
+| 28 | Putting it together: explain your app end to end in an interview | I | ★ |
+
 ### 1. JavaScript (38)
 | # | Topic | Level | ★ |
 |---|---|---|---|
@@ -456,6 +488,27 @@ Sources used: Resume, Resume Interview Question Bank, Backend Mastery Plan, Fron
 ---
 
 ## INTERVIEW SECTIONS
+
+### SkillKeepr Story — a hiring platform end to end (17)
+| # | Chapter | Level | ★ |
+|---|---|---|---|
+| 1 | Meet SkillKeepr: the product, the people and the map of this story | B | ★ |
+| 2 | A new company joins: tenants, subdomains and a database per company | I | ★ |
+| 3 | A recruiter opens the site and logs in | I | ★ |
+| 4 | The dashboard loads: from a click to numbers on screen | I | ★ |
+| 5 | Creating a job with AI (the JD chatbot) | I | ★ |
+| 6 | Pulling jobs and candidates from an ATS (unified.to) | I | ★ |
+| 7 | Bulk resume upload and parsing | I | |
+| 8 | Searching and scoring candidates | I | |
+| 9 | The AI screening call (voice agent) | I | ★ |
+| 10 | Scheduling an interview and sending reminders | I | |
+| 11 | The live video interview with a shared code editor | I | |
+| 12 | Billing and auto-renewal with Stripe | I | ★ |
+| 13 | Keeping every company's data apart | A | ★ |
+| 14 | When things break in production | I | ★ |
+| 15 | Shipping a change: from my laptop to production | I | ★ |
+| 16 | Growing to 10× more users: what changes | A | |
+| 17 | Telling the whole SkillKeepr story in an interview | I | ★ |
 
 ### 17. Resume Deep-Dive (17)
 Each page: problem → what I built → hard part → result, plus likely follow-ups. Missing details become `[FILL IN: ...]`.

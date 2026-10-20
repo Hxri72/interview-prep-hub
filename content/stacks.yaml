@@ -3,6 +3,7 @@
 # group   = core (tech stacks) or interview (interview sections)
 # planned = how many topics are planned (from TOPIC-PLAN.md)
 
+- { slug: web-fundamentals, title: How the Web Works, group: core, icon: "🌐", planned: 28, description: "The core: how code runs in the browser and in Node, build tools (webpack, Babel, Vite), localhost, and hosting on AWS." }
 - { slug: javascript, title: JavaScript, group: core, icon: "🟨", planned: 38, description: "The language of the web: variables, functions, closures, promises and the event loop." }
 - { slug: typescript, title: TypeScript, group: core, icon: "🔷", planned: 23, description: "JavaScript with labels for your data, so mistakes show up before you run the code." }
 - { slug: html-css, title: HTML5 & CSS3, group: core, icon: "🧱", planned: 20, description: "The structure (HTML) and the look (CSS) of every web page." }
@@ -20,6 +21,7 @@
 - { slug: devops, title: Cloud & DevOps, group: core, icon: "☁️", planned: 22, description: "Git, GitHub Actions CI/CD, Railway, AWS, GCP and Docker basics." }
 - { slug: testing, title: Testing & Quality, group: core, icon: "🧪", planned: 17, description: "Jest, Supertest, code reviews, logging and production support." }
 
+- { slug: skillkeepr-story, title: SkillKeepr Story, group: interview, icon: "🧭", planned: 17, description: "A hiring platform end to end: follow one company, recruiter and candidate through SkillKeepr, chapter by chapter, linked to every concept." }
 - { slug: resume, title: Resume Deep-Dive, group: interview, icon: "📄", planned: 17, description: "Every project on my resume as a story: problem → what I built → hard part → result." }
 - { slug: debugging, title: Debugging Scenarios, group: interview, icon: "🐞", planned: 33, description: "\"Something is broken — what do you do?\" Detect → Debug → Fix → Prevent." }
 - { slug: dsa, title: Arrays & DSA, group: interview, icon: "🧮", planned: 41, description: "Array problems solved two ways (methods and loops), plus the common patterns." }

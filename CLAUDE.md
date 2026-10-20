@@ -68,6 +68,8 @@ Use ONLY facts from the resume and notes. Every missing detail (numbers, names, 
 `## 💡 What they really want to know` → `## 🏠 Real-life example` → `## 🧩 How to structure your answer` → `## 🗣️ Sample answer` (first person, built only from confirmed facts plus `[FILL IN]`) → `## ✅ Do` → `## ❌ Don't` → `## 🔁 Follow-up questions` (### headings) → `## ✍️ Your own version` (a fill-in skeleton).
 Never put real salary numbers or notice details on the public site.
 
+**`template: chapter`** is for SkillKeepr Story (`skillkeepr-story`): `## 💡 What happens in this chapter` → `## 🏠 Real-life example` → `## 🗺️ The flow` (text diagram) → `## 🧱 Tech used` (table: piece → technology → linked topic) → `## 🧑‍💻 Key code idea` (small, runnable, every line commented) → `## 🧗 Hard parts and trade-offs` → `## 🙋 My part` (ONLY confirmed facts about Hari, else `[FILL IN]`) → `## 🗣️ How to explain it in an interview` → `## 🔁 Follow-up questions` → `## 📚 Topics to revise`. Platform facts stay public-safe. Clearly separate what the platform does from what Hari built.
+
 To add a new template, add its section list to `TEMPLATES` in `plugins/content.ts`.
 
 ## Markdown extras
@@ -159,6 +161,10 @@ Sources: the resume, the PDF notes, the "SkillKeepr Backend Interview Preparatio
 
 All 22 stacks are written (544 topics, October 2026). When adding or editing topics, follow the templates above. Run `npm run build`, fix every error, and add new glossary words to `content/glossary.yaml`. Every definition with `: ` in it must be in double quotes.
 Practice problems live in `content/problems/`: Problem → Examples → Think first (`:::hint`) → Solution (`:::solution`, two ways, complexity, "what to say"). Use these pattern names: Hash map / Set, Two pointers, Sliding window, Kadane, Prefix sum, Binary search, Stack, Single pass, Recursion, Math / XOR, Reverse trick, Sorting.
+
+## "How the Web Works" stack (web-fundamentals)
+
+Added 2026-10-20, first in the sidebar. It explains the core: how JS runs in the browser and in Node, modules, npm, bundlers (webpack, Vite), Babel, TS/JSX compilation, localhost and dev servers, dev vs prod builds, SPA serving, hosting on AWS, same-origin policy, caching, and an end-to-end interview walkthrough. It goes deeper than the javascript/nodejs/html-css topics and links to them instead of repeating them.
 
 ## Slugs already linked from written topics (use these exact file slugs when writing those stacks)
 
