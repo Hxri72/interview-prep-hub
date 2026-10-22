@@ -127,6 +127,7 @@ Sources: the resume, the PDF notes, the "SkillKeepr Backend Interview Preparatio
   - Duplicates are checked by **email**; if the candidate already exists, the full details aren't fetched again and the existing record is **not updated**. The existing candidate is just linked to the JD, and an existing candidate–JD link is skipped.
   - Tested with **Workable**, Zoho, Greenhouse and Lever. It was a **trial feature with no real customer usage**. Don't claim a compound unique index unless verified.
 - **Shared core-service library:** Hari worked on it, including the authentication modules (built together with the team). Shared patterns in the codebase: a response builder, authorizer decorators, pagination/sorting helpers, data-transformation helpers, Stripe wrappers, integration utilities. The "~30% faster development" is an **estimate, not measured**. Don't claim he built the whole library.
+- **Frontend work (confirmed 2026-10-22):** Hari built the candidate **skill tags** on his own: each skill is shown as a capsule-shaped chip with a rounded (pill) border. He reused the existing filter components on that screen; the filter components were not his.
 - **Other work:** backend code optimisation, Jest unit tests, Swagger docs. PostgreSQL is used: [FILL IN: where].
 - **MongoDB aggregations and indexes:** Hari doesn't remember exactly which pipelines or indexes he wrote. Pages must suggest that he confirm one real pipeline and one real index from the code before claiming them.
 

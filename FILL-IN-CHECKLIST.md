@@ -1,7 +1,7 @@
 # [FILL IN] checklist
 
 Your real details are needed in these places. Edit the topic file, replace the whole `[FILL IN: …]` with the true detail, or delete the sentence if it does not apply.
-**665 items.**
+**664 items.**
 
 
 ## resume/01-skillkeepr-overview.md (7)
@@ -1359,10 +1359,6 @@ Your real details are needed in these places. Edit the topic file, replace the w
 ## postgresql/23-jsonb.md (1)
 
 - [ ] line 183: where you used PostgreSQL, and whether you stored any JSON in it.
-
-## react/01-what-is-react.md (1)
-
-- [ ] line 132: one screen or feature you built in React at SkillKeepr, in one line.
 
 ## react/09-controlled-uncontrolled.md (1)
 

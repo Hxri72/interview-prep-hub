@@ -127,9 +127,7 @@ When you click, only the button text changes. React does not rebuild the heading
 >
 > When state changes, React re-renders the component, compares the new output with the previous one through reconciliation, and updates only the parts of the DOM that changed. Data flows one way, from parent to child through props, which makes the app easier to reason about.
 >
-> It's a library, not a full framework, so for routing or server rendering I add React Router or use a framework like Next.js. I've used React with TypeScript for recruiter and candidate screens at SkillKeepr."
-
-[FILL IN: one screen or feature you built in React at SkillKeepr, in one line.]
+> It's a library, not a full framework, so for routing or server rendering I add React Router or use a framework like Next.js. I've used React with TypeScript for recruiter and candidate screens at SkillKeepr. For example, I built the candidate skill tags on their own: each skill shows as a capsule-shaped chip with a rounded border, and I reused our existing filter components on that screen."
 
 ## 🔁 Follow-up questions
 
