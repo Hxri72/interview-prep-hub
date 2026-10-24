@@ -1,6 +1,7 @@
 ---
 title: "Pattern: prefix sum"
 stack: dsa
+section: "DSA: approach, patterns and problems"
 order: 29
 level: Intermediate
 mustKnow: false

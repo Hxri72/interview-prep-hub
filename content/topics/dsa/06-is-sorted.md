@@ -1,7 +1,8 @@
 ---
 title: Check if an array is sorted
 stack: dsa
-order: 9
+section: "Array questions: methods and loops"
+order: 6
 level: Basic
 mustKnow: false
 askedFrequency: sometimes

@@ -1,6 +1,7 @@
 ---
 title: Product of array except self
 stack: dsa
+section: "DSA: approach, patterns and problems"
 order: 34
 level: Intermediate
 mustKnow: false

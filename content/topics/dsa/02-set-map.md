@@ -1,7 +1,8 @@
 ---
 title: Set and Map for problem solving
 stack: dsa
-order: 4
+section: "Array questions: methods and loops"
+order: 2
 level: Basic
 mustKnow: false
 askedFrequency: common

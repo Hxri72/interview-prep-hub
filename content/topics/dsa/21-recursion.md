@@ -1,7 +1,8 @@
 ---
 title: Recursion basics
 stack: dsa
-order: 5
+section: "DSA: approach, patterns and problems"
+order: 21
 level: Basic
 mustKnow: false
 askedFrequency: common

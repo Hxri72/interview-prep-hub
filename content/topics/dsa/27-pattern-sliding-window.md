@@ -1,6 +1,7 @@
 ---
 title: "Pattern: sliding window"
 stack: dsa
+section: "DSA: approach, patterns and problems"
 order: 27
 level: Intermediate
 mustKnow: true

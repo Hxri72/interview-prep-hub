@@ -1,7 +1,8 @@
 ---
 title: Move zeros to the end
 stack: dsa
-order: 13
+section: "Array questions: methods and loops"
+order: 10
 level: Basic
 mustKnow: true
 askedFrequency: very common

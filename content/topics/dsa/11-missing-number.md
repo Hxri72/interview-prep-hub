@@ -1,7 +1,8 @@
 ---
 title: Find the missing number (1 to n)
 stack: dsa
-order: 14
+section: "Array questions: methods and loops"
+order: 11
 level: Basic
 mustKnow: true
 askedFrequency: very common

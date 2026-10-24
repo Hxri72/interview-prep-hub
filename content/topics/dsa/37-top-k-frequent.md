@@ -1,6 +1,7 @@
 ---
 title: Top K frequent elements
 stack: dsa
+section: "DSA: approach, patterns and problems"
 order: 37
 level: Intermediate
 mustKnow: false

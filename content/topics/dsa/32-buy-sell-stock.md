@@ -1,6 +1,7 @@
 ---
 title: Best time to buy and sell stock
 stack: dsa
+section: "DSA: approach, patterns and problems"
 order: 32
 level: Intermediate
 mustKnow: true

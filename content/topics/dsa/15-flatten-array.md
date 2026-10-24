@@ -1,7 +1,8 @@
 ---
 title: Flatten a nested array
 stack: dsa
-order: 18
+section: "Array questions: methods and loops"
+order: 15
 level: Intermediate
 mustKnow: true
 askedFrequency: very common

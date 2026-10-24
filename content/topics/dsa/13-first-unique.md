@@ -1,7 +1,8 @@
 ---
 title: First non-repeating item
 stack: dsa
-order: 16
+section: "Array questions: methods and loops"
+order: 13
 level: Basic
 mustKnow: false
 askedFrequency: common

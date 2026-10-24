@@ -1,6 +1,7 @@
 ---
 title: "Pattern: hash map / Set"
 stack: dsa
+section: "DSA: approach, patterns and problems"
 order: 25
 level: Intermediate
 mustKnow: true

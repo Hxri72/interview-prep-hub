@@ -1,7 +1,8 @@
 ---
 title: Sum and average
 stack: dsa
-order: 7
+section: "Array questions: methods and loops"
+order: 4
 level: Basic
 mustKnow: false
 askedFrequency: common

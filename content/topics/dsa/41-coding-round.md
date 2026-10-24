@@ -1,6 +1,7 @@
 ---
 title: What to say in the coding round (phrases and mistakes)
 stack: dsa
+section: "DSA: approach, patterns and problems"
 order: 41
 level: Basic
 mustKnow: true

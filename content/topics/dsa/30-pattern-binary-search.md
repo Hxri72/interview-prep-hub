@@ -1,6 +1,7 @@
 ---
 title: "Pattern: binary search"
 stack: dsa
+section: "DSA: approach, patterns and problems"
 order: 30
 level: Intermediate
 mustKnow: true

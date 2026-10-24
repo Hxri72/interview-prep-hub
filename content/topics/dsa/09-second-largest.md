@@ -1,7 +1,8 @@
 ---
 title: Find the second largest number
 stack: dsa
-order: 12
+section: "Array questions: methods and loops"
+order: 9
 level: Basic
 mustKnow: true
 askedFrequency: very common

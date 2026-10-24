@@ -1,7 +1,8 @@
 ---
 title: Chunk an array into groups of k
 stack: dsa
-order: 17
+section: "Array questions: methods and loops"
+order: 14
 level: Basic
 mustKnow: false
 askedFrequency: common

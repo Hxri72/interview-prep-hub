@@ -1,6 +1,7 @@
 ---
 title: "Pattern: Kadane's algorithm"
 stack: dsa
+section: "DSA: approach, patterns and problems"
 order: 28
 level: Intermediate
 mustKnow: true

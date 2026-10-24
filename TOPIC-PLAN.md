@@ -646,46 +646,48 @@ Every page uses Detect → Debug → Fix → Prevent.
 Every problem solved with array methods AND plain loops, with time/space complexity.
 | # | Topic | Level | ★ |
 |---|---|---|---|
-| 1 | How to approach any coding problem in an interview (7 steps) | B | ★ |
-| 2 | Big O in simple words (time and space) | B | ★ |
-| 3 | Array methods cheat sheet: which ones change the original | B | ★ |
-| 4 | Set and Map for problem solving | B | |
-| 5 | Recursion basics | B | |
-| 6 | Find the largest and smallest number | B | |
-| 7 | Sum and average | B | |
-| 8 | Reverse an array | B | |
-| 9 | Check if an array is sorted | B | |
-| 10 | Remove duplicates | B | ★ |
-| 11 | Count frequency of each item | B | ★ |
-| 12 | Find the second largest number | B | ★ |
-| 13 | Move zeros to the end | B | ★ |
-| 14 | Find the missing number (1 to n) | B | ★ |
-| 15 | Find duplicate values | B | |
-| 16 | First non-repeating item | B | |
-| 17 | Chunk an array into groups of k | B | |
-| 18 | Flatten a nested array | I | ★ |
-| 19 | Merge two sorted arrays | I | |
-| 20 | Intersection of two arrays | I | |
-| 21 | Rotate an array by k | I | |
+| | **Array questions: methods and loops** | | |
+| 1 | Array methods cheat sheet: which ones change the original | B | ★ |
+| 2 | Set and Map for problem solving | B |  |
+| 3 | Find the largest and smallest number | B |  |
+| 4 | Sum and average | B |  |
+| 5 | Reverse an array | B |  |
+| 6 | Check if an array is sorted | B |  |
+| 7 | Remove duplicates | B | ★ |
+| 8 | Count frequency of each item | B | ★ |
+| 9 | Find the second largest number | B | ★ |
+| 10 | Move zeros to the end | B | ★ |
+| 11 | Find the missing number (1 to n) | B | ★ |
+| 12 | Find duplicate values | B |  |
+| 13 | First non-repeating item | B |  |
+| 14 | Chunk an array into groups of k | B |  |
+| 15 | Flatten a nested array | I | ★ |
+| 16 | Merge two sorted arrays | I |  |
+| 17 | Intersection of two arrays | I |  |
+| 18 | Rotate an array by k | I |  |
+| | **DSA: approach, patterns and problems** | | |
+| 19 | How to approach any coding problem in an interview (7 steps) | B | ★ |
+| 20 | Big O in simple words (time and space) | B | ★ |
+| 21 | Recursion basics | B |  |
 | 22 | Two Sum | B | ★ |
 | 23 | Reverse a string and check a palindrome | B | ★ |
-| 24 | Valid anagram | B | |
+| 24 | Valid anagram | B |  |
 | 25 | Pattern: hash map / Set | I | ★ |
 | 26 | Pattern: two pointers | I | ★ |
 | 27 | Pattern: sliding window | I | ★ |
 | 28 | Pattern: Kadane's algorithm | I | ★ |
-| 29 | Pattern: prefix sum | I | |
+| 29 | Pattern: prefix sum | I |  |
 | 30 | Pattern: binary search | I | ★ |
 | 31 | Pattern: stack (valid brackets) | I | ★ |
 | 32 | Best time to buy and sell stock | I | ★ |
 | 33 | Maximum subarray (Kadane) | I | ★ |
-| 34 | Product of array except self | I | |
-| 35 | Longest substring without repeating characters | I | |
-| 36 | Group anagrams | I | |
-| 37 | Top K frequent elements | I | |
-| 38 | Container with most water | I | |
-| 39 | 3Sum | A | |
-| 40 | Sorting algorithms overview (bubble, merge, quick) | I | |
+| 34 | Product of array except self | I |  |
+| 35 | Longest substring without repeating characters | I |  |
+| 36 | Group anagrams | I |  |
+| 37 | Top K frequent elements | I |  |
+| 38 | Container with most water | I |  |
+| 39 | 3Sum | A |  |
+| 40 | Sorting algorithms overview (bubble, merge, quick) | I |  |
 | 41 | What to say in the coding round (phrases and mistakes) | B | ★ |
 
 ### 20. System Design Basics (20)

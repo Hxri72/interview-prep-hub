@@ -1,6 +1,7 @@
 ---
 title: Valid anagram
 stack: dsa
+section: "DSA: approach, patterns and problems"
 order: 24
 level: Basic
 mustKnow: false

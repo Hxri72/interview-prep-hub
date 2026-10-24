@@ -1,7 +1,8 @@
 ---
 title: How to approach any coding problem in an interview (7 steps)
 stack: dsa
-order: 1
+section: "DSA: approach, patterns and problems"
+order: 19
 level: Basic
 mustKnow: true
 askedFrequency: very common

@@ -1,7 +1,8 @@
 ---
 title: Find duplicate values
 stack: dsa
-order: 15
+section: "Array questions: methods and loops"
+order: 12
 level: Basic
 mustKnow: false
 askedFrequency: common

@@ -1,6 +1,7 @@
 ---
 title: 3Sum
 stack: dsa
+section: "DSA: approach, patterns and problems"
 order: 39
 level: Advanced
 mustKnow: false

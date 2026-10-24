@@ -1,7 +1,8 @@
 ---
 title: Big O in simple words (time and space)
 stack: dsa
-order: 2
+section: "DSA: approach, patterns and problems"
+order: 20
 level: Basic
 mustKnow: true
 askedFrequency: very common

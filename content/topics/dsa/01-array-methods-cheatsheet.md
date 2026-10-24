@@ -1,7 +1,8 @@
 ---
 title: "Array methods cheat sheet: which ones change the original"
 stack: dsa
-order: 3
+section: "Array questions: methods and loops"
+order: 1
 level: Basic
 mustKnow: true
 askedFrequency: very common

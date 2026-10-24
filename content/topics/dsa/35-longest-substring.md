@@ -1,6 +1,7 @@
 ---
 title: Longest substring without repeating characters
 stack: dsa
+section: "DSA: approach, patterns and problems"
 order: 35
 level: Intermediate
 mustKnow: false

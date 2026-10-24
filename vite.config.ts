@@ -9,8 +9,8 @@ export default defineConfig({
   base: process.env.BASE_PATH ?? '/',
   plugins: [contentPlugin(), react(), tailwindcss()],
   build: {
-    // The flashcard and search data files are big on purpose (2,600+ cards, 535 topics).
+    // The flashcard and search data files are big on purpose (about 3,300 flashcards and 650+ topics).
     // They load only when Rapid Fire or search is opened, not on the first page load.
-    chunkSizeWarningLimit: 800,
+    chunkSizeWarningLimit: 1200,
   },
 });

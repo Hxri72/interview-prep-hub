@@ -1,7 +1,8 @@
 ---
 title: Count frequency of each item
 stack: dsa
-order: 11
+section: "Array questions: methods and loops"
+order: 8
 level: Basic
 mustKnow: true
 askedFrequency: very common

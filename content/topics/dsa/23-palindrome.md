@@ -1,6 +1,7 @@
 ---
 title: Reverse a string and check a palindrome
 stack: dsa
+section: "DSA: approach, patterns and problems"
 order: 23
 level: Basic
 mustKnow: true

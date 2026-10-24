@@ -1,7 +1,8 @@
 ---
 title: Intersection of two arrays
 stack: dsa
-order: 20
+section: "Array questions: methods and loops"
+order: 17
 level: Intermediate
 mustKnow: false
 askedFrequency: common

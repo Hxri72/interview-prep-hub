@@ -1,6 +1,7 @@
 ---
 title: "Pattern: stack (valid brackets)"
 stack: dsa
+section: "DSA: approach, patterns and problems"
 order: 31
 level: Intermediate
 mustKnow: true

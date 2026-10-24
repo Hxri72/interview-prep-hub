@@ -1,6 +1,7 @@
 ---
 title: Two Sum
 stack: dsa
+section: "DSA: approach, patterns and problems"
 order: 22
 level: Basic
 mustKnow: true

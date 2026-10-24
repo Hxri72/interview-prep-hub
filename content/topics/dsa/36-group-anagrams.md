@@ -1,6 +1,7 @@
 ---
 title: Group anagrams
 stack: dsa
+section: "DSA: approach, patterns and problems"
 order: 36
 level: Intermediate
 mustKnow: false

@@ -1,6 +1,7 @@
 ---
 title: "Pattern: two pointers"
 stack: dsa
+section: "DSA: approach, patterns and problems"
 order: 26
 level: Intermediate
 mustKnow: true

@@ -1,6 +1,7 @@
 ---
 title: Maximum subarray (Kadane)
 stack: dsa
+section: "DSA: approach, patterns and problems"
 order: 33
 level: Intermediate
 mustKnow: true

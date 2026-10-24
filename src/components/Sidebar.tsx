@@ -52,8 +52,12 @@ export default function Sidebar() {
                   </div>
                   {isOpen && list.length > 0 && (
                     <ol id={panelId} className="mt-0.5 mb-2 ml-5 border-l border-slate-200 pl-2">
-                      {list.map((t) => (
+                      {list.map((t, i) => (
                         <li key={t.id}>
+                          {/* stacks with subsections: show a small heading where a new section starts */}
+                          {stack.sections && t.section && t.section !== list[i - 1]?.section && (
+                            <p className="mt-2 mb-0.5 px-2 text-[11px] font-bold tracking-wide text-slate-500 uppercase">{t.section}</p>
+                          )}
                           <NavLink
                             to={`/topic/${t.id}`}
                             className={({ isActive }) =>

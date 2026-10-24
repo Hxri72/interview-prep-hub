@@ -1,6 +1,7 @@
 ---
 title: Sorting algorithms overview (bubble, merge, quick)
 stack: dsa
+section: "DSA: approach, patterns and problems"
 order: 40
 level: Intermediate
 mustKnow: false

@@ -1,7 +1,8 @@
 ---
 title: Find the largest and smallest number
 stack: dsa
-order: 6
+section: "Array questions: methods and loops"
+order: 3
 level: Basic
 mustKnow: false
 askedFrequency: very common

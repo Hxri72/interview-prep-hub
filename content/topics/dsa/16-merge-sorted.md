@@ -1,7 +1,8 @@
 ---
 title: Merge two sorted arrays
 stack: dsa
-order: 19
+section: "Array questions: methods and loops"
+order: 16
 level: Intermediate
 mustKnow: false
 askedFrequency: common

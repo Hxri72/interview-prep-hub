@@ -1,7 +1,8 @@
 ---
 title: Remove duplicates
 stack: dsa
-order: 10
+section: "Array questions: methods and loops"
+order: 7
 level: Basic
 mustKnow: true
 askedFrequency: very common

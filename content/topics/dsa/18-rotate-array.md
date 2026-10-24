@@ -1,7 +1,8 @@
 ---
 title: Rotate an array by k
 stack: dsa
-order: 21
+section: "Array questions: methods and loops"
+order: 18
 level: Intermediate
 mustKnow: false
 askedFrequency: common

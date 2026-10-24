@@ -1,7 +1,8 @@
 ---
 title: Reverse an array
 stack: dsa
-order: 8
+section: "Array questions: methods and loops"
+order: 5
 level: Basic
 mustKnow: false
 askedFrequency: very common

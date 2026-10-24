@@ -1,6 +1,7 @@
 ---
 title: Container with most water
 stack: dsa
+section: "DSA: approach, patterns and problems"
 order: 38
 level: Intermediate
 mustKnow: false
