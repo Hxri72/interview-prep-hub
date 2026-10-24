@@ -160,12 +160,16 @@ Sources: the resume, the PDF notes, the "SkillKeepr Backend Interview Preparatio
 
 ## Workflow
 
-All 22 stacks are written (544 topics, October 2026). When adding or editing topics, follow the templates above. Run `npm run build`, fix every error, and add new glossary words to `content/glossary.yaml`. Every definition with `: ` in it must be in double quotes.
+All 23 stacks are written (623 topics, October 2026). When adding or editing topics, follow the templates above. Run `npm run build`, fix every error, and add new glossary words to `content/glossary.yaml`. Every definition with `: ` in it must be in double quotes.
 Practice problems live in `content/problems/`: Problem → Examples → Think first (`:::hint`) → Solution (`:::solution`, two ways, complexity, "what to say"). Use these pattern names: Hash map / Set, Two pointers, Sliding window, Kadane, Prefix sum, Binary search, Stack, Single pass, Recursion, Math / XOR, Reverse trick, Sorting.
 
 ## "How the Web Works" stack (web-fundamentals)
 
 Added 2026-10-20, first in the sidebar. It explains the core: how JS runs in the browser and in Node, modules, npm, bundlers (webpack, Vite), Babel, TS/JSX compilation, localhost and dev servers, dev vs prod builds, SPA serving, hosting on AWS, same-origin policy, caching, and an end-to-end interview walkthrough. It goes deeper than the javascript/nodejs/html-css topics and links to them instead of repeating them.
+
+## NestJS stack (nestjs)
+
+Added 2026-10-24 (25 topics) because a job description asked for NestJS. It sits after Express in the sidebar. Current version: NestJS 12 (August 2026). Hari has **not** used NestJS at work: interview answers say he knows Express and TypeScript well and has learned NestJS, and map Nest ideas to his confirmed SkillKeepr work. Never claim Nest at SkillKeepr.
 
 ## Slugs already linked from written topics (use these exact file slugs when writing those stacks)
 

@@ -400,3 +400,21 @@
 - id: origin
   term: Origin
   definition: "The scheme, host and port of a URL together, like https://app.example.com:443. Two URLs are the same origin only if all three match."
+- id: decorator
+  term: Decorator
+  definition: "A special label that starts with @, like @Get() or @Injectable(). You put it above a class, method or parameter, and it adds extra information or behaviour."
+- id: dependency-injection
+  term: Dependency injection (DI)
+  definition: Giving a piece of code the things it needs (like a database service) from outside, instead of the code creating them itself.
+- id: ioc-container
+  term: IoC container
+  definition: "A part of a framework that creates your classes and passes each one the things it needs. IoC means \"inversion of control\": the framework builds objects, not you."
+- id: dto
+  term: DTO (Data Transfer Object)
+  definition: A class that describes the shape of data coming into or going out of your API, like the fields of a "create user" request.
+- id: singleton
+  term: Singleton
+  definition: Only one copy of an object for the whole app. Everyone who asks for it gets the same copy.
+- id: metadata
+  term: Metadata
+  definition: Extra information about something, stored next to it. In NestJS, decorators store metadata on classes and methods.

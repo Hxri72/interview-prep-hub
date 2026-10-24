@@ -14,6 +14,7 @@
 - { slug: nextjs, title: Next.js, group: core, icon: "▲", planned: 23, description: "A React framework with routing, server rendering and APIs built in (App Router, Next.js 16)." }
 - { slug: nodejs, title: Node.js, group: core, icon: "🟩", planned: 31, description: "Running JavaScript on the server: the event loop, modules, streams and more." }
 - { slug: express, title: Express.js, group: core, icon: "🚂", planned: 25, description: "The most popular Node.js web framework: routes, middleware and error handling." }
+- { slug: nestjs, title: NestJS, group: core, icon: "🐈", planned: 25, description: "A structured Node.js framework built on Express: modules, controllers, providers, dependency injection, guards and pipes." }
 - { slug: rest-auth, title: REST APIs & Auth, group: core, icon: "🔐", planned: 27, description: "Designing APIs and keeping them safe: JWT, bcrypt, webhooks, WebSockets, Swagger." }
 - { slug: mongodb, title: MongoDB & Mongoose, group: core, icon: "🍃", planned: 31, description: "Document database: schemas, indexes, aggregation and data modelling." }
 - { slug: postgresql, title: PostgreSQL & SQL, group: core, icon: "🐘", planned: 23, description: "Relational database: tables, joins, transactions and indexes." }

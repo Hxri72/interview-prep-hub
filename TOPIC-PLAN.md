@@ -325,6 +325,37 @@ Sources used: Resume, Resume Interview Question Bank, Backend Mastery Plan, Fron
 | 23 | Dependency injection basics in Express | A | |
 | 24 | Performance: compression, caching headers, clustering | A | |
 
+### 10b. NestJS (25)
+Added 2026-10-24 because a job description asked for it. Hari has not used NestJS at work, so interview answers stay honest: strong Express background, NestJS learned.
+
+| # | Topic | Level | ★ |
+|---|---|---|---|
+| 1 | What NestJS is and why it exists | B | ★ |
+| 2 | NestJS vs Express (and moving from Express) | B | ★ |
+| 3 | Nest CLI, a new project and the folder structure | B | |
+| 4 | Modules | B | ★ |
+| 5 | Controllers and routing | B | ★ |
+| 6 | Providers and services | B | ★ |
+| 7 | Dependency injection and the IoC container | I | ★ |
+| 8 | How decorators work in Nest | I | ★ |
+| 9 | Request data: @Param, @Query, @Body and DTOs | B | ★ |
+| 10 | Validation: ValidationPipe and class-validator | I | ★ |
+| 11 | Pipes (built-in and custom) | I | |
+| 12 | Middleware in Nest | I | |
+| 13 | Guards: auth and roles | I | ★ |
+| 14 | Interceptors | I | ★ |
+| 15 | Exception filters and HttpException | I | ★ |
+| 16 | The request lifecycle (the order of everything) | I | ★ |
+| 17 | Config and environment variables (@nestjs/config) | B | |
+| 18 | MongoDB with @nestjs/mongoose | I | ★ |
+| 19 | JWT auth with @nestjs/jwt and Passport | I | ★ |
+| 20 | Custom providers, scopes and forwardRef | A | |
+| 21 | Dynamic modules (forRoot / forRootAsync) | A | |
+| 22 | Testing: TestingModule, Jest and Supertest | I | |
+| 23 | Swagger with @nestjs/swagger | B | |
+| 24 | Microservices and transports (overview) | A | |
+| 25 | NestJS on AWS Lambda (serverless) | A | |
+
 ### 11. REST APIs & Authentication (27)
 | # | Topic | Level | ★ |
 |---|---|---|---|
