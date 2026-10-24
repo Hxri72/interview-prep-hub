@@ -56,24 +56,29 @@ Save this as `src/lambda.ts`. It is the Lambda entry point. Locally, you can sti
 ```ts
 import { NestFactory } from '@nestjs/core';                        // creates the Nest app
 import serverlessExpress from '@codegenie/serverless-express';     // adapter: Lambda event ⇄ Express request
-import type { Callback, Context, Handler } from 'aws-lambda';      // Lambda types (TypeScript only)
+import type { Context } from 'aws-lambda';                        // Lambda types (TypeScript only)
 import { AppModule } from './app.module';                          // the root module
 
-let cachedServer: Handler;                                         // stays alive between warm calls
+type AsyncHandler = (event: unknown, context: Context) => Promise<unknown>; // an async handler: no callback
+let cachedServer: AsyncHandler | undefined;                        // stays alive between warm calls
 
-async function bootstrap(): Promise<Handler> {                     // build the app once
+async function bootstrap(): Promise<AsyncHandler> {                // build the app once
   const app = await NestFactory.create(AppModule);                 // create Nest (uses Express by default)
   app.enableCors();                                                // allow browser calls from other origins
   await app.init();                                                // run startup, but don't listen on a port
   const expressApp = app.getHttpAdapter().getInstance();           // the Express app inside Nest
-  return serverlessExpress({ app: expressApp });                   // wrap it as a Lambda handler
+  return serverlessExpress({ app: expressApp }) as unknown as AsyncHandler; // wrap it; it returns a Promise when no callback is passed
 }                                                                  // end of bootstrap
 
-export const handler: Handler = async (event: unknown, context: Context, callback: Callback) => { // Lambda calls this
+export const handler = async (event: unknown, context: Context) => { // Lambda calls this (async, no callback)
   cachedServer = cachedServer ?? (await bootstrap());               // cold start: build; warm call: reuse
-  return cachedServer(event, context, callback);                   // pass the request to Nest
+  return cachedServer(event, context);                             // pass the request to Nest and await the reply
 };                                                                 // end of handler
 ```
+
+:::version[Version note]
+The Node.js 24 Lambda runtime no longer supports callback-style handlers. Write `async` handlers that return a value, like the one above.
+:::
 
 A small Serverless Framework config, `serverless.yml`. Deploy with `npx serverless deploy` (after `npm run build`).
 

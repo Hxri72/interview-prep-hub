@@ -418,3 +418,36 @@
 - id: metadata
   term: Metadata
   definition: Extra information about something, stored next to it. In NestJS, decorators store metadata on classes and methods.
+- id: monorepo
+  term: Monorepo
+  definition: One Git repository that holds several projects, like the React frontend and the Express backend, side by side.
+- id: csr
+  term: CSR (client-side rendering)
+  definition: The browser downloads JavaScript and builds the page itself. A plain React SPA works this way.
+- id: ssr
+  term: SSR (server-side rendering)
+  definition: The server builds the page's HTML for each request and sends it ready to show. Next.js can do this.
+- id: graphql
+  term: GraphQL
+  definition: An API style where the client sends one query that says exactly which fields it wants, and gets back only those.
+- id: api-gateway
+  term: API gateway
+  definition: One front door for all API requests. It checks and routes each request to the right backend service.
+- id: presigned-url
+  term: Presigned URL
+  definition: A short-lived link that lets the browser upload or download one file in S3 directly, without AWS keys.
+- id: cdn
+  term: CDN (content delivery network)
+  definition: Servers around the world that keep copies of your files, so users download them from a server near them.
+- id: container
+  term: Container
+  definition: A small, packed box with your app and everything it needs to run, so it runs the same on any machine. Docker makes containers.
+- id: monolith
+  term: Monolith
+  definition: One app that holds all the backend features and is deployed as one piece.
+- id: microservice
+  term: Microservice
+  definition: A small, separate service that does one job (like payments) and has its own code, deployment and often its own database.
+- id: serverless
+  term: Serverless
+  definition: You upload functions and the cloud runs them only when needed. You don't manage servers, and you pay per run.

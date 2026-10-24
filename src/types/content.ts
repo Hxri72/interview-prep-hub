@@ -8,6 +8,7 @@ export interface Stack {
   icon: string;
   description: string;
   planned: number;
+  sections?: string[]; // optional subsection headings, in order
 }
 
 export interface TopicMeta {
@@ -21,6 +22,7 @@ export interface TopicMeta {
   askedFrequency: Frequency;
   cardCount: number;
   readMinutes: number; // estimated reading time
+  section?: string; // subsection inside the stack, if the stack has sections
 }
 
 export interface ProblemMeta {

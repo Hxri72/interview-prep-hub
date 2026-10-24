@@ -19,6 +19,14 @@
 - { slug: mongodb, title: MongoDB & Mongoose, group: core, icon: "🍃", planned: 31, description: "Document database: schemas, indexes, aggregation and data modelling." }
 - { slug: postgresql, title: PostgreSQL & SQL, group: core, icon: "🐘", planned: 23, description: "Relational database: tables, joins, transactions and indexes." }
 - { slug: architecture, title: Architecture, group: core, icon: "🏛️", planned: 17, description: "Monolith vs microservices, serverless, event-driven and multi-tenant design." }
+- slug: mern-architectures
+  title: MERN App Architectures
+  group: core
+  icon: "🧩"
+  planned: 33
+  description: "All the ways to build and connect a MERN app: from the basic 3-tier setup to SSR, microservices, serverless and real-time, with a scenario for each."
+  sections: [Foundations, Frontend and rendering, Backend structure, How frontend talks to backend, "State, auth and files", Deployment, Choosing an architecture]
+
 - { slug: devops, title: Cloud & DevOps, group: core, icon: "☁️", planned: 22, description: "Git, GitHub Actions CI/CD, Railway, AWS, GCP and Docker basics." }
 - { slug: testing, title: Testing & Quality, group: core, icon: "🧪", planned: 17, description: "Jest, Supertest, code reviews, logging and production support." }
 

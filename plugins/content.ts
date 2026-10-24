@@ -122,6 +122,21 @@ export const CHAPTER_SECTIONS = [
   { key: 'revise', label: '📚 Topics to revise' },
 ];
 
+/** MERN App Architectures: one way to design or wire up an app, with a diagram, trade-offs and when to pick it. */
+export const PATTERN_SECTIONS = [
+  { key: 'what', label: '💡 What is it?' },
+  { key: 'example', label: '🏠 Real-life example' },
+  { key: 'flow', label: '🗺️ The diagram' },
+  { key: 'code', label: '🧑‍💻 Code example' },
+  { key: 'deeper', label: '🔍 Deeper version' },
+  { key: 'pros', label: '⚖️ Pros and cons' },
+  { key: 'why', label: '🎯 When to choose it' },
+  { key: 'mistakes', label: '⚠️ Common mistakes' },
+  { key: 'interview', label: '🗣️ How to answer in an interview' },
+  { key: 'followup', label: '🔁 Follow-up questions' },
+  { key: 'check', label: '✅ Quick check' },
+];
+
 const TEMPLATES: Record<string, { key: string; label: string }[]> = {
   concept: CONCEPT_SECTIONS,
   story: STORY_SECTIONS,
@@ -129,8 +144,9 @@ const TEMPLATES: Record<string, { key: string; label: string }[]> = {
   answer: ANSWER_SECTIONS,
   bank: BANK_SECTIONS,
   chapter: CHAPTER_SECTIONS,
+  pattern: PATTERN_SECTIONS,
 };
-const ALL_SECTIONS = [...CONCEPT_SECTIONS, ...STORY_SECTIONS, ...SCENARIO_SECTIONS, ...ANSWER_SECTIONS, ...BANK_SECTIONS, ...CHAPTER_SECTIONS];
+const ALL_SECTIONS = [...CONCEPT_SECTIONS, ...STORY_SECTIONS, ...SCENARIO_SECTIONS, ...ANSWER_SECTIONS, ...BANK_SECTIONS, ...CHAPTER_SECTIONS, ...PATTERN_SECTIONS];
 
 /** Compare headings by their words only, so emoji differences don't matter. */
 const norm = (s: string) => s.toLowerCase().replace(/[^a-z0-9 ]/g, '').replace(/\s+/g, ' ').trim();
@@ -144,6 +160,7 @@ interface StackDef {
   icon: string;
   description: string;
   planned: number;
+  sections?: string[]; // optional subsection headings, in order; topics pick one with `section:`
 }
 interface GlossaryEntry { id: string; term: string; definition: string }
 interface Card { id: string; topicId: string; q: string; a: string }
@@ -153,7 +170,7 @@ interface ParsedTopic {
   file: string;
   meta: {
     id: string; stack: string; slug: string; title: string; order: number;
-    level: string; mustKnow: boolean; askedFrequency: string; readMinutes: number;
+    level: string; mustKnow: boolean; askedFrequency: string; readMinutes: number; section?: string;
   };
   summary: string[];
   cards: Card[];
@@ -419,6 +436,12 @@ class ContentStore {
       if (this.topics.has(t.meta.id)) t.errors.push(`Duplicate topic id "${t.meta.id}"`);
       this.topics.set(t.meta.id, t);
     }
+    // stacks with subsections: every topic must name one of them
+    for (const t of this.topics.values()) {
+      const allowed = this.stacks.find((st) => st.slug === t.meta.stack)?.sections;
+      if (allowed && !allowed.includes(t.meta.section ?? '')) t.errors.push(`"section" must be one of: ${allowed.join(' / ')}`);
+      if (!allowed && t.meta.section) t.warnings.push(`"section" is set, but stack "${t.meta.stack}" has no sections in stacks.yaml`);
+    }
     // two topics in one stack with the same order number
     const seen = new Map<string, string>();
     for (const t of this.topics.values()) {
@@ -473,7 +496,7 @@ class ContentStore {
 
     return {
       file,
-      meta: { id, stack: folder, slug, title: String(fm.title ?? slug), order: Number(fm.order ?? 999), level: fm.level, mustKnow: !!fm.mustKnow, askedFrequency: fm.askedFrequency, readMinutes: readingMinutes(content) },
+      meta: { id, stack: folder, slug, title: String(fm.title ?? slug), order: Number(fm.order ?? 999), level: fm.level, mustKnow: !!fm.mustKnow, askedFrequency: fm.askedFrequency, readMinutes: readingMinutes(content), ...(fm.section ? { section: String(fm.section) } : {}) },
       summary,
       cards,
       html,

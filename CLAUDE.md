@@ -70,6 +70,10 @@ Never put real salary numbers or notice details on the public site.
 
 **`template: chapter`** is for SkillKeepr Story (`skillkeepr-story`): `## 💡 What happens in this chapter` → `## 🏠 Real-life example` → `## 🗺️ The flow` (text diagram) → `## 🧱 Tech used` (table: piece → technology → linked topic) → `## 🧑‍💻 Key code idea` (small, runnable, every line commented) → `## 🧗 Hard parts and trade-offs` → `## 🙋 My part` (ONLY confirmed facts about Hari, else `[FILL IN]`) → `## 🗣️ How to explain it in an interview` → `## 🔁 Follow-up questions` → `## 📚 Topics to revise`. Platform facts stay public-safe. Clearly separate what the platform does from what Hari built.
 
+**`template: pattern`** is for MERN App Architectures (`mern-architectures`): `## 💡 What is it?` → `## 🏠 Real-life example` → `## 🗺️ The diagram` (text diagram) → `## 🧑‍💻 Code example` (every line commented) → `## 🔍 Deeper version` → `## ⚖️ Pros and cons` (table) → `## 🎯 When to choose it` (scenarios) → `## ⚠️ Common mistakes` → `## 🗣️ How to answer in an interview` → `## 🔁 Follow-up questions` → `## ✅ Quick check`.
+
+**Subsections:** a stack can list `sections:` in `content/stacks.yaml`. Then every topic in it needs `section:` set to one of them (the build checks), and the stack page groups topics under those headings.
+
 To add a new template, add its section list to `TEMPLATES` in `plugins/content.ts`.
 
 ## Markdown extras
@@ -160,7 +164,7 @@ Sources: the resume, the PDF notes, the "SkillKeepr Backend Interview Preparatio
 
 ## Workflow
 
-All 23 stacks are written (623 topics, October 2026). When adding or editing topics, follow the templates above. Run `npm run build`, fix every error, and add new glossary words to `content/glossary.yaml`. Every definition with `: ` in it must be in double quotes.
+All 24 stacks are written (656 topics, October 2026). When adding or editing topics, follow the templates above. Run `npm run build`, fix every error, and add new glossary words to `content/glossary.yaml`. Every definition with `: ` in it must be in double quotes.
 Practice problems live in `content/problems/`: Problem → Examples → Think first (`:::hint`) → Solution (`:::solution`, two ways, complexity, "what to say"). Use these pattern names: Hash map / Set, Two pointers, Sliding window, Kadane, Prefix sum, Binary search, Stack, Single pass, Recursion, Math / XOR, Reverse trick, Sorting.
 
 ## "How the Web Works" stack (web-fundamentals)
@@ -170,6 +174,10 @@ Added 2026-10-20, first in the sidebar. It explains the core: how JS runs in the
 ## NestJS stack (nestjs)
 
 Added 2026-10-24 (25 topics) because a job description asked for NestJS. It sits after Express in the sidebar. Current version: NestJS 12 (August 2026). Hari has **not** used NestJS at work: interview answers say he knows Express and TypeScript well and has learned NestJS, and map Nest ideas to his confirmed SkillKeepr work. Never claim Nest at SkillKeepr.
+
+## MERN App Architectures stack (mern-architectures)
+
+Added 2026-10-24 (33 topics in 7 subsections), after Architecture in the sidebar. It shows how a MERN app can be built and connected in each style, from the basic 3-tier setup up, with scenario pages. It links to the architecture and system-design topics instead of repeating them.
 
 ## Slugs already linked from written topics (use these exact file slugs when writing those stacks)
 

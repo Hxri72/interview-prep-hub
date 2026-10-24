@@ -470,6 +470,45 @@ Added 2026-10-24 because a job description asked for it. Hari has not used NestJ
 | 16 | Shared database vs database per tenant | A | |
 | 17 | Resilience: timeouts, retries with backoff, circuit breakers | A | |
 
+### 14b. MERN App Architectures (33)
+Added 2026-10-24. Every way to build and connect a MERN app, from the basic 3-tier setup up, with a scenario for each. Uses `template: pattern` and subsections (`section:` in frontmatter, listed in `content/stacks.yaml`). Links to the Architecture and System Design stacks instead of repeating them.
+
+| # | Section | Topic | Level | ★ |
+|---|---|---|---|---|
+| 1 | Foundations | The 3-tier architecture of a MERN app | B | ★ |
+| 2 | Foundations | One request end to end: React → Express → MongoDB | B | ★ |
+| 3 | Foundations | One server vs separate frontend and backend | B | ★ |
+| 4 | Foundations | Repo layouts: single repo, two repos, monorepo | B |  |
+| 5 | Frontend and rendering | CSR SPA (React + Vite) with an Express API | B | ★ |
+| 6 | Frontend and rendering | Express serving the React build | B |  |
+| 7 | Frontend and rendering | SSR: Next.js in front of, or instead of, Express | I | ★ |
+| 8 | Frontend and rendering | Static site + API (Jamstack) | I |  |
+| 9 | Frontend and rendering | Micro-frontends | I |  |
+| 10 | Backend structure | MVC in Express | B | ★ |
+| 11 | Backend structure | Layered: controller → service → repository | I | ★ |
+| 12 | Backend structure | Feature folders vs layer folders | I |  |
+| 13 | Backend structure | Clean / hexagonal architecture | A |  |
+| 14 | Backend structure | Modular monolith in Node | I |  |
+| 15 | Backend structure | Microservices with Node and MongoDB | I | ★ |
+| 16 | Backend structure | Serverless MERN (S3/CloudFront + Lambda + Atlas) | I | ★ |
+| 17 | Backend structure | BFF (Backend for Frontend) and API gateway | I |  |
+| 18 | Backend structure | Event-driven backend with queues | I |  |
+| 19 | How frontend talks to backend | REST vs GraphQL vs tRPC vs gRPC | I | ★ |
+| 20 | How frontend talks to backend | GraphQL with Apollo in a MERN app | I |  |
+| 21 | How frontend talks to backend | Real-time: polling vs SSE vs WebSockets | I | ★ |
+| 22 | How frontend talks to backend | Next.js Server Actions and route handlers as the API | B |  |
+| 23 | State, auth and files | Server state (React Query) vs client state (Redux) | I | ★ |
+| 24 | State, auth and files | Auth designs: sessions, JWT cookies, hosted auth | I | ★ |
+| 25 | State, auth and files | File uploads straight to S3 (presigned URLs) | I |  |
+| 26 | Deployment | VPS vs PaaS vs containers vs serverless | I | ★ |
+| 27 | Deployment | Docker Compose for a MERN app | I |  |
+| 28 | Choosing an architecture | Decision guide: which architecture when | I | ★ |
+| 29 | Choosing an architecture | Scenario: small business / MVP | B |  |
+| 30 | Choosing an architecture | Scenario: multi-tenant SaaS (SkillKeepr-style) | I | ★ |
+| 31 | Choosing an architecture | Scenario: real-time chat app | I |  |
+| 32 | Choosing an architecture | Scenario: high-traffic e-commerce | I |  |
+| 33 | Choosing an architecture | Explaining your project's architecture in an interview | I | ★ |
+
 ### 15. Cloud & DevOps (22)
 | # | Topic | Level | ★ |
 |---|---|---|---|
